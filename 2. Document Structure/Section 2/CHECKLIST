@@ -1,0 +1,53 @@
+```text
+             SECTION 2 DISCOVERY
+                    │
+                    ▼
+        ┌────────────────────────┐
+        │ 1. KNOWLEDGE INVENTORY │  ← WE ARE HERE
+        └────────────┬───────────┘
+                     │
+                     ▼
+        2. SOURCE TRUST MATRIX
+                     │
+                     ▼
+        3. KNOWLEDGE TAXONOMY
+                     │
+                     ▼
+        4. RPA DEVELOPER QUESTIONS
+                     │
+                     ▼
+        5. CAPE USER FEEDBACK
+                     │
+                     ▼
+        6. CURRENT-STATE ANALYSIS
+                     │
+                     ▼
+        7. PROBLEM / OPPORTUNITY
+```
+
+
+## NEXT STEPS
+
+1. Pass 1 — Candidate inventory
+   1. We already have this from our documentation.
+   
+2. Pass 2 — Source audit
+   1. We inspect the actual available documentation and record:
+      1. exact source name;
+      2. location;
+      3. content;
+      4. domain;
+      5. owner;
+      6. authority;
+      7. relevance;
+      8. currency;
+      9. dependencies;
+      10. possible conflicts.
+
+3. Pass 3 — Skill readiness classification
+   1. For each source:
+      1. Include now / Include later / Supporting / Exclude / Needs review
+    
+    That final classification will directly feed the future Skill.
+
+
