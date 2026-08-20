@@ -100,14 +100,14 @@ Per the CAPE documentation, a skill can leverage:
 
 **Built-in tools:**
 - `run_code` — Python code interpreter with common data libraries
-- `http_request` — Generic HTTP requests
+- `http_request` — Authorized HTTP access through CAPE's scoped tools and platform validation
 - `search_chat_history` — User's own past conversations
 - `load_skill` / `save_skill` — Load and save reusable skills
 
 **Connectors (per-user authenticated access):**
 - **Atlassian** — Jira and Confluence
 - **Zoho ServiceDesk Plus Cloud** — ManageEngine SDP tickets (10 named read-only tools)
-- **Outlook** — Microsoft 365 mail and calendar via Microsoft Graph
+- **Outlook** — Microsoft 365 mail and calendar via Microsoft Graph; availability and maturity require confirmation
 - **Confluence (API token)** — 8 named scoped tools for Confluence content
 
 **Other capabilities:**
@@ -144,7 +144,7 @@ A CAPE skill can reference:
 - **Jira issues/projects** — via Atlassian connector
 - **ManageEngine/Zoho SDP tickets** — via Zoho ServiceDesk Plus Cloud connector (read-only)
 - **Outlook email/calendar** — via Microsoft Graph connector
-- **Any HTTP endpoint** — via `http_request` tool
+- **Authorized HTTP access** — via CAPE's scoped tools, subject to connector availability, validation, and platform security controls
 - **User-uploaded files** — PDF, Word, PowerPoint, Excel, CSV, text files (converted to Markdown as context)
 - **Images** — Attached and sent to model as vision content
 - **Chat history** — User's own past conversations via `search_chat_history`
@@ -176,10 +176,10 @@ For Atlassian's Rovo (the product you're chatting with right now), citations are
 - **Text-type tools** — Free-form instructions injected directly into the system prompt (full natural-language control)
 - **MCP-type tools** — Standard MCP server configs with customizable parameters
 - **`<<VAR>>` placeholders** — Configurable per-user variables filled from value forms when equipped
-- **EquipBar** — Users equip/unequip tools and skills via the Tools popover
+- **EquipBar** — Users equip and manage tools; Skills are indexed and loaded automatically when relevant
 - **Budgeted skill index** — Admin controls which skills are listed and their priority
 
-The instructions are essentially **unconstrained text** — you define exactly what the skill does, how it responds, what tools it calls, and under what conditions.
+The instructions are configurable text executed within CAPE's existing tool, authorization, security, and governance boundaries — they define the Skill's behavior without bypassing platform controls.
 
 [CAPE — Tools and Connectors](https://inchcapeglobal.atlassian.net/wiki/spaces/DTD/pages/9474015883/CAPE+Tools+and+Connectors)
 

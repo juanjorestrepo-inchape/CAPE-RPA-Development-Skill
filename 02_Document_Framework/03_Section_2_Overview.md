@@ -162,14 +162,40 @@ This is where your new idea becomes relevant.
 
 We should document CAPE as it currently exists, before discussing the RPA Development Skill.
 
-We already know:
+### Verified first-party CAPE baseline
+
+The project now has internal CAPE product and architecture documentation in addition to UI observations and informal user feedback. This documented baseline confirms that:
+
+- CAPE is Inchcape's internal chat application and is currently a proof of concept.
+- CAPE is deployed on Databricks Apps using a FastAPI runtime.
+- The deployed application uses Lakebase Postgres.
+- CAPE provides streaming chat, attachments, a Python code interpreter, connectors, tools, agents, workflows, projects, and artifacts.
+- Skills are packaged domain knowledge loaded on demand when relevant.
+- Skills are auto-pooled and progressively disclosed rather than equipped like account-bound tools.
+
+The technical reference is maintained in `03_Knowledge_Research/06_CAPE_First_Party_Technical_Reference_v0_1.md`.
+
+This evidence replaces several previous architectural assumptions, but it does not replace structured user validation.
+
+### Previously observed CAPE behavior
+
+We also know from existing observations that:
 
 - CAPE is available as an enterprise AI capability.
 - It has Skills.
 - Skills are invoked automatically when relevant.
-- It connects to Confluence.
-- It has read-only Service Desk access.
+- It may provide per-user, authorized access to scoped Confluence and Service Desk connector capabilities; availability and permissions must be verified for each deployment and user.
 - It already provides several general-purpose capabilities.
+
+### Implication for the RPA Development Skill
+
+The Skill should not be conceptualized as a container for all RPA documentation. Based on the first-party CAPE documentation, it should be defined as an on-demand domain-specific knowledge and instruction module that CAPE loads for relevant RPA development requests and uses with validated RPA sources.
+
+This distinction should guide the future Skill architecture, source-selection logic, response behavior, testing methodology, and evaluation criteria.
+
+Platform issues such as session expiration, context errors, document/table conversion failures, connector availability, and proof-of-concept maturity should be tracked separately from the requirements of the RPA Development Skill. They may affect adoption and perceived usefulness without being problems the Skill itself can solve.
+
+The documented CAPE feedback also identifies evaluation concerns including poor contrast, weak branding, hidden navigation, subtle progress indicators, long-output truncation, overengineering, unsupported inference, invented stakeholders or deadlines, incorrect handling of ties, and incorrect classifications. These are platform or behavior risks to test and classify, not assumptions to convert directly into Skill requirements.
 
 Then we introduce the initial user feedback.
 

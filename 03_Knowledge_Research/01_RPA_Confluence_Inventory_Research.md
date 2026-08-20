@@ -29,6 +29,8 @@ Currently, we can identify several knowledge sources, including:
 
 So we already have the first version of the inventory. But it is currently a conceptual inventory. We now need to turn it into an audited inventory.
 
+CAPE platform and Skill architecture sources are tracked separately in RPA Knowledge Inventory v0.2. They explain the host platform and Skill mechanism but are not mixed with normative RPA development sources.
+
 2. The RPA Knowledge Inventory we should create
 
 It could be Excel/CSV-style table with columns such as:

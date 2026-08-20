@@ -95,6 +95,9 @@ For example:
 | Accuracy            | Incorrect or incomplete answers          |
 | Trust               | Confidence in generated recommendations  |
 | Adoption            | Reasons to use or avoid CAPE             |
+| Behavioral quality  | Unsupported inference, invented facts, or incorrect classifications |
+| Decision quality    | Handling of ties and multiple valid recommendations |
+| Output usability    | Truncation, contrast, navigation, progress visibility, or overengineering |
 
 This will eventually become useful for both requirements engineering and prioritization.
 
@@ -134,6 +137,9 @@ Examples:
 - governance compliance;
 - response consistency;
 - handling of ambiguous questions.
+- avoiding unsupported inference and invented stakeholders or deadlines;
+- handling tied recommendations explicitly;
+- avoiding unnecessary complexity and practical output truncation.
 
 2. User validation
 

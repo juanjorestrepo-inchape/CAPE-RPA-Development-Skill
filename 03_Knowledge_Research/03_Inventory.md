@@ -60,3 +60,12 @@ RPA KNOWLEDGE INVENTORY
        ├── Infrastructure
        ├── Monitoring
        └── Target systems
+
+├── 4. CAPE Platform / Skill Architecture Knowledge
+       ├── CAPE architecture and deployment
+       ├── Skill loading and progressive disclosure
+       ├── Tools, connectors, agents, workflows, and projects
+       ├── Data policy and security boundaries
+       └── Platform feedback and known limitations
+
+CAPE platform knowledge is a separate domain. It defines the operating environment for the RPA Development Skill and does not automatically become normative RPA guidance.

@@ -1,2 +1,2 @@
-# CAPE-RPA-Development-Skill
-CAPE RPA Assistant Improvement through Skills Management
+# CAPE RPA Development Skill
+Domain-specific RPA knowledge and behavioral guidance implemented as a CAPE Skill.

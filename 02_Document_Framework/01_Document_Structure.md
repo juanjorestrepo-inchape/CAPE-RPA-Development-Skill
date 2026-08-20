@@ -1,6 +1,10 @@
 # CAPE RPA Development Skill
 ## Project & Technical Approach
 
+**Document status:** Revised Draft / Phase 1 Amendment
+**Specification baseline:** v0.2.0
+**Revision rationale:** Incorporates verified CAPE platform evidence and corrects the Skill operating model, source governance, and evaluation boundaries.
+
 ### 1. Introduction ✅
 #### 1.1 RPA Context at Inchcape
 #### 1.2 The RPA Knowledge Environment
@@ -9,6 +13,9 @@
 #### 1.5 Proposed Initiative
 #### 1.6 Initial Project Direction
 #### 1.7 Document Purpose
+
+#### 1.8 CAPE Platform Context
+#### 1.9 Proposed Skill Operating Environment
 
 ---
 
@@ -46,6 +53,7 @@
 
 ### 5. Knowledge Engineering & Source Strategy
 #### 5.1 Knowledge Domains
+#### 5.1a CAPE Platform Knowledge versus RPA Knowledge
 #### 5.2 Internal Knowledge Sources
 #### 5.3 External Authoritative Sources
 #### 5.4 Source Trust Hierarchy
@@ -65,6 +73,7 @@
 #### 6.8 Clarification and Missing Context
 #### 6.9 Security and Governance Boundaries
 #### 6.10 Escalation and Human-in-the-Loop
+#### 6.11 Platform Boundary and Known CAPE Limitations
 
 ### 7. Implementation
 #### 7.1 CAPE Skill Architecture
@@ -87,6 +96,7 @@
 #### 8.8 Efficiency Measurement
 #### 8.9 Consistency Measurement
 #### 8.10 Acceptance Criteria
+#### 8.11 CAPE-Specific Behavioral Evaluation Cases
 
 ### 9. Pilot
 #### 9.1 Pilot Objectives

@@ -7,6 +7,7 @@
 ### A. RPA Knowledge Discovery
 
 * [ ] Build and validate the RPA Knowledge Inventory.
+* [ ] Record CAPE platform and Skill architecture as a separate knowledge domain.
 * [ ] Identify the relevant Confluence spaces and repositories.
 * [ ] Catalog developer-facing documentation.
 * [ ] Catalog architecture and technology documentation.
@@ -19,6 +20,7 @@
 * [ ] Identify project-level / Solution Documentation sources.
 * [ ] Record source ownership and apparent currency where available.
 * [ ] Classify each source according to relevance and authority.
+* [ ] Record provisional currency, ownership, evidence status, and validation requirements.
 * [ ] Identify duplicate, overlapping, outdated, or potentially conflicting sources.
 * [ ] Produce the initial Knowledge Source Trust Matrix.
 
@@ -46,6 +48,7 @@
 * [ ] Maintain a CAPE Feedback Log.
 * [ ] Distinguish preliminary observations from validated findings.
 * [ ] Separate CAPE platform limitations from RPA Development Skill requirements.
+* [ ] Capture documented CAPE failure modes as evaluation inputs, not automatic Skill requirements.
 
 ### D. Current-State Analysis
 
@@ -66,6 +69,9 @@
 * [ ] Create the initial evaluation question/test set.
 * [ ] Define preliminary success criteria.
 * [ ] Establish how user feedback will be incorporated into Skill iterations.
+* [ ] Verify connector availability, per-user authorization, and scoped tool access.
+* [ ] Separate CAPE platform data governance from Skill knowledge governance.
+* [ ] Freeze RPA Knowledge Inventory v0.2 before beginning Phase 2 scoring.
 
 ### F. Section 2 Deliverables
 

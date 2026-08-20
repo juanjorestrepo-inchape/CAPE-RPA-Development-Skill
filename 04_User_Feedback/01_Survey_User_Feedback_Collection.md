@@ -23,8 +23,13 @@ Questions could cover:
 7. What would make you use CAPE more?
 8. What capabilities would you like to have?
 9. How confident are you in CAPE's responses?
+10. Have you seen CAPE infer unsupported facts, such as stakeholders, deadlines, or organizational requirements?
+11. How well does CAPE handle tied recommendations or cases where more than one answer is valid?
+12. Have responses been unnecessarily complex, truncated, difficult to read, or hard to navigate?
 
 This gives us the CAPE platform/user perspective
+
+Documented CAPE feedback should also be used as evaluation input for contrast, branding, navigation, progress visibility, output truncation, overengineering, unsupported inference, ties, and incorrect classifications. These observations must remain separate from RPA Skill requirements unless user validation establishes a direct Skill impact.
 
 ## B. RPA Developer Needs Assessment
 This survey should target RPA developers specifically. The central question is:
