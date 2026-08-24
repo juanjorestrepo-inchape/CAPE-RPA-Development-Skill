@@ -158,9 +158,9 @@ The newly verified CAPE information requires the following updates to the projec
 6. Test whether the Skill loads and responds appropriately for relevant RPA requests rather than testing only whether documentation is present.
 7. Track CAPE platform limitations separately from RPA developer needs and Skill requirements.
 
-## Required follow-up
+## Required Phase 2 follow-up
 
-Before freezing the revised Phase 1 baseline:
+During Phase 2 Trust Matrix assessment:
 
 - record exact Confluence page URLs or identifiers;
 - confirm the accountable owner for the CAPE documentation;

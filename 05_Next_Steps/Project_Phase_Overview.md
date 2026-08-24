@@ -1,6 +1,10 @@
 # Project Phase Overview
 
-## Completed workstreams and preliminary outputs
+**Last updated:** 2026-08-23
+**Current phase:** Phase 2 — RPA Knowledge Source Trust Matrix
+**Overall status:** Phase 1 baseline complete; Phase 2 assessment in progress
+
+## Completed workstreams and outputs
 
 1. Context and framing
    - Stakeholder context, problem framing, and design-thinking notes.
@@ -10,20 +14,23 @@
    - Confluence inventory, RPA knowledge sources, and supporting inventory notes.
 4. User feedback and validation exploration
    - Early CAPE user feedback, friction observations, and validation themes.
+5. Phase 1 baseline and v0.2.0 deliverables
+   - CAPE first-party evidence incorporated into the knowledge baseline.
+   - Project Specification v0.2.0 and RPA Knowledge Inventory v0.2.0 available in `Docs/Word/v 0.2.0`.
+   - CAPE platform knowledge separated from normative RPA development knowledge.
 
-Phase 1 closure and the v0.2 baseline freeze remain pending.
+Phase 1 is complete for the current project-definition and inventory purpose. The remaining source metadata checks are now Phase 2 Trust Matrix activities, not reasons to reopen the v0.2.0 documents.
 
-## Next steps
+## Active next steps
 
-1. Complete the Phase 1 closure amendment by enriching the baseline with the newly verified first-party CAPE product and architecture documentation.
-2. Version the revised baseline as RPA Knowledge Inventory v0.2 and freeze it, including the CAPE technical reference and the distinction between platform limitations and Skill requirements.
-3. Only after the Phase 1 freeze, continue into Phase 2 by assessing the CAPE documentation and RPA sources through the RPA Knowledge Source Trust Matrix.
-4. Define the RPA Development Skill as an on-demand domain knowledge and instruction module, not as a repository of all RPA documentation.
-5. Confirm CAPE source ownership, Confluence identifiers, current connector availability, and documentation currency.
-6. Continue user discovery and separate CAPE platform observations from RPA developer needs and Skill requirements.
-7. Build the RPA Question & Use-Case Catalog before finalizing the Skill specification.
-8. Define Skill behavior, source hierarchy, boundaries, testing, evaluation, and pilot methodology.
-9. Prepare adoption and rollout guidance for teams.
+1. Populate the RPA Knowledge Source Trust Matrix for the existing RPA sources and the ten CAPE source records.
+2. Confirm source owners, exact Confluence/page identifiers, revision metadata, currency, and applicability.
+3. Confirm current CAPE connector availability, per-user authorization, and scoped tool access.
+4. Record source conflicts and apply the documented precedence model.
+5. Continue user discovery while separating CAPE platform observations from RPA developer needs and Skill requirements.
+6. Build the RPA Question and Use-Case Catalog before finalizing the Skill specification.
+7. Define Skill behavior, source hierarchy, boundaries, testing, evaluation, and pilot methodology.
+8. Prepare adoption and rollout guidance for teams.
 
 ## New baseline evidence
 
@@ -36,11 +43,11 @@ RPA Knowledge Inventory v0.1
    ->
 Verified CAPE evidence enrichment
    ->
-RPA Knowledge Inventory v0.2
+RPA Knowledge Inventory v0.2.0 [complete]
    ->
-Phase 1 freeze
+Phase 1 baseline [complete]
    ->
-Source Trust Matrix
+Source Trust Matrix [active]
    ->
 User Discovery and Use-Case Catalog
    ->

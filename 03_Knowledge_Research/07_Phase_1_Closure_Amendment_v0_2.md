@@ -126,13 +126,13 @@ Skill operating-model clarification
 CAPE feedback observations classified
         |
         v
-RPA Knowledge Inventory v0.2
+RPA Knowledge Inventory v0.2.0 [complete]
         |
         v
-Phase 1 FREEZE
+Phase 1 baseline [complete]
         |
         v
-Phase 2 - RPA Knowledge Source Trust Matrix v0.1
+Phase 2 - RPA Knowledge Source Trust Matrix v0.1 [active]
 ```
 
 ## What this amendment does not authorize
@@ -148,11 +148,10 @@ This amendment does not authorize:
 - treating unverified Databricks platform concepts as CAPE architecture;
 - moving into full Phase 2 scoring before the v0.2 baseline is frozen.
 
-## Required closure actions
+## Phase 2 handoff actions
 
-1. Update the inventory version from v0.1 to v0.2 after incorporating this amendment.
-2. Record the exact CAPE Confluence page identifiers and accountable owner.
-3. Add the six CAPE source candidates to the Trust Matrix.
-4. Confirm current connector availability in the CAPE user interface.
-5. Freeze the revised Phase 1 baseline.
-6. Begin Phase 2 with the RPA Knowledge Source Trust Matrix v0.1.
+1. Record the exact CAPE Confluence page identifiers and accountable owner in the Trust Matrix.
+2. Assess the ten CAPE source candidates as separate Trust Matrix records.
+3. Confirm current connector availability and per-user authorization in the CAPE user interface.
+4. Score authority, relevance, currency, ownership, and evidence for each source.
+5. Record source conflicts, precedence, decisions, and review cadence.

@@ -1,8 +1,14 @@
 # RPA Knowledge Source Trust Matrix v0.1
 
+**Status:** Phase 2 active workstream
+**Started after:** RPA Knowledge Inventory v0.2.0 baseline completion
+**Next review gate:** Complete initial scoring and source disposition
+
 ## Purpose
 
 This document defines the evaluation framework for determining whether a knowledge source is suitable for the RPA Development Skill, how strongly it should be trusted, how it should be used, and under what conditions it should be treated as authoritative, contextual, or excluded.
+
+The inventory baseline is complete for Phase 1. This matrix is now the working Phase 2 artifact; it should be populated from the v0.2.0 inventory rather than used to reopen the completed baseline.
 
 This is the governance layer between:
 
@@ -231,6 +237,17 @@ Use the following table to assess each source.
 | KS-001 | Example source | Confluence / policy / vendor / ticket / repo | RPA governance | Owner name |  |  |  |  |  |  |  |  |  |  |  |  |  |
 
 ## Initial Sources Requiring Assessment
+
+Phase 2 assessment queue:
+
+- [ ] Verify source owner and accountable reviewer.
+- [ ] Record exact page, repository, or record identifier.
+- [ ] Confirm currency and revision metadata.
+- [ ] Assess authority, relevance, ownership, currency, and evidence scores.
+- [ ] Classify normative, recommended, contextual, historical, operational, or excluded use.
+- [ ] Record conflicts and apply precedence.
+- [ ] Confirm CAPE connector availability and authorization where relevant.
+- [ ] Assign a decision and review cadence.
 
 The following source has been identified since the original inventory and should be formally assessed during Phase 2:
 

@@ -1,13 +1,20 @@
 
 # Section 1:
 
+## Current project status
+
+- **Phase 1 — RPA Knowledge Inventory:** Complete for the v0.2.0 baseline.
+- **Phase 2 — RPA Knowledge Source Trust Matrix:** In progress.
+- **Next controlled artifact:** Populated Trust Matrix and source-disposition decisions.
+- **Reference deliverables:** `Docs/Word/v 0.2.0` contains the Project Specification v0.2.0 and RPA Knowledge Inventory v0.2.0.
+
 
 # Section 2 — Discovery and Current-State Work
 
 ### A. RPA Knowledge Discovery
 
-* [ ] Build and validate the RPA Knowledge Inventory.
-* [ ] Record CAPE platform and Skill architecture as a separate knowledge domain.
+* [x] Build the RPA Knowledge Inventory v0.2.0 baseline.
+* [x] Record CAPE platform and Skill architecture as a separate knowledge domain.
 * [ ] Identify the relevant Confluence spaces and repositories.
 * [ ] Catalog developer-facing documentation.
 * [ ] Catalog architecture and technology documentation.
@@ -22,7 +29,8 @@
 * [ ] Classify each source according to relevance and authority.
 * [ ] Record provisional currency, ownership, evidence status, and validation requirements.
 * [ ] Identify duplicate, overlapping, outdated, or potentially conflicting sources.
-* [ ] Produce the initial Knowledge Source Trust Matrix.
+* [x] Produce the initial Knowledge Source Trust Matrix framework.
+* [ ] Populate and approve source-level Trust Matrix decisions.
 
 ### B. RPA Developer Needs Discovery
 
@@ -71,7 +79,8 @@
 * [ ] Establish how user feedback will be incorporated into Skill iterations.
 * [ ] Verify connector availability, per-user authorization, and scoped tool access.
 * [ ] Separate CAPE platform data governance from Skill knowledge governance.
-* [ ] Freeze RPA Knowledge Inventory v0.2 before beginning Phase 2 scoring.
+* [x] Freeze the RPA Knowledge Inventory v0.2.0 baseline for Phase 2 work.
+* [ ] Record remaining ownership, identifier, currency, conflict, and connector checks in the Trust Matrix.
 
 ### F. Section 2 Deliverables
 

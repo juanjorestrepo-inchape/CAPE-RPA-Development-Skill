@@ -38,13 +38,13 @@ Stale documents, duplicate sources, fragmented documentation, missing AutoDrive 
 
 
 # 14. Inventory Status
-**RPA Knowledge Inventory v0.2 — Status: Phase 1 Closure Amendment Pending Freeze**
+**RPA Knowledge Inventory v0.2.0 — Status: Phase 1 baseline complete; Phase 2 Trust Matrix in progress**
 
-The original v0.1 inventory remains valid as the knowledge landscape baseline. It is being amended, not replaced, with first-party CAPE platform and Skill architecture sources before Phase 2 begins.
+The original v0.1 inventory remains valid as the knowledge landscape baseline. It has been amended, not replaced, with first-party CAPE platform and Skill architecture sources. The v0.2.0 Word deliverable is available in `Docs/Word/v 0.2.0` and is complete for its current purpose as an inventory and project baseline.
 
-The v0.2 amendment is documented in [07_Phase_1_Closure_Amendment_v0_2.md](07_Phase_1_Closure_Amendment_v0_2.md).
+The amendment is documented in [07_Phase_1_Closure_Amendment_v0_2.md](07_Phase_1_Closure_Amendment_v0_2.md). Phase 1 is now closed for baseline purposes; the project should not reopen or rewrite v0.2.0 merely to incorporate later RAG or LLM-engineering research.
 
-The revised inventory must be frozen before proceeding to the RPA Knowledge Source Trust Matrix.
+Phase 2 is now the active workstream: assess the inventory sources through the [RPA Knowledge Source Trust Matrix v0.1](05_RPA_Knowledge_Source_Trust_Matrix_v0_1.md).
 
 The remaining validation activities are:
 
@@ -56,6 +56,16 @@ The remaining validation activities are:
 6. Identify missing RPA developer documentation.
 7. Record explicit source URLs/page identifiers where available.
 8. Establish the review cadence for sources that will eventually support the Skill.
+
+## Phase 2 handoff conditions
+
+The following checks remain open and must be recorded in the Trust Matrix. They do not invalidate the v0.2.0 baseline:
+
+1. Exact Confluence page or record identifiers.
+2. Accountable source owners and review responsibility.
+3. Revision metadata and currency.
+4. Current connector availability and per-user authorization.
+5. Source precedence and conflicts.
 
 ## CAPE Platform / Skill Architecture Sources
 
