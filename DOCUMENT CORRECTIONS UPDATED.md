@@ -521,52 +521,6 @@ Changes:
 
 ---
 
-# 16. Recommended project sequence
-
-```text
-[COMPLETED]
-Project Specification v0.2.0
-        │
-        ▼
-[COMPLETED]
-RPA Knowledge Inventory v0.2.0
-        │
-        ▼
-[NEXT]
-RPA Knowledge Source Trust Matrix
-        │
-        ▼
-[NEXT]
-RPA Knowledge Taxonomy
-        │
-        ▼
-[THEN]
-RPA Development Skill Functional Specification
-        │
-        ├── RAG / retrieval architecture
-        ├── knowledge ingestion
-        ├── chunking
-        ├── metadata
-        ├── embeddings / vector search
-        ├── retrieval strategy
-        ├── source attribution
-        ├── response grounding
-        ├── fallback / escalation
-        └── security & governance
-        │
-        ▼
-[THEN]
-Skill Implementation
-        │
-        ▼
-Evaluation Dataset + Evaluation Framework
-        │
-        ▼
-Pilot
-        │
-        ▼
-Adoption Decision
-```
 6. Connector/tool availability assumptions.
 7. Security and data-policy context.
 8. CAPE known limitations.
@@ -667,4 +621,53 @@ So the order should be:
 > New CAPE evidence → revise Project Specification → revise Inventory → freeze Phase 1 → build/update Trust Matrix → continue Phase 2.
 
 This is consistent with the project's original principle of "Trust Before Breadth": we should not start building the Skill from newly discovered material until its role and trust have been classified.
+
+---
+
+# 16. Recommended project sequence
+
+```text
+[COMPLETED]
+Project Specification v0.2.0
+        │
+        ▼
+[COMPLETED]
+RPA Knowledge Inventory v0.2.0
+        │
+        ▼
+[NEXT]
+RPA Knowledge Source Trust Matrix
+        │
+        ▼
+[NEXT]
+RPA Knowledge Taxonomy
+        │
+        ▼
+[THEN]
+RPA Development Skill Functional Specification
+        │
+        ├── RAG / retrieval architecture
+        ├── knowledge ingestion
+        ├── chunking
+        ├── metadata
+        ├── embeddings / vector search
+        ├── retrieval strategy
+        ├── source attribution
+        ├── response grounding
+        ├── fallback / escalation
+        └── security & governance
+        │
+        ▼
+[THEN]
+Skill Implementation
+        │
+        ▼
+Evaluation Dataset + Evaluation Framework
+        │
+        ▼
+Pilot
+        │
+        ▼
+Adoption Decision
+```
 
