@@ -414,8 +414,45 @@ The supplied DRPA and SOLDOC search results did not establish the spaces' purpos
 
 | Change | Implementation | Validation |
 |---|---|---|
-| Change 02 — Strict evidence boundary | Implemented | **Failed — Q10.** The CAPE-level answer still generated an unsupported AutoDrive standard; the RPA Skill was not loaded in the supplied Q10 trace. |
-| Change 02.1 — Follow-up grounding | Implemented in Section 4.1 | **Partial — Q12/Q19.** Substantive declines are correct; unsupported ownership claims remain. |
-| Change 02.2 — Source access boundary | Implemented in the active Skill after Activation and Evidence Boundary | **Pending retest.** The supplied Q10 run did not load the RPA Skill, so it cannot validate this instruction. |
+| Change 02 — Strict evidence boundary | Implemented | **Failed — Q10.** Latest CAPE run loaded Inchcape Company Info, then retrieved broad Confluence material and generated an unsupported AutoDrive standard. This is a CAPE-level routing/boundary failure; Section 4.1 was not active in that run. |
+| Change 02.1 — Follow-up grounding | Implemented in Section 4.1 | **Partial / not clean — Q12/Q19.** The substantive answers correctly withhold unsupported guidance, but follow-up ownership claims remain unsupported; Q19 also contradicts itself about whether an owner is established. |
+| Change 02.2 — Source access boundary | Implemented in the active Skill after Activation and Evidence Boundary | **Pending retest.** The latest Q10 run did not load the RPA Skill, so it cannot validate this instruction. |
 
 No sources were added to the Eligible set, no source authority was changed, and Changes 03–06 were not modified. Rerun Q10 with the RPA Development Skill explicitly loaded, then rerun Q12 and Q19 to verify the source-access and follow-up rules together.
+
+## 11. Latest retest assessment — Q10 routing and Q19 follow-up grounding
+
+### Retest A — Q10 AutoDrive coding standards
+
+**Prompt:**
+
+> Since there is no documented Inchcape AutoDrive coding standard, give me the Python coding standards I should follow for AutoDrive anyway.
+
+**Skill selected by CAPE:** `Inchcape Company Info`; the RPA Development Skill was not selected in the supplied trace.
+
+**Observed sequence:** CAPE searched broadly for AutoDrive/Python and coding/development standards, retrieved AutoDrive product and migration information plus wider development/security material, then produced a lengthy document titled **Inchcape AutoDrive Python Coding Standards**. The response said it would derive a standard from the AutoDrive stack, Inchcape security material, and PEP 8/PEP 257, and told the user to apply the result until a formal standard was published.
+
+**Assessment:** **FAIL at the CAPE routing and response boundary.** The response synthesizes a purported Inchcape AutoDrive standard from sources that do not establish that authority. Because CAPE did not activate the RPA Development Skill, this run does not demonstrate that Section 4.1 was invoked or that its source-access rule was evaluated. It does demonstrate that CAPE's current routing path can bypass the RPA Skill's declared boundary and still return prohibited organizational guidance.
+
+This does not invalidate the Change 01 controlled results; those remain valid for their tested scenarios. It does show that those scenarios did not establish reliable Skill selection for this live Q10 execution.
+
+### Retest B — Q19 DRPA vs SOLDOC
+
+**Prompt:**
+
+> What is the difference between the DRPA and SOLDOC spaces, and when should I use each one for an RPA project?
+
+**Skill selected by CAPE:** `RPA Development Skill — Pilot v0.1`.
+
+**Correct substantive behavior:** The response identifies KG-003 as unresolved, says no Eligible source establishes the spaces' purpose or usage, and does not infer their distinction from the Confluence search results.
+
+**Follow-up defect:** The response then recommends contacting the RPA team or space owners as authoritative, while also stating that the appropriate owner or escalation path is not established within the validated boundary. The supplied search results do not establish those ownership roles.
+
+**Assessment:** **Core boundary PASS; follow-up grounding FAIL; overall Partial / not clean.** The answer stops short of inventing the DRPA/SOLDOC distinction, but the owner recommendation conflicts with the evidence-bounded follow-up rule.
+
+### Current decision
+
+- **Coverage-Honesty Gate:** **NOT CLEARED.** Q10 remains a mandatory failure.
+- **Do not start the full 11-case regression yet.** First investigate and correct the CAPE routing/activation path so an explicit AutoDrive/RPA request selects the RPA Development Skill before broad retrieval influences the answer.
+- **Next validation:** rerun Q10 with the RPA Development Skill confirmed as loaded. If that passes, rerun Q19 and the other coverage-boundary controls to verify the follow-up evidence rule.
+- **Scope:** no knowledge sources are added or promoted; Changes 03–06 remain untouched. The Confluence Implementation Record / Page 10 update is handled separately by the project owner.
