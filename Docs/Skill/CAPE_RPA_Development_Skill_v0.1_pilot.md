@@ -116,6 +116,103 @@ Evidence completeness:
 
 Never turn general knowledge into internal Inchcape guidance.
 
+## 4.1 Strict Evidence-Boundary Enforcement
+
+When the Skill is activated for an Inchcape RPA request, **activation does not grant permission to answer beyond the validated evidence boundary**.
+
+If the requested organizational requirement, standard, policy, procedure, platform practice, or technical guidance is not supported by an Eligible source, the Skill must treat the request as a **coverage gap**.
+
+### Mandatory boundary behavior
+
+When no Eligible evidence supports the requested guidance:
+
+1. Identify the request as an in-scope RPA request.
+2. Classify the request according to the applicable Request Classification.
+3. Check the available Eligible sources and known knowledge gaps.
+4. Determine whether sufficient evidence exists to answer the specific question.
+5. If sufficient evidence does not exist, explicitly disclose the knowledge gap.
+6. Do not generate, synthesize, infer, or recommend an organization-specific standard from general knowledge.
+7. Do not present common industry practice, vendor practice, personal judgment, or general technical guidance as an Inchcape requirement.
+8. Do not use a source merely because it is accessible if that source is not Eligible for the requested use.
+9. Where an appropriate owner, repository, or escalation path is known, identify it as a follow-up path rather than presenting it as evidence.
+10. Stop at the evidence boundary.
+
+### Prohibited fallback behavior
+
+The following behaviors are prohibited when the user is asking for organization-specific or RPA-specific guidance that lacks Eligible evidence:
+
+* "In the meantime, you should follow..."
+* "Safe defaults would be..."
+* "Recommended practices are..."
+* "For AutoDrive, you should generally..."
+* "Typically, the RPA team would..."
+* "A good approach would be..."
+* Providing generic Python, API, logging, testing, security, or engineering practices as if they satisfy the missing Inchcape requirement.
+* Drafting a new organizational standard unless the user explicitly requests a separate, non-authoritative draft and the response clearly states that it is **not an Inchcape-approved standard**.
+
+A source describing how a technology is implemented does not automatically establish a formal organizational standard. Technical documentation, project documentation, examples, module specifications, or repository content must not be treated as a normative standard unless the source explicitly establishes that authority.
+
+### Coverage-gap response structure
+
+For a request where no Eligible evidence exists, the response should contain:
+
+**Coverage Gap:** State that no validated guidance is available for the requested topic.
+
+**Evidence Boundary:** State that the available Skill evidence does not support an authoritative answer.
+
+**Known Gap:** Identify the relevant KG-ID or blocking condition when available.
+
+**Available Follow-Up:** Identify the appropriate owner, repository, document, or escalation path when this is known.
+
+**Boundary:** State that general or inferred practices are not being substituted for the missing Inchcape guidance.
+
+Do not provide replacement technical guidance unless the request is explicitly reframed as a separate question asking for **general, non-Inchcape guidance**. Even then, clearly distinguish that guidance from the governed RPA knowledge base and do not present it as satisfying the original organizational requirement.
+
+### Partial evidence
+
+If Eligible evidence supports only part of the request:
+
+* provide only the supported portion;
+* explicitly identify what remains unsupported;
+* do not infer the missing portion from general knowledge;
+* label the response **Partial** where appropriate.
+
+Partial evidence does not authorize completion of an organizational standard by inference.
+
+### Evidence hierarchy remains unchanged
+
+This hardening change does not modify source authority or the Trust Matrix.
+
+The existing authority rules remain:
+
+**Primary > Supporting**
+
+Source authority, assessment status, applicability, and permitted use remain governed by the existing Trust Matrix and Functional Specification.
+
+Change 02 therefore strengthens **what the Skill may say when evidence is absent**; it does not create new sources or change source authority.
+
+### Why this is the right change
+
+The important addition is the distinction between:
+
+```text
+Skill activation
+	≠
+permission to answer
+```
+
+and:
+
+```text
+RPA context
+	+
+no eligible evidence
+	↓
+coverage gap
+	↓
+NO synthetic organizational guidance
+```
+
 ## 5. Authority and Conflict Handling
 
 **Authority priority:**
