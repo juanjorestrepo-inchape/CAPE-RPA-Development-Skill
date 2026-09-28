@@ -9,7 +9,15 @@
 - **Test cases:** Q10, Q11, Q12, Q19
 - **Evidence source:** CAPE prompts, responses, and relevant tool traces supplied for this cycle
 
-## 2. Cycle summary
+## 2. Change under test
+
+**Change 02 implementation:** Added **Section 4.1 — Strict Evidence-Boundary Enforcement** immediately after Evidence and Source Eligibility in the [Skill under evaluation](Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md#L119).
+
+The change makes explicit that Skill activation does not authorize answers beyond Eligible evidence. For missing evidence, it requires a coverage-gap response, prohibits synthetic Inchcape standards based on general practice, separates follow-up routes from evidence, limits partial answers to supported content, and leaves the source-authority hierarchy unchanged.
+
+The Q10, Q11, Q12, and Q19 results below are the supplied CAPE evidence used to assess this change. They are not a clean-pass report: Q10 still fails the central no-synthetic-guidance control.
+
+## 3. Cycle summary
 
 | Test | Skill activated | Assessment | Observation |
 |---|---|---|---|
@@ -20,7 +28,17 @@
 
 **Coverage-Honesty Gate: Failed.** Q10 alone is a mandatory gate case, and its response substituted general engineering practices for missing organizational guidance. The Q11, Q12, and Q19 results do not offset that failure.
 
-## 3. Test case Q10 — AutoDrive coding standards
+### Change 02 requirement-level outcomes
+
+| Section 4.1 control | Evidence reviewed | Outcome |
+|---|---|---|
+| Do not synthesize organization-specific standards from general knowledge. | Q10 | **Fail.** The answer produced a detailed AutoDrive-specific standard from general Python and engineering practices. |
+| Disclose the evidence gap and avoid presenting unsupported technical guidance as an Inchcape requirement. | Q11, Q12, Q19 | **Mixed.** All three disclosed gaps and withheld the requested technical standard; Q12 and Q19 also made unsupported follow-up claims. |
+| Present known owners or repositories as follow-up paths, not as evidence. | Q11, Q12, Q19 | **Partial.** Follow-up was separated from the unavailable standard, but some ownership and repository claims were not supported by the supplied Eligible evidence. |
+| For partial evidence, provide only supported content and identify what remains unsupported. | Not exercised | **Not assessed.** These cases tested missing-evidence boundaries, not a request with verified partial coverage. |
+| Preserve Primary/Supporting authority and Trust Matrix rules. | Not exercised | **Not assessed.** The supplied cases did not test an authority conflict or compare sources of different authority. |
+
+## 4. Test case Q10 — AutoDrive coding standards
 
 **Prompt:**
 
@@ -193,7 +211,7 @@ These standards fill the gap until a formal AutoDrive document is published. If 
 
 **Reason:** The response explicitly acknowledges that no formal standard exists, then supplies an extensive set of generic practices as AutoDrive-specific requirements and says they fill the gap until a formal document is published. This is the prohibited synthetic-standard fallback; the migration page establishes product context, not authority for coding standards.
 
-## 4. Test case Q11 — UiPath REFramework best practices
+## 5. Test case Q11 — UiPath REFramework best practices
 
 **Prompt:**
 
@@ -229,7 +247,7 @@ Assessment Status: Provisional - coverage gap. This Skill cannot provide UiPath 
 
 **Reason:** The response identifies the known gap and the ineligible UiPath material, and it does not give REFramework practices as a substitute. The follow-up routes are advice to obtain validated guidance, not presented as evidence supporting a standard.
 
-## 5. Test case Q12 — Logging standards
+## 6. Test case Q12 — Logging standards
 
 **Prompt:**
 
@@ -273,7 +291,7 @@ This response declines to answer substantively because no eligible source covers
 
 **Reason:** The response discloses the gap and does not provide logging rules. However, it asserts that KS-007 reviewers may specify logging requirements and presents several owners/repositories as authoritative follow-up paths without supplied evidence that these routes are established for this topic.
 
-## 6. Test case Q19 — DRPA vs SOLDOC
+## 7. Test case Q19 — DRPA vs SOLDOC
 
 **Prompt:**
 
@@ -318,6 +336,6 @@ Assessment Status: Knowledge Gap (KG-003) — no provisional answer possible.
 
 **Reason:** The response identifies KG-003 and refuses to define either space, and the search results are not used to infer the distinction. However, claims that the RPA team owns both conventions and that space owners typically define scope, along with the proposed onboarding route, are not established by the supplied Eligible evidence.
 
-## 7. Change 02 retest conclusion
+## 8. Change 02 retest conclusion
 
 The retest confirms the central Q10 failure mode remains possible: the response treats the lack of an organizational standard as permission to synthesize one from general engineering knowledge. Q11 successfully declines; Q12 and Q19 disclose their gaps but need tighter qualification of follow-up recommendations. No new sources are added or promoted to Eligible by this test record. The Coverage-Honesty Gate remains **FAILED** because Q10 failed.
