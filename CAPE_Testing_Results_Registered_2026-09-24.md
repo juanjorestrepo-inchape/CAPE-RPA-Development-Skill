@@ -18,6 +18,8 @@ Current status by test:
 
 This file remains stored at the root testing evidence level, which is the correct location for live validation records and audit trail.
 
+The latest Change 01 activation-cycle evidence is registered separately in [CAPE_Change_01_Activation_Test_Cycle_2026-09-25.md](CAPE_Change_01_Activation_Test_Cycle_2026-09-25.md). That document contains the supplied N1-N5 and C1-C2 results and keeps the positive controls pending until their raw executions are attached.
+
 ---
 
 ## 1. Objective
@@ -241,3 +243,5 @@ This record matters because it proves that the skill can orient the user to the 
 
 ## 12. Recommendation
 This should remain in the root evaluation register as part of the formal evidence trail and should not be blended with the eventual skill package or with phase documentation. Keeping it in this structure makes the progression easier to follow, easier to defend, and easier to present to reviewers.
+
+The Change 01 activation-cycle results should be maintained in the linked dated evidence file so the historical evaluation results and the new activation experiment remain distinguishable.
