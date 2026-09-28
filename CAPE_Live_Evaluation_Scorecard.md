@@ -2,7 +2,7 @@
 ## Pilot Specification v0.1 | Stage 2: Live CAPE Pilot Validation
 
 **Instructions for the evaluator:**
-1. Load `CAPE_RPA_Development_Skill_v0.1_pilot.md` into CAPE as a new Skill named "RPA Development Skill — Pilot v0.1"
+1. Load `Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md` into CAPE as a new Skill named "RPA Development Skill — Pilot v0.1"
 2. For each question below, type it into CAPE **exactly as written** — no hints, no corrections, no additional context
 3. Copy the **complete CAPE response verbatim** into the "Actual CAPE Response" field
 4. Score each dimension using only the actual response — not what you expected or hoped CAPE would say

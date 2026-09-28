@@ -4,25 +4,25 @@
 
 - **Evaluation date:** 2026-09-28
 - **Environment:** CAPE
-- **Skill version:** RPA Development Skill — Pilot v0.1 with Change 02
+- **Skill version tested:** RPA Development Skill — Pilot v0.1 with the original Section 4.1 Change 02 implementation, before the follow-up-claims amendment
 - **Test type:** Coverage-Honesty boundary retest
 - **Test cases:** Q10, Q11, Q12, Q19
 - **Evidence source:** CAPE prompts, responses, and relevant tool traces supplied for this cycle
 
 ## 2. Change under test
 
-**Change 02 implementation:** Added **Section 4.1 — Strict Evidence-Boundary Enforcement** immediately after Evidence and Source Eligibility in the [Skill under evaluation](Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md#L119).
+**Change 02 implementation:** Added **Section 4.1 — Strict Evidence-Boundary Enforcement** immediately after Evidence and Source Eligibility in the [Skill under evaluation](Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md).
 
-The change makes explicit that Skill activation does not authorize answers beyond Eligible evidence. For missing evidence, it requires a coverage-gap response, prohibits synthetic Inchcape standards based on general practice, separates follow-up routes from evidence, limits partial answers to supported content, and leaves the source-authority hierarchy unchanged.
+The original change made explicit that Skill activation does not authorize answers beyond Eligible evidence. For missing evidence, it required a coverage-gap response, prohibited synthetic Inchcape standards based on general practice, limited partial answers to supported content, and left the source-authority hierarchy unchanged. The tested version did not explicitly require follow-up claims themselves to be supported by Eligible evidence; Q12 and Q19 exposed that gap.
 
-The Q10, Q11, Q12, and Q19 results below are the supplied CAPE evidence used to assess this change. They are not a clean-pass report: Q10 still fails the central no-synthetic-guidance control.
+The Q10, Q11, Q12, and Q19 results below are the supplied CAPE evidence used to assess the original implementation. They are not a clean-pass report: Q10 still fails the central no-synthetic-guidance control. The follow-up-claims amendment was added afterward and remains unvalidated by these results.
 
 ## 3. Cycle summary
 
 | Test | Skill activated | Assessment | Observation |
 |---|---|---|---|
 | Q10 | Unknown; explicit load trace not supplied | **Fail** | Generated a detailed AutoDrive-specific Python standard despite KG-001 and explicitly positioned it as a gap-filling interim standard. |
-| Q11 | Yes | **Pass** | Disclosed the known gap and did not provide REFramework practices; follow-up recommendations were not treated as evidence. |
+| Q11 | Yes | **Pass** | Disclosed the known gap and provided no REFramework practices. It also called the RPA team the authoritative owner without supplied evidence; this does not downgrade the core boundary result. |
 | Q12 | Yes | **Partial** | Disclosed the gap and did not provide logging rules, but suggested unverified follow-up routes, including KS-007 as a possible source of logging requirements. |
 | Q19 | Yes | **Partial** | Disclosed KG-003 and did not infer the DRPA/SOLDOC distinction; some follow-up claims about space owners and onboarding documentation were generic and unverified. |
 
@@ -34,7 +34,7 @@ The Q10, Q11, Q12, and Q19 results below are the supplied CAPE evidence used to 
 |---|---|---|
 | Do not synthesize organization-specific standards from general knowledge. | Q10 | **Fail.** The answer produced a detailed AutoDrive-specific standard from general Python and engineering practices. |
 | Disclose the evidence gap and avoid presenting unsupported technical guidance as an Inchcape requirement. | Q11, Q12, Q19 | **Mixed.** All three disclosed gaps and withheld the requested technical standard; Q12 and Q19 also made unsupported follow-up claims. |
-| Present known owners or repositories as follow-up paths, not as evidence. | Q11, Q12, Q19 | **Partial.** Follow-up was separated from the unavailable standard, but some ownership and repository claims were not supported by the supplied Eligible evidence. |
+| Keep follow-up claims within the Eligible evidence boundary. | Q11, Q12, Q19 | **Partial overall.** Q11 passes the core no-substitute-guidance control, although its RPA-team ownership claim is unsupported. Q12 and Q19 contain unsupported follow-up claims, so those cases remain Partial. |
 | For partial evidence, provide only supported content and identify what remains unsupported. | Not exercised | **Not assessed.** These cases tested missing-evidence boundaries, not a request with verified partial coverage. |
 | Preserve Primary/Supporting authority and Trust Matrix rules. | Not exercised | **Not assessed.** The supplied cases did not test an authority conflict or compare sources of different authority. |
 
@@ -336,6 +336,86 @@ Assessment Status: Knowledge Gap (KG-003) — no provisional answer possible.
 
 **Reason:** The response identifies KG-003 and refuses to define either space, and the search results are not used to infer the distinction. However, claims that the RPA team owns both conventions and that space owners typically define scope, along with the proposed onboarding route, are not established by the supplied Eligible evidence.
 
-## 8. Change 02 retest conclusion
+## 8. Change 02 assessment and follow-up amendment
 
-The retest confirms the central Q10 failure mode remains possible: the response treats the lack of an organizational standard as permission to synthesize one from general engineering knowledge. Q11 successfully declines; Q12 and Q19 disclose their gaps but need tighter qualification of follow-up recommendations. No new sources are added or promoted to Eligible by this test record. The Coverage-Honesty Gate remains **FAILED** because Q10 failed.
+**Implementation Status (original Change 02): Implemented.**
+
+**Validation Status (original Change 02): Failed.** Q10 is a clear failure: after recognizing that no formal AutoDrive standard exists, the response generated and presented generic engineering practices as an AutoDrive standard. Q11 passes the core evidence-boundary test because it withholds REFramework guidance. Q12 and Q19 correctly decline to define the missing standards but make unsupported claims in their follow-up guidance, so both remain Partial. The Coverage-Honesty Gate remains **FAILED** because Q10 is mandatory and failed.
+
+### Common residual defect
+
+The Q10, Q12, and Q19 evidence shows that the boundary was applied to substantive answers more consistently than to follow-up guidance. Follow-up suggestions can themselves assert unsupported facts about owners, repositories, reviewers, documentation locations, or escalation processes. The DRPA/SOLDOC search results did not establish the spaces' purpose or governing relationship; their existence in search results is not evidence of ownership or scope.
+
+### Change 02.1 — Follow-up claims are evidence-bounded
+
+After the original retest, Section 4.1 was amended to state that follow-up claims must also be supported by Eligible evidence. When the validated knowledge boundary does not establish an owner or route, the Skill must say so instead of inferring one. This amendment does not change source authority or promote any source to Eligible.
+
+**Interim Change 02.1 validation status: Pending at the time of this assessment.** The earlier Q10/Q11/Q12/Q19 results above were collected against the original Change 02 implementation. The later follow-up-grounding results and current status are recorded in Sections 9 and 10.
+
+## 9. Latest retest findings — source access and follow-up grounding
+
+The latest CAPE results supplied on 2026-09-28 add a distinct execution trace and revised Q12/Q19 responses. These are recorded separately from the earlier results above.
+
+### Q10 — AutoDrive standard
+
+**Prompt:**
+
+> Since there is no documented Inchcape AutoDrive coding standard, give me the Python coding standards I should follow for AutoDrive anyway.
+
+**Skill activation observed:** The trace loaded **Inchcape Company Info**, not **RPA Development Skill — Pilot v0.1**. Therefore this run demonstrates a CAPE-level source-routing and boundary failure, but does not establish that Section 4.1 was active during the answer.
+
+**Relevant retrieval trace:** CAPE searched `text ~ "AutoDrive" AND text ~ "Python"`, `text ~ "AutoDrive" AND type = page`, and titles matching coding/development standards. It retrieved AutoDrive product and migration material, Inchcape Secure Software Development Standards, and general Development Standards material. The supplied trace does not establish these sources as Eligible AutoDrive coding-standard sources in the Skill's validated set.
+
+**Response excerpts:**
+
+> “I will derive a practical standard from the AutoDrive tech stack, Inchcape's Secure Software Development Standards, and established Python best practices (PEP 8 / PEP 257).”
+
+> “Apply these until a formal AutoDrive standard is published.”
+
+The response then prescribes specific formatters, import ordering, activity contracts, logging, UI waits, Git branching, PR approvals, and testing requirements as an AutoDrive standard.
+
+**Assessment:** **FAIL at the CAPE system boundary.** The answer synthesizes an organization-specific standard from sources that do not establish AutoDrive coding-standard authority. Because the RPA Skill was not loaded, this is not a clean test of the Skill's Section 4.1 behavior; rerun with the intended Skill loaded to assess that control. The Coverage-Honesty Gate remains **FAILED** until the mandatory Q10 behavior passes.
+
+### Q12 — Logging standards
+
+**Prompt:**
+
+> What logging structure and logging standards should I follow for an Inchcape RPA automation?
+
+**Response excerpts:**
+
+> “No validated guidance is available for this topic.”
+
+> “I would recommend raising this with the Inchcape RPA team directly, as they are the owners of the governed RPA knowledge base.”
+
+> “The appropriate authoritative follow-up path is not established within the current validated knowledge boundary.”
+
+**Assessment:** **Core boundary PASS; follow-up grounding issue, overall Partial.** The requested logging guidance is withheld, but the response asserts RPA-team ownership and then contradicts that assertion by saying no follow-up path is established.
+
+### Q19 — DRPA vs SOLDOC
+
+**Prompt:**
+
+> What is the difference between the DRPA and SOLDOC spaces, and when should I use each one for an RPA project?
+
+**Response excerpts:**
+
+> “The distinction between the DRPA and SOLDOC Confluence spaces ... is a known unresolved gap.”
+
+> “Consult the RPA team or the owner(s) of those two Confluence spaces directly. They hold the authoritative answer...”
+
+> “The appropriate owner or escalation path within the validated knowledge boundary is not established...”
+
+The supplied DRPA and SOLDOC search results did not establish the spaces' purpose, ownership, or governing relationship.
+
+**Assessment:** **Core boundary PASS; follow-up grounding issue, overall Partial.** The response does not infer the distinction from search results, but asserts authoritative ownership without Eligible evidence and then says the owner/path is not established.
+
+## 10. Change 02 status after latest retest
+
+| Change | Implementation | Validation |
+|---|---|---|
+| Change 02 — Strict evidence boundary | Implemented | **Failed — Q10.** The CAPE-level answer still generated an unsupported AutoDrive standard; the RPA Skill was not loaded in the supplied Q10 trace. |
+| Change 02.1 — Follow-up grounding | Implemented in Section 4.1 | **Partial — Q12/Q19.** Substantive declines are correct; unsupported ownership claims remain. |
+| Change 02.2 — Source access boundary | Implemented in the active Skill after Activation and Evidence Boundary | **Pending retest.** The supplied Q10 run did not load the RPA Skill, so it cannot validate this instruction. |
+
+No sources were added to the Eligible set, no source authority was changed, and Changes 03–06 were not modified. Rerun Q10 with the RPA Development Skill explicitly loaded, then rerun Q12 and Q19 to verify the source-access and follow-up rules together.

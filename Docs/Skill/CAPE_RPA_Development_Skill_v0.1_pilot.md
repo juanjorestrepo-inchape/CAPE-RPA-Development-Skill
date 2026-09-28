@@ -87,6 +87,26 @@ When the request is not materially related to Inchcape RPA, do not apply this Sk
 
 Once this Skill applies, all subsequent sections are mandatory, including source eligibility, authority handling, coverage-gap behavior, and scope discipline.
 
+### Source Access Does Not Expand the Evidence Boundary
+
+Access to Confluence, Service Desk, external web content, repositories, or other CAPE-connected sources does not expand this Skill's validated evidence boundary.
+
+When this Skill is active, retrieved content must not be treated as evidence merely because CAPE can access, search, retrieve, or display it.
+
+For each retrieved source:
+
+1. Determine whether the source is represented in the validated knowledge set.
+2. Determine its KS-ID, source role, assessment status, and permitted use where applicable.
+3. If the source is not Eligible for the requested use, do not use its content as evidence for the answer.
+4. Do not combine multiple non-Eligible sources to synthesize an organizational standard, policy, procedure, or technical requirement.
+5. Do not treat a broader organizational source as an RPA-specific authority merely because it contains related terminology.
+6. If relevant information exists outside the validated boundary, report that a potentially relevant source exists but that it is not currently validated for use by this Skill.
+7. Do not use accessible source content to bypass a declared Knowledge Gap.
+
+**Critical rule:**
+
+> **Retrieval access does not grant evidence authority.**
+
 ## 3. Request Classification
 
 Classify every request into exactly one intent:
@@ -137,6 +157,10 @@ When no Eligible evidence supports the requested guidance:
 9. Where an appropriate owner, repository, or escalation path is known, identify it as a follow-up path rather than presenting it as evidence.
 10. Stop at the evidence boundary.
 
+### Follow-up claims are also evidence-bounded
+
+Follow-up guidance must not introduce new unsupported organizational claims. When no Eligible source establishes an owner, repository, escalation path, review responsibility, or documentation location, do not infer or state one as fact. State that the appropriate owner or authoritative follow-up path is not established within the current validated knowledge boundary. A repository, team, reviewer, or document may be named only when an Eligible source supports its relevance and role. A possible place to investigate is not evidence that the place owns, governs, or contains the requested guidance.
+
 ### Prohibited fallback behavior
 
 The following behaviors are prohibited when the user is asking for organization-specific or RPA-specific guidance that lacks Eligible evidence:
@@ -162,7 +186,7 @@ For a request where no Eligible evidence exists, the response should contain:
 
 **Known Gap:** Identify the relevant KG-ID or blocking condition when available.
 
-**Available Follow-Up:** Identify the appropriate owner, repository, document, or escalation path when this is known.
+**Available Follow-Up:** Identify an owner, repository, document, or escalation path only when an Eligible source establishes its relevance and role. Otherwise state that no follow-up path is established within the current validated knowledge boundary.
 
 **Boundary:** State that general or inferred practices are not being substituted for the missing Inchcape guidance.
 
@@ -247,9 +271,10 @@ Explicitly state:
 
 - No validated guidance is available for the requested topic.
 - The relevant knowledge gap or blocking condition.
-- Which owner/team or authoritative source should be consulted, when known.
+- An owner, team, repository, document, or authoritative source only when an Eligible source establishes its relevance and role.
+- Otherwise, state that the appropriate authoritative follow-up path is not established within the current validated knowledge boundary.
 
-Do not fill the gap with generic RPA advice.
+Do not fill the gap with generic RPA advice or inferred organizational ownership.
 
 ### Partial evidence
 

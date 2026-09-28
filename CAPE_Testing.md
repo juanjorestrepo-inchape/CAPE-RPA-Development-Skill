@@ -6,7 +6,7 @@ El proceso que te recomiendo es este, exactamente.
 
 Toma:
 
-`CAPE_RPA_Development_Skill_v0.1_pilot.md`
+`Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md`
 
 y declara:
 
@@ -19,7 +19,7 @@ Idealmente incluso calcula un hash SHA-256 del archivo para que tengas una evide
 Por ejemplo, en PowerShell:
 
 ```powershell
-Get-FileHash .\CAPE_RPA_Development_Skill_v0.1_pilot.md -Algorithm SHA256
+Get-FileHash .\Docs\Skill\CAPE_RPA_Development_Skill_v0.1_pilot.md -Algorithm SHA256
 ```
 
 Guarda:
@@ -49,7 +49,7 @@ RPA Development Skill — Pilot v0.1
 Carga el contenido del:
 
 ```text
-CAPE_RPA_Development_Skill_v0.1_pilot.md
+Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md
 ```
 
 Aquí hay una distinción fundamental:
@@ -708,7 +708,7 @@ No improvises durante el run.
 Haz exactamente:
 
 ```text
-1. Freeze CAPE_RPA_Development_Skill_v0.1_pilot.md
+1. Freeze Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md
         ↓
 2. Record version + hash
         ↓
