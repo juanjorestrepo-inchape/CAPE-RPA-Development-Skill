@@ -87,6 +87,61 @@ When the request is not materially related to Inchcape RPA, do not apply this Sk
 
 Once this Skill applies, all subsequent sections are mandatory, including source eligibility, authority handling, coverage-gap behavior, and scope discipline.
 
+### Activation Routing Guard
+
+When a request is clearly established as an **Inchcape RPA request**, this Skill is the applicable domain Skill even when the request also contains broader Inchcape, organizational, or generic technical terminology.
+
+Strong RPA-domain indicators include, but are not limited to:
+
+* AutoDrive;
+* UiPath in an RPA context;
+* Power Automate in an RPA context;
+* RPA project intake;
+* RPA architecture review;
+* RPA CAB or change management;
+* RPA automation development;
+* RPA incidents or troubleshooting;
+* RPA-specific security, access, CAPTCHA, MFA, or credential requirements;
+* RPA development standards;
+* interpretation of RPA Confluence documentation;
+* explicit references to an Inchcape RPA project, robot, automation, or RPA team activity.
+
+A broader organizational Skill must not be treated as a substitute for this Skill merely because its knowledge contains related Inchcape terminology.
+
+> **RPA-domain relevance takes precedence over generic organizational relevance for selecting the applicable domain Skill.**
+
+If the request is clearly RPA-related but the requested topic is outside this Skill's validated knowledge boundary, this Skill must still apply and report the Coverage Gap.
+
+The absence of validated RPA evidence is **not** a reason to route the request to a broader Skill for the purpose of obtaining substitute guidance.
+
+The following sequence is mandatory:
+
+```text
+Identify RPA domain
+	↓
+Apply RPA Development Skill
+	↓
+Determine evidence eligibility
+	↓
+Answer from Eligible evidence
+	OR
+Expose Coverage Gap
+```
+
+Do not use the following sequence:
+
+```text
+Identify RPA domain
+	↓
+Route to broader organizational Skill
+	↓
+Search broader sources
+	↓
+Synthesize missing RPA guidance
+```
+
+This routing guard does not authorize the Skill to override CAPE platform controls or another Skill's independent scope. It establishes the required domain-selection behavior for clearly RPA-specific requests.
+
 ### Source Access Does Not Expand the Evidence Boundary
 
 Access to Confluence, Service Desk, external web content, repositories, or other CAPE-connected sources does not expand this Skill's validated evidence boundary.
@@ -186,7 +241,15 @@ For a request where no Eligible evidence exists, the response should contain:
 
 **Known Gap:** Identify the relevant KG-ID or blocking condition when available.
 
-**Available Follow-Up:** Identify an owner, repository, document, or escalation path only when an Eligible source establishes its relevance and role. Otherwise state that no follow-up path is established within the current validated knowledge boundary.
+**Available Follow-Up:** Only provide a specific owner, team, repository, document, reviewer, or escalation path when an Eligible source explicitly establishes its relevance and role.
+
+If no Eligible source establishes such a follow-up path, use:
+
+> **The appropriate authoritative follow-up path is not established within the current validated knowledge boundary.**
+
+Do not add a recommendation to contact a team, owner, repository, reviewer, or other organizational authority after this statement unless the relevant relationship is supported by an Eligible source.
+
+A search result, accessible Confluence space, document title, repository, or apparent organizational relationship does not by itself establish ownership, authority, or escalation responsibility.
 
 **Boundary:** State that general or inferred practices are not being substituted for the missing Inchcape guidance.
 
@@ -271,8 +334,9 @@ Explicitly state:
 
 - No validated guidance is available for the requested topic.
 - The relevant knowledge gap or blocking condition.
-- An owner, team, repository, document, or authoritative source only when an Eligible source establishes its relevance and role.
-- Otherwise, state that the appropriate authoritative follow-up path is not established within the current validated knowledge boundary.
+- Only provide a specific owner, team, repository, document, reviewer, or escalation path when an Eligible source explicitly establishes its relevance and role.
+- If no Eligible source establishes such a follow-up path, state: **The appropriate authoritative follow-up path is not established within the current validated knowledge boundary.**
+- Do not add a recommendation to contact an organizational authority after that statement unless the relevant relationship is supported by an Eligible source. A search result, accessible Confluence space, document title, repository, or apparent organizational relationship does not by itself establish ownership, authority, or escalation responsibility.
 
 Do not fill the gap with generic RPA advice or inferred organizational ownership.
 

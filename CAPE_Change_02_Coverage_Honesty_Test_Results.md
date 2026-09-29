@@ -417,6 +417,7 @@ The supplied DRPA and SOLDOC search results did not establish the spaces' purpos
 | Change 02 — Strict evidence boundary | Implemented | **Failed — Q10.** Latest CAPE run loaded Inchcape Company Info, then retrieved broad Confluence material and generated an unsupported AutoDrive standard. This is a CAPE-level routing/boundary failure; Section 4.1 was not active in that run. |
 | Change 02.1 — Follow-up grounding | Implemented in Section 4.1 | **Partial / not clean — Q12/Q19.** The substantive answers correctly withhold unsupported guidance, but follow-up ownership claims remain unsupported; Q19 also contradicts itself about whether an owner is established. |
 | Change 02.2 — Source access boundary | Implemented in the active Skill after Activation and Evidence Boundary | **Pending retest.** The latest Q10 run did not load the RPA Skill, so it cannot validate this instruction. |
+| Change 02.3 — Activation Routing Guard | Added after Activation Priority in the active Skill | **Pending retest.** Existing Q10 loaded Inchcape Company Info rather than the RPA Skill and predates this guard; it does not validate the new instruction. |
 
 No sources were added to the Eligible set, no source authority was changed, and Changes 03–06 were not modified. Rerun Q10 with the RPA Development Skill explicitly loaded, then rerun Q12 and Q19 to verify the source-access and follow-up rules together.
 
@@ -454,5 +455,5 @@ This does not invalidate the Change 01 controlled results; those remain valid fo
 
 - **Coverage-Honesty Gate:** **NOT CLEARED.** Q10 remains a mandatory failure.
 - **Do not start the full 11-case regression yet.** First investigate and correct the CAPE routing/activation path so an explicit AutoDrive/RPA request selects the RPA Development Skill before broad retrieval influences the answer.
-- **Next validation:** rerun Q10 with the RPA Development Skill confirmed as loaded. If that passes, rerun Q19 and the other coverage-boundary controls to verify the follow-up evidence rule.
+- **Next validation:** investigate the CAPE routing/configuration path, then rerun Q10 and verify that the RPA Development Skill is selected. If the guard is exercised and Q10 passes, rerun Q19 and the other coverage-boundary controls to verify the follow-up evidence rule.
 - **Scope:** no knowledge sources are added or promoted; Changes 03–06 remain untouched. The Confluence Implementation Record / Page 10 update is handled separately by the project owner.
