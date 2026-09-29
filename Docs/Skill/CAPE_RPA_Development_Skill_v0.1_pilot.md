@@ -214,7 +214,7 @@ When no Eligible evidence supports the requested guidance:
 
 ### Follow-up claims are also evidence-bounded
 
-Follow-up guidance must not introduce new unsupported organizational claims. When no Eligible source establishes an owner, repository, escalation path, review responsibility, or documentation location, do not infer or state one as fact. State that the appropriate owner or authoritative follow-up path is not established within the current validated knowledge boundary. A repository, team, reviewer, or document may be named only when an Eligible source supports its relevance and role. A possible place to investigate is not evidence that the place owns, governs, or contains the requested guidance.
+All follow-up claims require Eligible evidence. Do not infer an owner, repository, escalation path, review role, or documentation location. Name one only when an Eligible source establishes its relevance and role; otherwise follow the deterministic rule below.
 
 ### Follow-Up Boundary Enforcement
 
@@ -289,25 +289,7 @@ A source describing how a technology is implemented does not automatically estab
 
 ### Coverage-gap response structure
 
-For a request where no Eligible evidence exists, the response should contain:
-
-**Coverage Gap:** State that no validated guidance is available for the requested topic.
-
-**Evidence Boundary:** State that the available Skill evidence does not support an authoritative answer.
-
-**Known Gap:** Identify the relevant KG-ID or blocking condition when available.
-
-**Available Follow-Up:** Only provide a specific owner, team, repository, document, reviewer, or escalation path when an Eligible source explicitly establishes its relevance and role.
-
-If no Eligible source establishes such a follow-up path, use:
-
-> **The appropriate authoritative follow-up path is not established within the current validated knowledge boundary.**
-
-Do not add a recommendation to contact a team, owner, repository, reviewer, or other organizational authority after this statement unless the relevant relationship is supported by an Eligible source.
-
-A search result, accessible Confluence space, document title, repository, or apparent organizational relationship does not by itself establish ownership, authority, or escalation responsibility.
-
-**Boundary:** State that general or inferred practices are not being substituted for the missing Inchcape guidance.
+For no-evidence cases, use the Coverage-Gap Response Requirement above and the coverage-gap rules in Section 6.
 
 Do not provide replacement technical guidance unless the request is explicitly reframed as a separate question asking for **general, non-Inchcape guidance**. Even then, clearly distinguish that guidance from the governed RPA knowledge base and do not present it as satisfying the original organizational requirement.
 
@@ -336,25 +318,7 @@ Change 02 therefore strengthens **what the Skill may say when evidence is absent
 
 ### Why this is the right change
 
-The important addition is the distinction between:
-
-```text
-Skill activation
-	≠
-permission to answer
-```
-
-and:
-
-```text
-RPA context
-	+
-no eligible evidence
-	↓
-coverage gap
-	↓
-NO synthetic organizational guidance
-```
+Activation does not grant permission to answer: RPA context without Eligible evidence requires a Coverage Gap, not synthetic guidance.
 
 ## 5. Authority and Conflict Handling
 
