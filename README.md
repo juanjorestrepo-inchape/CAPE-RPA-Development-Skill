@@ -8,6 +8,12 @@ The active Skill file to upload to CAPE is:
 
 Verified at **23,133 characters** on 2026-09-30, below CAPE's 24,000-character limit. The frozen comparison copy is [the v0.1 pilot baseline](Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot_Baseline.md).
 
+Skill versions are separated by role:
+
+- **Active upload:** [Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md](Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md)
+- **Frozen baseline:** [Docs/Skill/Baseline/CAPE_RPA_Development_Skill_v0.1_pilot_Baseline.md](Docs/Skill/Baseline/CAPE_RPA_Development_Skill_v0.1_pilot_Baseline.md)
+- **Archived older draft:** [Docs/Skill/Archive/rpa-development-skill-v0.md](Docs/Skill/Archive/rpa-development-skill-v0.md)
+
 ## Project Map
 
 - [00 Project Overview](00_Project_Overview/README.md) — purpose, scope, and project controls.
