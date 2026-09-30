@@ -11,7 +11,7 @@
 
 ## 2. Change under test
 
-**Change 02 implementation:** Added **Section 4.1 — Strict Evidence-Boundary Enforcement** immediately after Evidence and Source Eligibility in the [Skill under evaluation](Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md).
+**Change 02 implementation:** Added **Section 4.1 — Strict Evidence-Boundary Enforcement** immediately after Evidence and Source Eligibility in the [Skill under evaluation](../CAPE_RPA_Development_Skill_v0.1_pilot.md).
 
 The original change made explicit that Skill activation does not authorize answers beyond Eligible evidence. For missing evidence, it required a coverage-gap response, prohibited synthetic Inchcape standards based on general practice, limited partial answers to supported content, and left the source-authority hierarchy unchanged. The tested version did not explicitly require follow-up claims themselves to be supported by Eligible evidence; Q12 and Q19 exposed that gap.
 
