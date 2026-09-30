@@ -2,7 +2,7 @@
 ## Pilot Specification v0.1 | Stage 2: Live CAPE Pilot Validation
 
 **Instructions for the evaluator:**
-1. Load `Docs/Skill/CAPE_RPA_Development_Skill_v0.1_pilot.md` into CAPE as a new Skill named "RPA Development Skill — Pilot v0.1"
+1. Load `Docs/Skill/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md` into CAPE as a new Skill named "RPA Development Skill — Pilot v0.1"
 2. For each question below, type it into CAPE **exactly as written** — no hints, no corrections, no additional context
 3. Copy the **complete CAPE response verbatim** into the "Actual CAPE Response" field
 4. Score each dimension using only the actual response — not what you expected or hoped CAPE would say
@@ -414,7 +414,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
 | Source Selection | Uses both KS-003 and KS-007 | Pass / Fail | |
 | Evidence Completeness | Both sources cited | Pass / Fail | |
 | Authority Handling | Both Primary; neither overstated | Pass / Fail | |
-| Conflict Handling | Applies scope analysis; resolves apparent conflict without silently discarding either source; does not false-escalate | Pass / Fail | |
+| Conflict Handling | Applies scope analysis; resolves the apparent conflict without silently discarding either source; identifies an escalation path only when an Eligible source establishes the relevant authority or route; otherwise states that the appropriate authoritative follow-up path is not established | Pass / Fail | |
 | Boundary Adherence | No external architecture guidance | Pass / Fail | |
 | Citation / Provenance | Both KS-003 and KS-007 named with roles | Pass / Fail | |
 | **Overall Q16** | | **Pass / Fail** | |

@@ -11,7 +11,7 @@
 
 ## 2. Change under test
 
-**Change 02 implementation:** Added **Section 4.1 — Strict Evidence-Boundary Enforcement** immediately after Evidence and Source Eligibility in the [Skill under evaluation](../CAPE_RPA_Development_Skill_v0.1_pilot.md).
+**Change 02 implementation:** Added **Section 4.1 — Strict Evidence-Boundary Enforcement** immediately after Evidence and Source Eligibility in the [active Skill under evaluation](../CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md).
 
 The original change made explicit that Skill activation does not authorize answers beyond Eligible evidence. For missing evidence, it required a coverage-gap response, prohibited synthetic Inchcape standards based on general practice, limited partial answers to supported content, and left the source-authority hierarchy unchanged. The tested version did not explicitly require follow-up claims themselves to be supported by Eligible evidence; Q12 and Q19 exposed that gap.
 
@@ -458,3 +458,4 @@ This does not invalidate the Change 01 controlled results; those remain valid fo
 - **Do not start the full 11-case regression yet.** First investigate and correct the CAPE routing/activation path so an explicit AutoDrive/RPA request selects the RPA Development Skill before broad retrieval influences the answer.
 - **Next validation:** investigate the CAPE routing/configuration path, then rerun Q10 and verify that the RPA Development Skill is selected. If the guard is exercised and Q10 passes, rerun Q19 and Q12 to verify that unsupported follow-up recommendations stop at the explicit boundary sentence; then rerun the other coverage-boundary controls.
 - **Scope:** no knowledge sources are added or promoted; Changes 03–06 remain untouched. The Confluence Implementation Record / Page 10 update is handled separately by the project owner.
+- **Post-assessment wording refinements:** clarified pilot knowledge-base terminology, RPA routing scope, Eligible-source requirements for follow-up claims, and evidence-qualified conflict escalation. These refinements have not yet been evaluated in CAPE; retest Q10, Q19, and Q16 before changing the current validation status.
