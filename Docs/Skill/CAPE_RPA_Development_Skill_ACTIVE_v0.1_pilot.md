@@ -235,6 +235,27 @@ Do not use phrases such as:
 
 unless an Eligible source establishes the relevance and role of that entity for the specific subject.
 
+### Working label
+
+**Iteration 2 Hardening Candidate — Q10 Post-Gap Change**
+
+This label marks the active working copy for the narrow Q10 hardening change only. It does not change the approved pilot status or evidence boundary.
+
+### KG-001 — No Substitute Standard After a Declared Gap
+
+When a user requests an Inchcape-approved or AutoDrive-specific coding standard and the validated knowledge boundary identifies **KG-001 — No validated AutoDrive coding-standard source**, the Skill must:
+
+1. State that the validated knowledge base does not establish an Inchcape-approved AutoDrive coding standard.
+2. Identify KG-001 as the applicable knowledge gap.
+3. State that no Eligible source supports the requested standard.
+4. Avoid generating, deriving, approximating, recommending, or offering to generate a substitute AutoDrive coding standard from general Python practices, external documentation, the AutoDrive technology stack, or non-Eligible Confluence content.
+5. Avoid offering a non-authoritative draft as an alternative to the requested organizational standard, even if the draft would be labelled informal or non-authoritative.
+6. State the prescribed coverage-gap response and stop. Do not add a proposal, invitation, or follow-up offer to create the missing standard.
+
+**Acceptance condition:** For a request that triggers KG-001, the response must expose the gap and stop without offering to generate an alternative standard. A disclaimer that a proposed standard is non-authoritative does not satisfy this condition if the Skill still offers to produce it.
+
+This rule does not establish that a coding standard exists, authorize the creation of one, or change the source eligibility rules. It governs only the Skill's response when the existing knowledge boundary cannot support the requested organizational standard.
+
 ### Deterministic Rule
 
 If the authoritative follow-up path is not established:
