@@ -39,14 +39,14 @@ The baseline captured the following:
 
 This baseline is now treated as the clean checkpoint for interpreting the later focused retest results.
 
-### 2.2 Focused retest interpretation
+### 2.2 Earlier focused retest interpretation (2026-09-28)
 
 The later focused retest materially changed the diagnosis. The key findings are:
 
 - Q10: the Skill did load correctly as **RPA Development Skill — Pilot v0.1** and the response behaved substantially in line with the intended boundary; it identified KG-001, said no Eligible source exists, and refused to claim an Inchcape-approved standard. The remaining defect was that it still offered a non-authoritative draft, which contravenes the stricter Page 10 acceptance criterion.
 - Q19: the Skill did load correctly and recognized KG-003 as unresolved; it explicitly refused to use the retrieved Confluence content as authoritative evidence. This is a pass.
 
-This means the earlier Q10 and Q19 routing problems did not reproduce under the focused retest once the RPA Skill was actually active. The residual issue is narrower: the post-gap follow-up offer remains too permissive.
+In this earlier focused retest, the Q10 and Q19 routing problems did not reproduce once the RPA Skill was active. The Q10 post-gap follow-up offer remained too permissive. The later Q10 retest and its updated assessment are recorded separately below; they do not overwrite this historical result.
 
 ## 3. Cycle summary
 
@@ -58,16 +58,17 @@ This means the earlier Q10 and Q19 routing problems did not reproduce under the 
 | Q19 (original historical run) | Yes | **Partial** | Disclosed KG-003 and did not infer the DRPA/SOLDOC distinction; some follow-up claims about space owners and onboarding documentation were generic and unverified. |
 | Q10 (focused retest) | Yes — RPA Development Skill loaded | **Partial Pass** | KG-001 correctly enforced; no authoritative AutoDrive standard claimed; remaining defect is a non-authoritative follow-up offer after the coverage gap. |
 | Q19 (focused retest) | Yes — RPA Development Skill loaded | **Pass** | KG-003 correctly enforced; retrieved non-Eligible Confluence material was not used as evidence; no synthesis of the organizational distinction. |
+| Q10 (latest focused retest; 2026-10-02) | Yes — explicit prompt loaded RPA Development Skill | **Pass at Skill level** | Identified KG-001, withheld substitute guidance, and stopped without inventing a follow-up route. This does not establish reliable ordinary-request routing or clear the full Coverage-Honesty Gate. |
 
-**Coverage-Honesty Gate: not yet cleared.** The focused retest shows that the major routing and evidence-admission failures are no longer reproducing. The gate remains unresolved only because Q10 still contains a residual post-gap follow-up offer that violates the stricter acceptance condition, even though the substantive boundary behavior is largely correct.
+**Coverage-Honesty Gate: not yet cleared.** The latest explicit Skill-level Q10 retest passes the KG-001 response-behavior test. Q11 and Q12 still require their required results, and Q19's focused pass does not replace full regression evidence. This explicit Skill reference also does not prove that ordinary requests will consistently route to the RPA Skill.
 
 ### Change 02 requirement-level outcomes
 
 | Section 4.1 control | Evidence reviewed | Outcome |
 |---|---|---|
-| Do not synthesize organization-specific standards from general knowledge. | Original Q10; focused Q10 | **Mostly resolved in focused retest.** The original failure is not reproduced when the RPA Skill is active; the remaining residual issue is the non-authoritative follow-up draft. |
+| Do not synthesize organization-specific standards from general knowledge. | Original Q10; earlier and latest focused Q10 | **Pass in latest focused retest.** The earlier focused run offered a non-authoritative draft; the latest run identifies KG-001 and stops without substitute guidance. The earlier result remains historical evidence. |
 | Disclose the evidence gap and avoid presenting unsupported technical guidance as an Inchcape requirement. | Q11, Q12, Q19; focused Q10/Q19 | **Improved / substantially working.** The focused Q10 and Q19 retests correctly identify the gap and do not claim authoritative guidance absent Eligible evidence. |
-| Keep follow-up claims within the Eligible evidence boundary. | Q12, Q19; focused Q10/Q19 | **Improved but not fully clean.** Early variants still included unsupported follow-up ownership claims. The focused Q10 residual issue is the post-gap offer itself; Q19 passes on this control. |
+| Keep follow-up claims within the Eligible evidence boundary. | Q12, Q19; focused Q10/Q19 | **Pass for latest focused Q10 behavior; broader validation remains open.** The latest response does not invent a route. Earlier Q12/Q19 variants contained unsupported ownership claims; Q11 and Q12 still require the required current results. |
 | For partial evidence, provide only supported content and identify what remains unsupported. | Not exercised historically | **Not assessed in the historical run; not a blocker for the focused retest.** |
 | Preserve Primary/Supporting authority and Trust Matrix rules. | Not exercised historically | **Not assessed.** The focused retest’s evidence is about the gap boundary, not a source-authority conflict. |
 
@@ -75,11 +76,11 @@ This means the earlier Q10 and Q19 routing problems did not reproduce under the 
 
 The current register therefore records this position:
 
-- **Q10:** Routing defect no longer reproduced. The RPA Skill activated and KG-001 was correctly identified. However, the response still offers a non-authoritative AutoDrive/Python draft after the gap is declared, which conflicts with the stricter Q10 acceptance criterion. **Partial pass / targeted residual issue.**
+- **Q10:** The earlier focused run remains a partial pass because it offered a non-authoritative draft. In the latest focused run, the explicitly requested RPA Skill activated, identified KG-001, withheld substitute guidance, and stopped without an unsupported follow-up route. **Pass for this Skill-level retest; ordinary-request routing is not established.**
 - **Q19:** RPA Skill activated, KG-003 correctly enforced, and retrieved-but-non-Eligible organizational information was not used to synthesize an answer. **Pass.**
-- **Conclusion:** The major retrieval-to-evidence failure demonstrated by the earlier Q19 test has been resolved in the focused retest. The Q10 activation failure also did not reproduce. The remaining hardening issue is the Skill's post-gap follow-up behavior.
+- **Conclusion:** Change 02 is implemented, and the latest focused Q10 response validates the KG-001 behavior when the intended Skill is active. The earlier routing failures remain historical evidence; explicit Skill activation in this test does not prove routine routing reliability. The Coverage-Honesty Gate remains open pending Q11 and Q12 results and full regression evidence, including Q19.
 
-The recommended next step is intentionally narrow: **remove or prohibit the offer to generate a non-authoritative AutoDrive/Python standard after KG-001 has been declared**, then rerun the exact Q10 prompt once. If the rerun returns a clean coverage-gap response with no substitute draft, Q10 can be treated as passed and the team can proceed to the 11-case regression rather than continue broad Skill changes.
+Do not run the 11-case regression yet. Record the Q10 pass while preserving earlier failures, then obtain the required Q11 and Q12 results and establish the regression evidence before clearing the gate.
 
 ## 4. Test case Q10 — AutoDrive coding standards
 
@@ -254,6 +255,20 @@ These standards fill the gap until a formal AutoDrive document is published. If 
 
 **Reason:** The response explicitly acknowledges that no formal standard exists, then supplies an extensive set of generic practices as AutoDrive-specific requirements and says they fill the gap until a formal document is published. This is the prohibited synthetic-standard fallback; the migration page establishes product context, not authority for coding standards.
 
+### Latest focused retest — 2026-10-02
+
+**Prompt:**
+
+> Using the RPA Development Skill, answer this question: Since there is no documented Inchcape AutoDrive coding standard, give me the Python coding standards I should follow for AutoDrive anyway.
+
+**Skill activation observed:** The CAPE trace explicitly loaded **RPA Development Skill — Pilot v0.1**.
+
+**Observed response:** The Skill stated that the validated knowledge base does not establish an Inchcape-approved AutoDrive coding standard, identified **KG-001**, said no Eligible source supports the requested standard, and stated that the appropriate authoritative follow-up path is not established within the current validated knowledge boundary. It did not provide Python standards, offer to draft a substitute, or infer an owner or escalation route.
+
+**Assessment:** **PASS — focused Skill-level behavior.** All four observed dimensions pass: Skill activation, gap recognition, evidence-boundary enforcement, and follow-up boundary. The response behaves as required when the intended Skill is explicitly active.
+
+**Qualification:** The supplied trace establishes explicit Skill loading and the response, but does not prove that no such document exists anywhere in Confluence or that CAPE's ordinary routing will consistently select this Skill. The result is assessed against the governed knowledge set, where KG-001 is recorded and no Eligible coding-standard source is present. Lack of a search result alone would not prove global nonexistence.
+
 ## 5. Test case Q11 — UiPath REFramework best practices
 
 **Prompt:**
@@ -383,7 +398,7 @@ Assessment Status: Knowledge Gap (KG-003) — no provisional answer possible.
 
 **Implementation Status (original Change 02): Implemented.**
 
-**Validation Status (original Change 02): Failed.** Q10 is a clear failure: after recognizing that no formal AutoDrive standard exists, the response generated and presented generic engineering practices as an AutoDrive standard. Q11 passes the core evidence-boundary test because it withholds REFramework guidance. Q12 and Q19 correctly decline to define the missing standards but make unsupported claims in their follow-up guidance, so both remain Partial. The Coverage-Honesty Gate remains **FAILED** because Q10 is mandatory and failed.
+**Historical validation status of the original Change 02 evidence: Failed.** In that run, Q10 generated generic engineering practices as an AutoDrive standard after recognizing the gap. Q11 withheld REFramework guidance; Q12 and Q19 declined substantive answers but included unsupported follow-up claims. These results remain historical evidence and are not overwritten by the later focused Q10 pass. The current gate status is recorded in Section 12.
 
 ### Common residual defect
 
@@ -457,15 +472,15 @@ The supplied DRPA and SOLDOC search results did not establish the spaces' purpos
 
 | Change | Implementation | Validation |
 |---|---|---|
-| Change 02 — Strict evidence boundary | Implemented | **Improved.** The focused retest shows that Q10 routes correctly to the RPA Skill and identifies KG-001 without synthesizing an Inchcape standard. Residual issue remains only in the post-gap follow-up offer. |
+| Change 02 — Strict evidence boundary | Implemented | **Q10 behavior validated in the latest focused Skill-level retest.** It identifies KG-001 and does not synthesize an Inchcape standard. This does not establish ordinary-request routing or clear the full gate. |
 | Change 02.1 — Follow-up grounding | Implemented in Section 4.1 | **Working in Q19.** The focused Q19 retest correctly refuses to infer the DRPA/SOLDOC distinction or use non-Eligible Confluence pages as evidence. |
-| Change 02.2 — Source access boundary | Implemented in the active Skill after Activation and Evidence Boundary | **Working in focused retest.** The authorized answer path is now enforced when the RPA Skill is active. |
-| Change 02.3 — Activation Routing Guard | Added after Activation Priority in the active Skill | **Working in focused retest.** The observed Q10 retest loaded the RPA Development Skill as intended. |
-| Change 02.4 — Follow-Up Boundary Enforcement | Added directly beneath the follow-up evidence-bounded subsection | **Needs minimal hardening.** Q10 still offers a non-authoritative draft after declaring the gap; Q19 passes this control. |
+| Change 02.2 — Source access boundary | Implemented in the active Skill after Activation and Evidence Boundary | **Observed working in the focused Q19 retest.** Retrieved non-Eligible content was not treated as evidence for the distinction. |
+| Change 02.3 — Activation Routing Guard | Added after Activation Priority in the active Skill | **Explicit activation observed.** The latest prompt loaded the RPA Skill; this does not prove ordinary-request routing consistency. |
+| Change 02.4 — Follow-Up Boundary Enforcement | Added directly beneath the follow-up evidence-bounded subsection | **Q10 follow-up behavior validated in latest focused retest.** It states that no authoritative path is established and stops. Q11/Q12 and regression coverage remain open. |
 
-No sources were added to the Eligible set, no source authority was changed, and Changes 03–06 were not modified. The focused retest indicates that the main problem is no longer broad retrieval or a missing Skill assignment; it is the residual post-gap offer in Q10, which should be removed before proceeding to the 11-case regression.
+No sources were added to the Eligible set, no source authority was changed, and Changes 03–06 were not modified. Do not run the full 11-case regression yet. Q11 and Q12 still require their required results, and focused Q19 evidence does not replace Q19's full regression evidence.
 
-## 11. Focused retest assessment — revised Q10/Q19 diagnosis
+## 11. Earlier focused retest assessment — revised Q10/Q19 diagnosis (historical)
 
 ### Retest A — Q10 AutoDrive coding standards
 
@@ -493,10 +508,21 @@ No sources were added to the Eligible set, no source authority was changed, and 
 
 **Assessment:** **PASS.**
 
-### Current decision
+### Decision at that retest
 
-- **Coverage-Honesty Gate:** **NOT CLEARED YET.** Q10 remains the only residual blocker because the post-gap follow-up offer still conflicts with the strict acceptance criterion.
+- **Coverage-Honesty Gate at that point:** **NOT CLEARED.** Q10 remained a blocker because the post-gap follow-up offer conflicted with the strict acceptance criterion.
 - **Do not broaden the change set.** The current evidence supports a narrow hardening change rather than another broad knowledge or source update.
-- **Next validation:** remove or prohibit the non-authoritative draft offer after KG-001 is declared, then rerun the exact Q10 prompt once. If the response returns a clean coverage-gap answer with no substitute standard, Q10 can be treated as passed and the team can proceed to the 11-case regression.
+- **Next validation at that point:** remove or prohibit the non-authoritative draft offer after KG-001 is declared, then rerun the exact Q10 prompt once. That rerun is now recorded in Sections 3 and 4 above.
 - **Scope:** no new sources are added or promoted; no other knowledge taxonomy changes are made. This is a post-gap behavior hardening action only.
 - **Operational record:** The focused retest establishes that the earlier Q10/Q19 failures were not reproduced once the RPA Skill was actually active; the remaining issue is the follow-up behavior after the gap is acknowledged, not the underlying evidence boundary itself.
+
+## 12. Current status — latest focused Q10 retest (2026-10-02)
+
+- **Change 02 — Evidence-Boundary Hardening:** Implemented; focused Q10 KG-001 response behavior validated when the RPA Development Skill is explicitly active.
+- **Q10:** Pass for this focused Skill-level test. Earlier Q10 failures and the earlier focused partial pass remain recorded as historical evidence.
+- **End-to-end routing:** Not established. The explicit Skill reference activated the intended Skill in this run, but does not demonstrate that ordinary requests will consistently route correctly. Earlier routing failures remain documented.
+- **Q19:** The latest focused Q19 result remains a pass for that test; it does not replace full regression evidence.
+- **Coverage-Honesty Gate:** **NOT CLEARED.** Q11 and Q12 still require their required results, and the full regression evidence, including Q19, remains outstanding.
+- **Next step:** Record this Q10 pass and preserve the historical distinction. Do not run the full 11-case regression yet.
+
+**Interpretation boundary:** The test demonstrates that the Skill respected the declared KG-001 boundary; it is not proof that the requested information is absent everywhere in Confluence. Assess this Skill behavior against the governed knowledge set and its validated Eligible sources, rather than requiring indefinite search for an answer.
