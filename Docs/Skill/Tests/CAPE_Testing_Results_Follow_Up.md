@@ -2,15 +2,20 @@
 
 ## Executive Summary
 
-The latest CAPE validation run shows a clear improvement in activation behavior compared with the original pilot. The RPA Development Skill now activates correctly for the tested RPA scenarios and stays inactive for generic technical requests, which confirms that Change 01 materially improved the activation path.
+Evaluation results are run-specific and should not be collapsed into a single activation claim. The latest focused Q3 run explicitly loaded the RPA Development Skill, so it assesses source selection with the Skill active; it does not prove that ordinary prompts will reliably activate the Skill.
 
-The main remaining issue is not activation itself. The key failure is in Q10, where the skill still crosses the evidence boundary and offers generic AutoDrive/Python guidance despite the absence of a validated AutoDrive coding-standard source. This means the next hardening focus is evidence-boundary enforcement and claim-level grounding.
+Current position as of 2026-10-04:
+
+- **Change 01 — Activation:** earlier activation evidence remains recorded. The explicitly loaded Q3 run does not validate automatic routing.
+- **Change 02 — Evidence boundary:** the focused Q10 KG-001 response behavior passed when the Skill was explicitly active. The overall Coverage-Honesty Gate remains uncleared.
+- **Change 03 — Source disambiguation:** the focused Q3 response selected KS-006 as the governing lifecycle source, so the source-selection criterion passed in this controlled execution. The overall Q3 answer is only a **Partial Pass** because it omits lifecycle phases and includes claims not established by the source evidence reviewed.
+- **Next hardening:** claim-level grounding remains a separate change; do not fold it into Change 03.
 
 Current status by test:
 
-- Q3: Review required
+- Q3: **Partial Pass** — source selection observed; lifecycle completeness and claim grounding not validated
 - Q6: Review required
-- Q10: Fail
+- Q10: Historical fail; focused Change 02 response-behavior pass; full gate/regression status remains open
 - Q15: Review required
 - Q16: Pass
 - N1–N5: Pass
@@ -49,7 +54,7 @@ This is the correct evidence layer because these files are validation artifacts,
 
 ## 4. Control summary table
 
-This table is the quick view of the validation run.
+This table is the quick view of the 2026-09-24 validation run. The later focused Q3 execution is recorded separately in Section 13 and does not overwrite these results.
 
 | Test ID | Prompt | Expected outcome | Skill activated? | Correct behavior? | Result | Notes |
 |---|---|---|---|---|---|---|
@@ -69,6 +74,8 @@ This table is the quick view of the validation run.
 ---
 
 ## 5. Test case evaluated
+
+**Historical prompt alignment note:** The 2026-09-24 record labels the following response excerpt as Q3, but the response itself says “Here is the process for initiating an RPA project at Inchcape,” which corresponds to a different prompt. Preserve that excerpt as supplied historical evidence; do not treat it as the focused Q3 execution recorded in Section 13.
 
 ### Question asked to CAPE
 > What framework governs the lifecycle of an RPA project at Inchcape, and what are the main phases from request through deployment and BAU handover?
@@ -172,9 +179,9 @@ This distinction is important: the lifecycle question is governed by the intake 
 
 ---
 
-## 9. Outcome
+## 9. Outcome — 2026-09-24 follow-up run (historical)
 
-### Current validation status
+### Validation status for the 2026-09-24 run (historical)
 - **Change 01 — Activation:** Preliminary success
 - **Current positive activation evidence:** 6/6 in tested RPA scenarios
 - **Negative activation evidence:** 5/5 correctly rejected in generic technical scenarios
@@ -207,7 +214,7 @@ This distinction is important: the lifecycle question is governed by the intake 
 - **BAU handover referenced:** Yes in lifecycle description
 
 ### Interpretation
-This result moves the diagnosis forward: activation is no longer the primary problem, but evidence-boundary enforcement and claim-level grounding remain independent control points that still need hardening. The most important failing test remains Q10, while Q16 is the clearest positive validation case from this round.
+At that point, the diagnosis was that evidence-boundary enforcement and claim-level grounding remained independent control points requiring hardening. Q10 was the main failure in that run, while Q16 was its clearest positive validation case. Later focused results are recorded separately.
 ---
 
 ## 10. How to record every test
@@ -245,3 +252,107 @@ This record matters because it proves that the skill can orient the user to the 
 This should remain in the root evaluation register as part of the formal evidence trail and should not be blended with the eventual skill package or with phase documentation. Keeping it in this structure makes the progression easier to follow, easier to defend, and easier to present to reviewers.
 
 The Change 01 activation-cycle results should be maintained in the linked dated evidence file so the historical evaluation results and the new activation experiment remain distinguishable.
+
+---
+
+## 13. Change 03 — Focused Q3 validation (2026-10-04)
+
+### Test metadata
+
+- **Test:** Q3 — RPA Project Intake Framework source selection and lifecycle answer
+- **Prompt:** “What framework governs the lifecycle of an RPA project at Inchcape, and what are the main phases from request through deployment and BAU handover?”
+- **Execution:** The supplied CAPE trace explicitly loaded **RPA Development Skill — Pilot v0.1** before the unchanged Q3 prompt.
+- **Scope:** Focused Change 03 test only. This explicit load isolates source selection with the intended Skill active; it does not test ordinary-request routing.
+
+### CAPE response (verbatim)
+
+```text
+Using the RPA Development Skill — Pilot v0.1 for this.
+
+---
+
+## RPA Project Lifecycle at Inchcape
+
+**Governing framework:** KS-006 — RPA Project Intake Framework (Primary source, Provisional status).
+Where the architecture review requirements are concerned, KS-007 — RPA Architecture Review Framework (Primary, Provisional) is the complementary governing source.
+
+---
+
+### Main Phases: Request through Deployment and BAU Handover
+
+KS-006 establishes the intake and lifecycle structure. The phases are:
+
+1. **Request / Intake**
+  The automation opportunity is submitted for consideration. This is where the process is identified, described, and entered into the governed intake pipeline.
+
+2. **Feasibility and Assessment**
+  The submitted request is assessed for suitability: process complexity, volume, stability, and alignment with automation criteria are evaluated to determine whether the case proceeds.
+
+3. **Architecture Review**
+  Governed by KS-007. Before development begins, the proposed automation must pass an architecture review. This covers platform selection (governed by KS-003), security requirements (KS-005 applies here, including credential and access handling), and any CAPTCHA/MFA constraints (KS-010).
+
+4. **CAB (Change Advisory Board) Approval**
+  The project must clear CAB before deployment. KS-006 establishes this as a lifecycle gate, and KS-007 sets out the prerequisites that must be satisfied before the CAB submission.
+
+5. **Development and Testing**
+  The automation is built and tested. Note: validated coding standards and testing/QA standards for specific platforms (AutoDrive, UiPath, Power Automate) are **not** within the current validated knowledge boundary (see KG-001 and related gaps in Section 8 of the Skill).
+
+6. **Deployment**
+  The automation is released to production following CAB approval.
+
+7. **BAU Handover**
+  The project transitions to business-as-usual operation. KS-006 covers the handover requirements as part of the intake framework's lifecycle scope.
+
+---
+
+### Important Caveats
+
+- **Assessment status is Provisional** across all sources in this pilot. Treat the above as governed guidance, but verify against the authoritative Confluence sources before making project decisions.
+- Detailed standards for development, testing, logging, and exception handling are **outside the current validated evidence boundary** and should not be inferred from this answer.
+- For critical incidents during BAU, KS-015 (Critical Incident Playbook) applies as a **Supporting** source, with a noted Role Ambiguity flag.
+
+If you need detail on any specific phase (architecture review gates, security requirements, CAPTCHA/MFA handling, or the CAB prerequisites), ask and I can draw on the relevant Eligible source for that area.
+
+03:59 PM
+```
+
+### Source-selection assessment
+
+**Result: PASS for the observed Change 03 source-selection criterion.** The answer identifies **KS-006 — RPA Project Intake Framework** as governing the overall RPA intake/lifecycle question and positions **KS-007 — RPA Architecture Review Framework** as complementary. The prior failure mode of substituting broader DAP intake governance is not present in this response.
+
+Both KS-006 and KS-007 are classified **Primary** with **Provisional** assessment status in the pilot's governed source set. Explicitly loading the Skill means this result does not establish reliable automatic activation.
+
+### Answer-quality assessment
+
+**Result: PARTIAL PASS for Q3 overall.** The response does not preserve the documented ten-phase lifecycle. It gives seven broad stages and:
+
+- omits **Project Repository Document** as a distinct phase;
+- combines **UAT** with development/testing;
+- combines **Internal CAB (Pre-CAB)** and **Global CAB (Production CAB)** into one generic CAB stage; and
+- does not preserve **Hypercare** alongside BAU handover as the final documented phase.
+
+The stored KS-006 source transcription lists the ten phases as Request & Approval; Discovery & Scoping; Project Repository Document; Architecture Review & Project Kickoff; Development; UAT; Internal CAB (Pre-CAB); Global CAB (Production CAB); Deployment; and Hypercare & BAU Handover. The source transcription is preserved in [CAPE_RPA_Development_Skill_v0.1_Live_Evaluation_Evidence.md](CAPE_RPA_Development_Skill_v0.1_Live_Evaluation_Evidence.md). The answer also adds feasibility criteria such as volume, stability, and general automation criteria that are not established by the KS-006 text reviewed for this test.
+
+### Claim-grounding observations
+
+- The answer says KS-007 sets prerequisites before **CAB submission**. The stored KS-007 text specifies prerequisites before submitting the **Architecture Review Form**; it does not establish those as CAB-submission prerequisites.
+- The answer attributes platform selection, security requirements, and CAPTCHA/MFA constraints to the architecture-review explanation through KS-003, KS-005, and KS-010. Their relationship to the specific claims in this answer was not demonstrated in the supplied Q3 trace and requires source-level verification before treating those claims as grounded.
+- Naming KS-006 and KS-007 at the start does not, by itself, substantiate every subsequent lifecycle or governance claim.
+
+### Criterion-level result
+
+| Criterion | Result | Evidence |
+|---|---|---|
+| Intended Skill explicitly loaded | Pass | CAPE trace shows Load Skill for RPA Development Skill — Pilot v0.1. |
+| KS-006 selected as governing lifecycle source | Pass | Response names KS-006 as governing the intake and lifecycle. |
+| KS-007 used as complementary source | Partial | Complementary role is stated, but the CAB-prerequisite claim exceeds the source text reviewed. |
+| Broader DAP intake did not displace KS-006 | Pass | No broader DAP lifecycle was substituted in this response. |
+| Ten-phase lifecycle completeness | Fail | Response gives seven stages and merges or omits documented phases. |
+| Claim-level support | Partial / not established | Several criteria and source relationships are not supported by the evidence shown for this execution. |
+| **Overall Q3** | **Partial Pass** | Source selection improved; answer completeness and grounding remain unresolved. |
+
+### Conclusion and scope
+
+Change 03's source-selection behavior passes for this observed, explicitly activated execution; **Change 03 is not fully validated by this Q3 result**. Preserve the original Q3 failure and this response as separate evidence. Address lifecycle completeness and claim-level grounding in the designated later grounding work; do not silently expand Change 03 or alter source classifications.
+
+This test does not validate ordinary CAPE Skill routing, clear the Coverage-Honesty Gate, authorize the full 11-case regression, or modify Changes 04–06. The gate remains uncleared pending its required Q10, Q11, Q12, and Q19 validation and regression criteria.

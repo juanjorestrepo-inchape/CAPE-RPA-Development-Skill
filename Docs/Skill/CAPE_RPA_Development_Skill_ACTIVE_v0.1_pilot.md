@@ -257,6 +257,68 @@ Source authority, assessment status, applicability, and permitted use remain gov
 
 Change 02 strengthens **what the Skill may say when evidence is absent**; it does not create new sources or change source authority.
 
+## 4.2 Change 03 — RPA Source Disambiguation
+
+**Purpose**
+
+Preserve RPA context in source selection; do not let semantically relevant broader organizational material displace an applicable, governed RPA source.
+
+### Mandatory source-selection behavior
+
+1. **Classify the request context.** Identify the RPA domain, process, technology, and requested outcome before selecting evidence.
+2. **Identify applicable governed sources.** Find sources that directly address the request. Use the Knowledge Taxonomy for discovery and the Knowledge Source Trust Matrix for permitted use and assessment status.
+3. **Apply eligibility before precedence.** Do not use a source as governed evidence unless it satisfies the existing eligibility requirements. Retrieval availability, topical relevance, and taxonomy placement do not independently establish eligibility or authority.
+4. **Preserve RPA-specific precedence.** When an eligible, applicable RPA-specific source and a broader organizational source address the same RPA process, prioritize the RPA-specific source, subject to the established source-authority hierarchy and any applicable higher-authority requirements.
+5. **Avoid superficial keyword matching.** Do not select a broader source for keyword similarity alone; assess its scope, applicability, and authority against the request.
+6. **Use complementary sources appropriately.** Where distinct governed sources cover different aspects of a request, use each only for the aspect it governs. Do not treat complementary sources as conflicting without evidence.
+7. **Disclose unresolved selection issues.** If source applicability, precedence, or a material conflict cannot be resolved from the validated governance rules, state the limitation. Do not invent a hierarchy, promote a source, or present an unresolved interpretation as established policy.
+
+### Acceptance behavior — Q3
+
+For the question, “What framework governs the lifecycle of an RPA project at Inchcape, and what are the main phases from request through deployment and BAU handover?”, select **KS-006 — RPA Project Intake Framework** as the governing source for the RPA intake and lifecycle process. Use **KS-007 — RPA Architecture Review Framework** only for the architecture-review requirements it governs, where relevant. Do not allow broader DAP intake governance to displace the applicable RPA-specific source.
+
+Both KS-006 and KS-007 are **Primary** sources with **Provisional** assessment status in the pilot's governed source set. This rule does not change either source's Trust Matrix classification or assessment status, and does not guarantee automatic Skill activation by CAPE.
+
+## 4.3 Change 04 — KS-ID Provenance Traceability
+
+**Purpose**
+
+Ensure that governed evidence can be traced to its correct Knowledge Source ID and that the source's authority, assessment status, and permitted use are preserved when the answer is assembled.
+
+### Required behavior
+
+1. **Preserve source eligibility.** Retrieval, topical relevance, or page access does not by itself make a source eligible or authoritative.
+2. **Require source lineage.** Each claim that relies on governed evidence must be traceable to the corresponding KS-ID and to the Rule/Trust Matrix metadata that governs its use.
+3. **No invented mappings.** Do not assign a KS-ID to a page or document merely because it appears relevant to the question.
+4. **No authority by accessibility.** A retrieved Confluence page is not upgraded to an Eligible source by visibility or access.
+5. **No metadata invention.** Do not infer a source's role, assessment status, or permitted use if the Trust Matrix or Functional Specification does not establish it.
+6. **Keep unresolved gaps explicit.** Provenance controls must not bypass KG-001, KG-003, or any other validated gap.
+7. **Keep Change 04 isolated.** This change governs source lineage and traceability only; it does not resolve whether an individual claim is adequately supported. That is a separate design gate.
+8. **Keep external-source handling separate.** Change 06 remains responsible for external-web controls and evaluation rules.
+
+### Required safeguards
+
+- No invented mappings: never assign a KS-ID based on relevance alone.
+- No authority by accessibility: retrieval is not eligibility.
+- No metadata inference: do not fabricate a source's role, assessment status, or permitted use.
+- Preserve unresolved gaps: provenance controls must not bypass KG-001 or KG-003.
+- Keep changes isolated: Change 04 establishes source lineage; Change 05 addresses support adequacy for individual claims.
+- Keep external-source handling separate: Change 06 remains responsible for external-web controls defined in the specification.
+
+### Verification approach
+
+Use the primary verification cases identified for this change: Q1, Q3, Q5, Q8, Q15, Q16, and Q19. These confirm that source references can be traced to the governed KS-ID and that the metadata remains intact.
+
+Q3 remains critical because it must retain the relationship between **KS-006 — RPA Project Intake Framework** and **KS-007 — RPA Architecture Review Framework** without allowing broader DAP guidance to displace the RPA-specific source. Q19 must remain consistent with KG-003 even when relevant Confluence content is accessible. Q5 must confirm that identifying the correct KS-ID does not itself justify unsupported claims.
+
+This focused provenance test is not a substitute for the full 11-case regression and does not clear the Coverage-Honesty Gate.
+
+### Implementation boundary
+
+Change 04 establishes a requirement for source lineage and metadata preservation only. It does not change source eligibility, the Trust Matrix, the authority hierarchy, or the frozen Change 03 source-selection behavior.
+
+The change must therefore be designed as a traceability control: as long as the governed source is eligible and authority is preserved, the system can cite the relevant KS-ID and metadata without expanding the evidence boundary or broadening the source set.
+
 ## 5. Authority and Conflict Handling
 
 **Authority priority:**
