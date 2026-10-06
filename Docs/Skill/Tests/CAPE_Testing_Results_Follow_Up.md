@@ -372,4 +372,44 @@ The separation between implementation and validation is appropriate. Change 04 m
 
 ### Change 04 design boundary
 
-Change 04 must ensure that content used as governed evidence can be traced to the correct Knowledge Source ID and that its authority and permitted use are preserved. This is a provenance control only. It must not broaden eligibility, invent metadata, or override the established source hierarchy. A retrieved page is not automatically an Eligible source; a correct KS-ID does not by itself justify unsupported claims. The rule set remains explicitly limited to the current governed evidence boundary and to the later claim-grounding work that follows this design gate.
+Change 04 must ensure that content used as governed evidence can be traced to the correct Knowledge Source ID and that its authority and permitted use are preserved. This is a provenance control only. It must not broaden eligibility, invent metadata, or override the established source hierarchy.
+
+The required relationship is:
+
+```mermaid
+flowchart LR
+    A[Retrieved content<br/>The page or document actually accessed] --> B{Verified mapping<br/>to a KS-ID}
+    B -->|Yes| C[Governance metadata<br/>Source role · Assessment status · Permitted use]
+    C --> D[Evidence-bounded response<br/>Claims limited to what the identified source supports]
+    B -->|No| E[Do not assign a KS-ID by relevance alone]
+    A --> F[No authority by accessibility<br/>retrieval does not create eligibility]
+    C --> G[No metadata invention<br/>do not fabricate role, status, or permitted use]
+```
+
+### Required safeguards
+
+- No invented mappings: never assign a KS-ID merely because a retrieved page appears relevant.
+- No authority by accessibility: retrieval does not make a source Eligible.
+- No metadata inference: do not invent a source's role, assessment status, or permitted use when the Trust Matrix does not establish it.
+- Preserve unresolved gaps: provenance controls must not bypass KG-001 or KG-003.
+- Keep changes isolated: Change 04 establishes source lineage; Change 05 addresses whether individual claims are adequately supported.
+- Keep external-source handling separate: Change 06 remains responsible for the external-web controls defined in the specification.
+
+### Verification approach
+
+Section 6.4 already identifies the primary verification cases: Q1, Q3, Q5, Q8, Q15, Q16, and Q19. These should be used to check whether source references can be traced to governed identities and whether the corresponding metadata is preserved.
+
+Q3 is particularly important because it should retain the established relationship between KS-006 and KS-007. Q19 must continue to respect KG-003 even if CAPE retrieves potentially relevant Confluence pages. Q5 should verify that identifying the correct KS-ID does not, by itself, justify unsupported claims.
+
+A focused test of Change 04 will not constitute the full 11-case regression or clear the Coverage-Honesty Gate.
+
+### Next Steps Gateway
+
+1. Apply the four documentation-only cleanups to Page 10.
+2. Keep Change 03 frozen.
+3. Define the exact before-and-after Skill instruction changes for Change 04.
+4. Review those changes against the existing Trust Matrix and Functional Specification.
+5. Implement only after the Change 04 design is agreed.
+6. Run the focused provenance tests and record their actual results before moving to Change 05.
+
+Decision: Change 04 is ready to enter its design step. Its implementation should not begin until the provenance rules and acceptance criteria are explicit.

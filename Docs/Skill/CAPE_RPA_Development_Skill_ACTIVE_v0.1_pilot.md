@@ -285,6 +285,22 @@ Both KS-006 and KS-007 are **Primary** sources with **Provisional** assessment s
 
 Ensure that governed evidence can be traced to its correct Knowledge Source ID and that the source's authority, assessment status, and permitted use are preserved when the answer is assembled.
 
+### Provenance relationship
+
+The required relationship is:
+
+```mermaid
+flowchart LR
+    A[Retrieved content<br/>The page or document actually accessed] --> B{Verified mapping<br/>to a KS-ID}
+    B -->|Yes| C[Governance metadata<br/>Source role · Assessment status · Permitted use]
+    C --> D[Evidence-bounded response<br/>Claims limited to what the identified source supports]
+    B -->|No| E[Do not assign a KS-ID by relevance alone]
+    A --> F[No authority by accessibility<br/>retrieval does not create eligibility]
+    C --> G[No metadata invention<br/>do not fabricate role, status, or permitted use]
+```
+
+This makes the rule intent explicit: a retrieved page is not evidence until it is verified against the governed source identity and metadata. The response remains valid only to the extent that the identified source actually supports the claim.
+
 ### Required behavior
 
 1. **Preserve source eligibility.** Retrieval, topical relevance, or page access does not by itself make a source eligible or authoritative.
