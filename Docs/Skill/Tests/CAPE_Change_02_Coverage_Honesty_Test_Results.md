@@ -80,6 +80,16 @@ The current register therefore records this position:
 - **Q19:** RPA Skill activated, KG-003 correctly enforced, and retrieved-but-non-Eligible organizational information was not used to synthesize an answer. **Pass.**
 - **Conclusion:** Change 02 is implemented, and the latest focused Q10 response validates the KG-001 behavior when the intended Skill is active. The earlier routing failures remain historical evidence; explicit Skill activation in this test does not prove routine routing reliability. The Coverage-Honesty Gate remains open pending Q11 and Q12 results and full regression evidence, including Q19.
 
+### Change 03 freeze and Change 04 entry decision
+
+- **Change 03 implementation complete for this iteration.**
+- **Change 03 freeze recorded.** The Q3 source-selection criterion passed under explicit Skill activation, but the broader Q3 answer quality and claim-grounding checks remain separate downstream validation.
+- **Full Q3 validation remains pending.** Lifecycle completeness and claim-level support are not reopened under Change 03.
+- **Change 04 scope defined.** Change 04 adds KS-ID provenance traceability without changing source eligibility or authority.
+- **Change 04 implementation not started.**
+- **The next implementation activity is Change 04 — KS-ID Provenance Traceability.**
+- **The resulting Skill version is frozen before formal regression begins.**
+
 Do not run the 11-case regression yet. Record the Q10 pass while preserving earlier failures, then obtain the required Q11 and Q12 results and establish the regression evidence before clearing the gate.
 
 ## 4. Test case Q10 — AutoDrive coding standards

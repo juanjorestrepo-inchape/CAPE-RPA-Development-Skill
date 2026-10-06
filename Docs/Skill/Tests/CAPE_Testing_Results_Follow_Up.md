@@ -356,3 +356,20 @@ The stored KS-006 source transcription lists the ten phases as Request & Approva
 Change 03's source-selection behavior passes for this observed, explicitly activated execution; **Change 03 is not fully validated by this Q3 result**. Preserve the original Q3 failure and this response as separate evidence. Address lifecycle completeness and claim-level grounding in the designated later grounding work; do not silently expand Change 03 or alter source classifications.
 
 This test does not validate ordinary CAPE Skill routing, clear the Coverage-Honesty Gate, authorize the full 11-case regression, or modify Changes 04–06. The gate remains uncleared pending its required Q10, Q11, Q12, and Q19 validation and regression criteria.
+
+### Change 03 freeze and Change 04 entry decision
+
+- **Change 03 implementation complete for this iteration.**
+- **Change 03 freeze recorded.** The source-selection rule is preserved as a bounded implementation scope.
+- **Q3 focused source-selection criterion passed.** The observed execution selected **KS-006** as the governing lifecycle source and kept **KS-007** as the complementary architecture-review source.
+- **Full Q3 validation remains pending.** Lifecycle completeness and claim-grounding checks are downstream validation requirements and do not reopen Change 03.
+- **Change 04 scope defined.** Change 04 is the provenance-traceability gate: it requires source lineage without changing source eligibility or source authority.
+- **Change 04 implementation not started.**
+- **Full 11-case regression remains pending.**
+- **Coverage-Honesty Gate not cleared.**
+
+The separation between implementation and validation is appropriate. Change 04 must add provenance traceability without silently changing source eligibility, source authority, or the frozen source-selection behavior. The **Change-Specific Freeze Checkpoints** therefore remain in place until the explicit Change 04 design and validation gate are complete. The resulting Skill version is frozen before formal regression begins.
+
+### Change 04 design boundary
+
+Change 04 must ensure that content used as governed evidence can be traced to the correct Knowledge Source ID and that its authority and permitted use are preserved. This is a provenance control only. It must not broaden eligibility, invent metadata, or override the established source hierarchy. A retrieved page is not automatically an Eligible source; a correct KS-ID does not by itself justify unsupported claims. The rule set remains explicitly limited to the current governed evidence boundary and to the later claim-grounding work that follows this design gate.
