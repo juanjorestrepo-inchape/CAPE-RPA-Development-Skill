@@ -72,9 +72,7 @@ This routing guard selects the applicable domain Skill; it does not override CAP
 
 ### Source Access Does Not Expand the Evidence Boundary
 
-Access to Confluence, Service Desk, external web content, repositories, or other CAPE-connected sources does not expand the validated evidence boundary.
-
-When this Skill is active, retrieved content is not evidence unless it is in the validated set and eligible for the requested use.
+Retrieved content is governed evidence only when it is in the validated set and eligible for the requested use; access alone does not expand the evidence boundary.
 
 For each retrieved source:
 
@@ -85,8 +83,6 @@ For each retrieved source:
 5. Do not treat a broader organizational source as an RPA authority merely because it contains related terminology.
 6. If relevant information exists outside the boundary, say it is not validated for this Skill.
 7. Do not use accessible content to bypass a declared Knowledge Gap.
-
-> **Retrieval access does not grant evidence authority.**
 
 ## 3. Request Classification
 
@@ -127,26 +123,15 @@ If the requested requirement, standard, policy, procedure, platform practice, or
 
 When no Eligible evidence supports the requested guidance:
 
-1. Identify the request as an in-scope RPA request.
-2. Classify the request.
-3. Check the available Eligible sources and known gaps.
-4. Determine whether sufficient evidence exists.
-5. If not, explicitly disclose the knowledge gap.
-6. Do not generate, synthesize, infer, or recommend an organization-specific standard from general knowledge.
-7. Do not present general industry/vendor practice as an Inchcape requirement.
-8. Do not rely on a source merely because it is accessible if it is not Eligible for the requested use.
-9. Where an owner, repository, or escalation path is explicitly established by an Eligible source, identify it as follow-up evidence rather than as answer evidence.
-10. Stop at the evidence boundary.
-
-### Follow-up claims are also evidence-bounded
-
-All follow-up claims require Eligible evidence. Do not infer an owner, repository, escalation path, review role, or documentation location unless an Eligible source establishes it.
+1. Confirm the RPA context and classify the request.
+2. Check Eligible sources and known gaps; determine whether they support the request.
+3. Disclose any gap. Do not infer or synthesize Inchcape requirements from general knowledge or accessible ineligible sources.
+4. Give a follow-up path only when an Eligible source establishes it; otherwise use the rule below.
+5. Stop at the evidence boundary.
 
 ### Follow-Up Boundary Enforcement
 
-A coverage-gap response must apply the evidence boundary to the proposed follow-up path as strictly as it applies to the substantive answer.
-
-If the validated knowledge boundary does not establish an owner, team, repository, reviewer, escalation route, or documentation location, **do not recommend one by inference**.
+Apply the evidence boundary equally to substantive guidance and follow-up. Name an owner, team, repository, reviewer, escalation route, or documentation location only when an Eligible source establishes its role and relevance.
 
 Do not use phrases such as:
 
@@ -161,12 +146,6 @@ Do not use phrases such as:
 
 unless an Eligible source establishes the relevance and role of that entity.
 
-### Working label
-
-**Iteration 2 Hardening Candidate — Q10 Post-Gap Change**
-
-This label marks the active working copy for the narrow Q10 hardening change only. It does not change the approved pilot status or evidence boundary.
-
 ### KG-001 — No Substitute Standard After a Declared Gap
 
 When a user requests an Inchcape-approved or AutoDrive-specific coding standard and the validated knowledge boundary identifies **KG-001 — No validated AutoDrive coding-standard source**, the Skill must:
@@ -178,44 +157,17 @@ When a user requests an Inchcape-approved or AutoDrive-specific coding standard 
 5. Avoid offering a non-authoritative draft as an alternative to the requested organizational standard, even if labelled informal or non-authoritative.
 6. State the coverage-gap response and stop. Do not add a proposal, invitation, or follow-up offer to create the missing standard.
 
-**Acceptance condition:** For a request that triggers KG-001, the response must expose the gap and stop without offering an alternative standard. A disclaimer that the draft is non-authoritative does not satisfy this condition if the Skill still offers to produce it.
+**Acceptance condition:** Expose KG-001 and stop. Offering even a clearly non-authoritative substitute draft fails.
 
-This rule does not create or authorize a coding standard, or change the Knowledge Set, taxonomy, source eligibility, or Trust Matrix. It governs only the response when the current knowledge boundary cannot support the requested organizational standard. It is limited to Q10 and does not change Q19 or its required KG-003 decline behavior.
+This rule creates no standard and changes no Knowledge Set, taxonomy, eligibility, or Trust Matrix classification. It applies to any request seeking an Inchcape-approved or AutoDrive-specific coding standard covered by KG-001. Q10 is the mandatory test case for this boundary; Q19 remains independently governed by KG-003.
 
 ### Deterministic Rule
 
-If the authoritative follow-up path is not established:
-
-> **State that the appropriate authoritative follow-up path is not established within the current validated knowledge boundary and stop there.**
-
-A searchable repository, Confluence space, page title, project page, contact name, or related document does not establish ownership, authority, or escalation responsibility.
+If an Eligible source establishes no authoritative follow-up path, state: **The appropriate authoritative follow-up path is not established within the current validated knowledge boundary.** Search results, accessible pages, or related documents do not establish ownership or authority.
 
 ### Coverage-Gap Response Requirement
 
-For an unresolved organizational question, use:
-
-**Coverage Gap**  
-The validated knowledge base does not establish the requested information.
-
-**Evidence Boundary**  
-No Eligible source currently supports the requested requirement, distinction, or usage rule.
-
-**Known Gap**  
-Identify the applicable Knowledge Gap ID when available.
-
-**Available Follow-Up**  
-State only an evidence-supported follow-up path. If none is established, state:
-
-> The appropriate authoritative follow-up path is not established within the current validated knowledge boundary.
-
-**Boundary**  
-Do not infer ownership, repository authority, escalation responsibility, or process from related search results or accessible documentation.
-
-### Critical Constraint
-
-Do not contradict a declared knowledge gap by providing an unsupported owner, team, repository, or escalation path after the gap is identified.
-
-**Knowledge gap → bounded response → no inferred follow-up authority.**
+For an unresolved organizational question, state that validated guidance is unavailable, identify the evidence boundary and applicable Knowledge Gap ID, and provide only an Eligible-source-supported follow-up path. If none is established, use the Deterministic Rule. Do not infer ownership, authority, or process from related or accessible material.
 
 ### Prohibited fallback behavior
 
@@ -236,26 +188,11 @@ Do not provide replacement technical guidance for the original organizational re
 
 ### Partial evidence
 
-If Eligible evidence supports only part of the request:
-
-- provide only the supported portion;
-- explicitly identify what remains unsupported;
-- do not infer the missing portion from general knowledge;
-- label the response **Partial** where appropriate.
-
-Partial evidence does not authorize completion of an organizational standard by inference.
+Provide only the supported portion, identify what remains unsupported, and label the response **Partial** where appropriate. Do not infer missing requirements or complete an organizational standard from general knowledge.
 
 ### Evidence hierarchy remains unchanged
 
-This hardening change does not modify source authority or the Trust Matrix.
-
-The existing authority rules remain:
-
-**Primary > Supporting**
-
-Source authority, assessment status, applicability, and permitted use remain governed by the existing Trust Matrix and Functional Specification.
-
-Change 02 strengthens **what the Skill may say when evidence is absent**; it does not create new sources or change source authority.
+Change 02 governs responses when evidence is absent; it does not create sources or alter the Trust Matrix. Existing authority remains **Primary > Supporting**, with status, applicability, and permitted use determined by the Trust Matrix and Functional Specification.
 
 ## 4.2 Change 03 — RPA Source Disambiguation
 
@@ -281,59 +218,53 @@ Both KS-006 and KS-007 are **Primary** sources with **Provisional** assessment s
 
 ## 4.3 Change 04 — KS-ID Provenance Traceability
 
-**Purpose**
+### KS-ID Provenance and Source Identity
 
-Ensure that governed evidence can be traced to its correct Knowledge Source ID and that the source's authority, assessment status, and permitted use are preserved when the answer is assembled.
+When retrieved content is represented as governed evidence, preserve its verified source identity and applicable governance metadata.
 
-### Provenance relationship
+#### Source Identity
 
-The required relationship is:
+- When the identity of a retrieved source can be verified against the governed source register, preserve the corresponding KS-ID.
+- Do not assign or infer a KS-ID solely from topical relevance, keywords, similar titles, repository location, or search-result position.
+- Do not assume that mirrored pages or similarly titled documents represent the same governed source unless the governed records establish that relationship.
+- If source identity cannot be verified, do not represent the source as verified governed evidence.
 
-```mermaid
-flowchart LR
-    A[Retrieved content<br/>The page or document actually accessed] --> B{Verified mapping<br/>to a KS-ID}
-    B -->|Yes| C[Governance metadata<br/>Source role · Assessment status · Permitted use]
-    C --> D[Evidence-bounded response<br/>Claims limited to what the identified source supports]
-    B -->|No| E[Do not assign a KS-ID by relevance alone]
-    A --> F[No authority by accessibility<br/>retrieval does not create eligibility]
-    C --> G[No metadata invention<br/>do not fabricate role, status, or permitted use]
-```
+#### Governance Metadata
 
-This makes the rule intent explicit: a retrieved page is not evidence until it is verified against the governed source identity and metadata. The response remains valid only to the extent that the identified source actually supports the claim.
+For a source used as governed evidence, preserve verified:
+- Source Role.
+- Assessment Status.
+- Permitted Use.
 
-### Required behavior
+Treat these as separate governance attributes. Do not infer one attribute from another or derive them solely from the KS-ID.
 
-1. **Preserve source eligibility.** Retrieval, topical relevance, or page access does not by itself make a source eligible or authoritative.
-2. **Require source lineage.** Each claim that relies on governed evidence must be traceable to the corresponding KS-ID and to the Rule/Trust Matrix metadata that governs its use.
-3. **No invented mappings.** Do not assign a KS-ID to a page or document merely because it appears relevant to the question.
-4. **No authority by accessibility.** A retrieved Confluence page is not upgraded to an Eligible source by visibility or access.
-5. **No metadata invention.** Do not infer a source's role, assessment status, or permitted use if the Trust Matrix or Functional Specification does not establish it.
-6. **Keep unresolved gaps explicit.** Provenance controls must not bypass KG-001, KG-003, or any other validated gap.
-7. **Keep Change 04 isolated.** This change governs source lineage and traceability only; it does not resolve whether an individual claim is adequately supported. That is a separate design gate.
-8. **Keep external-source handling separate.** Change 06 remains responsible for external-web controls and evaluation rules.
+Do not modify, upgrade, or broaden a source's governance classification.
 
-### Required safeguards
+Preserve applicable restrictions, including Supporting status and Role Ambiguity.
 
-- No invented mappings: never assign a KS-ID based on relevance alone.
-- No authority by accessibility: retrieval is not eligibility.
-- No metadata inference: do not fabricate a source's role, assessment status, or permitted use.
-- Preserve unresolved gaps: provenance controls must not bypass KG-001 or KG-003.
-- Keep changes isolated: Change 04 establishes source lineage; Change 05 addresses support adequacy for individual claims.
-- Keep external-source handling separate: Change 06 remains responsible for external-web controls defined in the specification.
+If required governance metadata cannot be verified, disclose the limitation rather than inventing or approximating the missing information.
 
-### Verification approach
+#### Eligibility and Evidence Boundaries
 
-Use the primary verification cases identified for this change: Q1, Q3, Q5, Q8, Q15, Q16, and Q19. These confirm that source references can be traced to the governed KS-ID and that the metadata remains intact.
+Source identity, including a KS-ID, does not establish eligibility, authority, or suitability. After verifying identity and available metadata, apply the existing Trust Matrix and eligibility rules; access alone does not make content eligible.
 
-Q3 remains critical because it must retain the relationship between **KS-006 — RPA Project Intake Framework** and **KS-007 — RPA Architecture Review Framework** without allowing broader DAP guidance to displace the RPA-specific source. Q19 must remain consistent with KG-003 even when relevant Confluence content is accessible. Q5 must confirm that identifying the correct KS-ID does not itself justify unsupported claims.
+Provenance mapping must not bypass KG-001, KG-003, or any other declared Knowledge Gap or evidence-boundary restriction.
 
-This focused provenance test is not a substitute for the full 11-case regression and does not clear the Coverage-Honesty Gate.
+Where provenance is insufficient, apply the existing eligibility, coverage-gap, and response rules. Other independently verified Eligible sources may still be used where those rules permit.
 
-### Implementation boundary
+#### Response Traceability
 
-Change 04 establishes a requirement for source lineage and metadata preservation only. It does not change source eligibility, the Trust Matrix, the authority hierarchy, or the frozen Change 03 source-selection behavior.
+Preserve the association between evidence used in the response and its verified source identity and applicable governance classification.
 
-The change must therefore be designed as a traceability control: as long as the governed source is eligible and authority is preserved, the system can cite the relevant KS-ID and metadata without expanding the evidence boundary or broadening the source set.
+Keep the existing source-reference and response-format behavior unchanged.
+
+Do not introduce a mandatory visible KS-ID line, new citation format, or claim-level attribution scheme through this change.
+
+A KS-ID establishes source identity; it does not by itself establish that a particular claim is supported by that source. Claim-level grounding is addressed separately in Change 05.
+
+#### Provenance Limitation
+
+If runtime evidence is insufficient to verify source identity or metadata, disclose the limitation, maintain the evidence boundary, and do not claim deterministic provenance.
 
 ## 5. Authority and Conflict Handling
 
