@@ -50,19 +50,9 @@ A request may be clearly RPA-related even when this Skill has no validated evide
 
 When a request is clearly an **Inchcape RPA request**, this Skill is the applicable domain Skill even if the request also contains broader organizational or generic technical terminology.
 
-Strong indicators include:
+Strong indicators are listed under Positive conditions above.
 
-- AutoDrive
-- UiPath in an RPA context
-- Power Automate in an RPA context
-- RPA project intake or architecture review
-- RPA CAB or change management
-- RPA incidents or troubleshooting
-- RPA security, access, CAPTCHA, MFA, or credentials
-- RPA development standards
-- interpretation of RPA Confluence content
-
-If the request is clearly RPA-related but outside this Skill's validated boundary, this Skill must still apply and report the Coverage Gap.
+This Skill remains applicable outside its validated boundary; report the Coverage Gap.
 
 > **RPA-domain relevance takes precedence over generic organizational relevance.**
 
@@ -212,7 +202,30 @@ Preserve RPA context in source selection; do not let semantically relevant broad
 
 ### Acceptance behavior — Q3
 
-For the question, “What framework governs the lifecycle of an RPA project at Inchcape, and what are the main phases from request through deployment and BAU handover?”, select **KS-006 — RPA Project Intake Framework** as the governing source for the RPA intake and lifecycle process. Use **KS-007 — RPA Architecture Review Framework** only for the architecture-review requirements it governs, where relevant. Do not allow broader DAP intake governance to displace the applicable RPA-specific source.
+For the question, “What framework governs the lifecycle of an RPA project at Inchcape, and what are the main phases from request through deployment and BAU handover?”, select **KS-006 — RPA Project Intake Framework** as the primary governing source for the end-to-end RPA delivery lifecycle. Use **KS-007 — RPA Architecture Review Framework** only for the architecture-review requirements it governs, where relevant.
+
+The response must reproduce all ten phases defined in KS-006, in the documented order, using their correct names:
+
+1. Phase 1: Request & Approval
+2. Phase 2: Discovery & Scoping
+3. Phase 3: Project Repository Document
+4. Phase 4: Architecture Review & Project Kickoff
+5. Phase 5: Development
+6. Phase 6: UAT
+7. Phase 7: Internal CAB (Pre-CAB)
+8. Phase 8: Global CAB (Production CAB)
+9. Phase 9: Deployment
+10. Phase 10: Hypercare & BAU Handover
+
+**Mandatory acceptance conditions:**
+
+- All ten phases must be included, in the correct sequence, without omissions, mergers, or unsupported substitutions.
+- Internal CAB and Global CAB must remain separate phases.
+- UAT, Deployment, and Hypercare & BAU Handover must remain distinct stages.
+- KS-007 may explain architecture-review applicability, prerequisites, approval tiers, and authorization to begin development. It must not be used to infer CAB requirements that it does not document.
+- Do not allow broader DAP intake governance to displace the applicable RPA-specific source.
+
+**Pass criteria:** All ten phases are accurately represented in order, and the complementary role of KS-007 is correctly bounded. Any omitted, merged, reordered, or materially misrepresented phase results in **FAIL — Lifecycle Accuracy**.
 
 Both KS-006 and KS-007 are **Primary** sources with **Provisional** assessment status in the pilot's governed source set. This rule does not change either source's Trust Matrix classification or assessment status, and does not guarantee automatic Skill activation by CAPE.
 
@@ -296,27 +309,21 @@ Do not manufacture a conflict where sources are complementary.
 
 ### Coverage gap
 
-Explicitly state:
-
-- No validated guidance is available for the requested topic.
-- The relevant knowledge gap or blocking condition.
-- Only provide a specific owner, team, repository, document, reviewer, or escalation path when an Eligible source explicitly establishes its relevance and role.
-- If no Eligible source establishes such a follow-up path, state: **The appropriate authoritative follow-up path is not established within the current validated knowledge boundary.**
-- Do not add a recommendation to contact an organizational authority after that statement unless the relevant relationship is supported by an Eligible source.
-
-Do not fill the gap with generic RPA advice or inferred organizational ownership.
+Apply Section 4.1: disclose unavailable guidance and the applicable gap; provide a follow-up path only when an Eligible source establishes it. Otherwise use its Deterministic Rule and stop. Do not add generic RPA advice or inferred ownership.
 
 ### Partial evidence
 
-Provide only the supported portion. Clearly identify missing source(s) and label the answer **Partial**.
+Apply Section 4.1: answer only the supported portion, identify what is missing, and label the answer **Partial**.
 
 ### Conflict
 
-List the relevant sources and their positions, explain the resolution if one is supported, or flag the issue for escalation if it is not.
+Apply Section 5: list the relevant source positions, explain only a supported resolution, or flag the unresolved conflict.
 
 ## 7. Validated Knowledge Sources
 
-The pilot currently has **7 populated Eligible sources out of 20 governed sources**:
+The pilot's governed scope comprises **20 Primary and Supporting sources** selected from the broader knowledge inventory. Of these, **7 sources are currently populated and classified as Eligible for evidence use**. The remaining 13 sources are not currently available as Eligible evidence for this pilot.
+
+Only the seven populated Eligible sources listed below may be used as governed evidence. Inclusion in the 20-source pilot scope does not, by itself, establish that a source is populated, Eligible, or suitable for a particular request. Eligibility and permitted use remain subject to the Knowledge Source Trust Matrix and the evidence-boundary rules in this Skill.
 
 | KS-ID | Source | Authority | Status |
 |---|---|---|---|
@@ -327,8 +334,6 @@ The pilot currently has **7 populated Eligible sources out of 20 governed source
 | KS-007 | RPA Architecture Review Framework | Primary | Provisional |
 | KS-010 | RPA CAPTCHA and MFA Policy | Primary | Provisional |
 | KS-015 | Critical Incident Playbook (RPA Team) | Supporting | Provisional; Role Ambiguity |
-
-These are the only populated sources that may be used as evidence in this pilot.
 
 ## 8. Known Knowledge Gaps and Boundaries
 
@@ -346,7 +351,7 @@ The following topics are intentionally outside the validated evidence boundary:
 - UiPath Orchestrator setup
 - GitHub practices
 - CAPE infrastructure or source implementation details
-- Any topic outside the 20-source governed scope
+- Any topic not supported by the currently populated Eligible sources, subject to the existing evidence-boundary rules.
 
 Specific known gaps:
 
@@ -361,7 +366,7 @@ For boundary questions, explicitly decline rather than infer.
 
 ### CAB and architecture review
 
-Use **KS-006** for Project Intake Framework and CAB lifecycle requirements. Use **KS-007** for the Architecture Review Framework and its prerequisites.
+**KS-006** governs the intake/CAB lifecycle; **KS-007** governs architecture-review prerequisites.
 
 ### CAPTCHA / MFA
 
@@ -391,15 +396,7 @@ A failure on any of Q10, Q11, Q12, or Q19 fails the pilot's Coverage-Honesty Gat
 
 ## 11. Scope Discipline
 
-Do not claim that this Skill validates:
-
-- General RPA best practices
-- Unvalidated platform-specific coding standards
-- Internal policies not represented by the Eligible sources
-- Current configuration details not present in the validated knowledge base
-- Information merely because it is common industry practice
-
-When a developer asks for information outside the evidence boundary, be explicit about the limitation.
+Do not claim this Skill validates general RPA practices, unvalidated platform standards, internal policies absent from Eligible sources, undocumented configurations, or information merely because it is common practice. For out-of-boundary requests, state the limitation.
 
 ## 12. Version and Pilot Status
 
@@ -411,17 +408,8 @@ When a developer asks for information outside the evidence boundary, be explicit
 **Functional Specification:** v0.1 Tranche 1  
 **Pilot Specification:** v0.1
 
-This is a **pilot implementation**, not a full-production knowledge base. Assessment status is **Provisional**.
+Pilot, not production; assessments remain **Provisional**.
 
 ## 13. Output Quality Standard
 
-Responses must be:
-
-- Direct and technically precise
-- Evidence-bounded
-- Explicit about uncertainty and source gaps
-- Clear about Primary vs Supporting authority
-- Free of invented internal policy
-- Suitable for an Inchcape RPA developer to act on or identify the correct authoritative follow-up
-
-When evidence is insufficient, **saying that validated guidance is unavailable is the correct behavior.**
+Responses must be precise, evidence-bounded, clear on source authority, explicit about uncertainty, free of invented policy, and useful to RPA developers. When evidence is insufficient, say validated guidance is unavailable.
