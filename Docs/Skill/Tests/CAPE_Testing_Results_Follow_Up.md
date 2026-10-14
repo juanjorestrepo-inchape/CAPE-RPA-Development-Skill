@@ -641,3 +641,52 @@ Rovo's summary included the note *"it shouldn't if the record is accurate, since
 ### Immediate next activity
 
 Confirm whether CAPE is loading the current local Skill text (which includes §4.3 Change 04). If it is, this constitutes the first execution under Change 04 instructions and the IR must be updated to record Change 04 as implemented. If it is not, identify the snapshot CAPE is loading and resolve the gap before running behavior tests.
+
+---
+
+## 18. Change 04 — Design gateway — 2026-10-14
+
+### Context
+
+Following the documentation review closure in Section 17, ChatGPT proposed the design scope for Change 04 — KS-ID Provenance Traceability and issued an approval gateway before proceeding to detailed specification. No changes to the active Skill and no formal regression activity are authorized until the gateway is resolved.
+
+### Proposed design scope — five components
+
+**Component 1 — Source identity**
+Rules for associating retrieved content with a verifiable KS-ID. A KS-ID must not be assigned or inferred from topical relevance, keywords, similar titles, repository location, or search-result position.
+
+**Component 2 — Metadata integrity**
+Treatment of Source Role, Assessment Status, and Permitted Use as separate, independently verifiable attributes. Unverified values must be preserved explicitly as UNVERIFIED rather than approximated or inferred from the KS-ID or from adjacent metadata.
+
+**Component 3 — Uncertainty control**
+Required behavior when identifiers are missing, discrepancies exist between pages (e.g., Trust Matrix §26.1 vs. IR §7), or source identity cannot be confirmed. The Skill must disclose the limitation rather than silently defaulting to an assumed value.
+
+**Component 4 — Claim traceability**
+Relationship between source, evidence fragment, and supported claim, distinguishing documented facts from interpretations. This component prepares the boundary between Change 04 (provenance) and Change 05 (claim-level grounding) without conflating them.
+
+**Component 5 — Acceptance criteria and tests**
+Positive and negative test cases for Q1, Q3, Q5, Q8, Q15, Q16, and Q19, with observable results and recorded evidence. Each case must produce verifiable evidence that distinguishes implementation from intended behavior.
+
+### Technical risk to resolve before implementation
+
+Skill instructions alone do not guarantee that CAPE exposes source metadata that is sufficiently complete and stable to maintain verified correspondence at runtime. The design must distinguish between:
+
+- What the Skill can enforce through its instructions (identity-check rules, uncertainty-disclosure behavior, eligibility application)
+- What depends on the data and capabilities delivered by the connectors (whether KS-IDs, Source Roles, Assessment Status values, and Permitted Use are exposed in the retrieval trace at all)
+
+This boundary must be explicit in the specification and in the acceptance criteria. If connector-level metadata is unavailable, the Skill must disclose that limitation and apply existing eligibility, coverage-gap, and response rules — not claim deterministic provenance from incomplete data.
+
+### Approval gateway
+
+> **Gateway question (ChatGPT, 2026-10-14):** Do you approve these five components as the design scope for Change 04? Once confirmed, the detailed specification and acceptance criteria will be prepared, without modifying the active Skill or starting the formal regression.
+
+**Gateway status: OPEN — awaiting owner decision.**
+
+A response of "approved" or "approved with modifications" is required before the detailed specification is drafted. Partial approval of individual components must be recorded explicitly. Do not proceed to specification or begin any Skill modification until the gateway is closed.
+
+### What this gateway does not authorize
+
+- Any modification to the active Skill text (§4.3 already present from commit `a822fdb` is the current implementation baseline)
+- Starting the formal 11-case regression
+- Claiming Change 04 as validated
+- Proceeding to Change 05 design
