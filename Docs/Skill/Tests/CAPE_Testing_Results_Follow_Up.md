@@ -4,14 +4,15 @@
 
 Evaluation results are run-specific and should not be collapsed into a single activation claim. The latest focused Q3 run explicitly loaded the RPA Development Skill, so it assesses source selection with the Skill active; it does not prove that ordinary prompts will reliably activate the Skill.
 
-Current position as of 2026-10-14 (latest Q3 evidence received; exact execution timestamp not supplied):
+Current position as of 2026-10-14 (documentation review closed; Q3 evidence and Change 04 status updated):
 
 - **Change 01 — Activation:** earlier activation evidence remains recorded. The explicitly loaded Q3 run does not validate automatic routing.
 - **Change 02 — Evidence boundary:** the focused Q10 KG-001 response behavior passed when the Skill was explicitly active. The overall Coverage-Honesty Gate remains uncleared.
-- **Change 03 — Source disambiguation and lifecycle:** the 2026-10-04 focused run passed source selection but was a **Partial Pass** overall; the earlier Stage A Q3 run remains a historical **FAIL — Lifecycle Accuracy**. The newly supplied focused Q3 response meets the current source-selection and ten-phase lifecycle criteria. Preserve all runs separately.
-- **Change 04 — KS-ID provenance:** the new Q3 response does not establish retrieval provenance or claim-level support; no source retrieval trace was supplied. The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**.
+- **Change 03 — Source disambiguation and lifecycle:** the 2026-10-04 focused run passed source selection but was a **Partial Pass** overall; the earlier Stage A Q3 run remains a historical **FAIL — Lifecycle Accuracy**. The 2026-10-14 focused Q3 response meets the current source-selection and ten-phase lifecycle criteria. All runs preserved separately.
+- **Change 04 — KS-ID provenance:** instructions present in local Skill §4.3 (commit `a822fdb`); CAPE configuration verification and formal acceptance remain pending. The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**.
+- **Governed source reconciliation — KS-003–010:** Source Role and Assessment Status remain **UNVERIFIED** in Implementation Record §7. Trust Matrix §26.1 records Primary / Provisional for these six sources but has not been reconciled with the IR. Do not treat those values as resolved until all three pages (Trust Matrix §26.1, IR §7, Taxonomy §11) are published, consistent, and re-verified.
 - **End-to-end review — 2026-10-08:** the pasted Skill has a coherent governance design; the review recommends focused clarifications and tests, not a wholesale rewrite. These observations are recorded in Section 15 and do not themselves authorize Skill changes.
-- **Next hardening:** claim-level grounding remains a separate change; do not fold it into Change 03.
+- **Next hardening:** Change 04 CAPE verification is the immediate next activity. Claim-level grounding (Change 05) remains separate; do not fold it into Change 03 or Change 04.
 
 Current status by test:
 - Q3: **Focused PASS — source selection and lifecycle accuracy** in the newly supplied response; the earlier Stage A **FAIL — Lifecycle Accuracy** remains historical. Provenance/claim-level grounding was not assessed because no retrieval trace was supplied.
@@ -599,3 +600,44 @@ The governing framework is **KS-006, RPA Project Intake Framework** (Primary, As
 This run provides a focused **PASS** for the current Q3 source-selection and lifecycle-accuracy acceptance criteria. It does not erase or overwrite the earlier Stage A **FAIL — Lifecycle Accuracy**, which remains historical evidence in Section 14. It does not establish automatic Skill routing, Change 04 provenance, claim-level grounding, or full Q3 validation beyond the criteria assessed here.
 
 The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**. The full 11-case regression and Coverage-Honesty Gate remain pending.
+
+---
+
+## 17. Documentation review closure — 2026-10-14
+
+### Context
+
+Following the focused Q3 result recorded in Section 16, the Rovo project context summary was cross-checked against the Confluence Implementation Record v0.1-r1 (last confirmed v42, published 2026-10-09 15:06 UTC) and the local Skill file (commit `a822fdb`) before being sent to ChatGPT for Change 04 design input. Three corrections were identified and applied to the summary. ChatGPT confirmed alignment with those corrections and closed the documentation review for the items below.
+
+> ChatGPT note (verbatim, translated): *"The corrections are aligned with the previous observations. Based on the summary shared, we can close the documentary review of these points and advance to the Change 04 design, with one caveat: I have not directly inspected the updated Confluence version, so this confirmation refers to the described changes, not to an independent verification of the published content."*
+
+This caveat is preserved: the confirmation covers the described changes, not a live Confluence inspection.
+
+### Corrections applied to the Rovo summary
+
+**Correction 1 — KS-003–010 Source Role and Assessment Status:**
+Rovo's summary presented `Primary` / `Provisional` as resolved facts for KS-003–010. These values originate from Trust Matrix §26.1 (published 2026-10-13) and have not been reconciled with Implementation Record §7, which still shows `UNVERIFIED` for both fields. The corrected text qualifies both as Trust Matrix §26.1 values pending reconciliation.
+
+**Correction 2 — KS-015 Assessment Status:**
+Rovo's summary stated `Provisional + Role Ambiguity`. Implementation Record §7 lists `Role Ambiguity` only under Assessment Status; `Provisional` appears in Trust Matrix §26.1 but not separately in IR §7. The corrected text treats these as unreconciled until both pages are aligned.
+
+**Correction 3 — Change 04 note:**
+Rovo's summary included the note *"it shouldn't if the record is accurate, since Change 04 is still pending."* This is outdated: Change 04 instructions are present in the local Skill §4.3 (commit `a822fdb`). The Confluence IR still shows Change 04 as `PENDING IMPLEMENTATION` because the IR has not been updated. The corrected text reframes the question as: *which version is CAPE actually loading?*
+
+### Engineering position as of 2026-10-14 (post-review)
+
+| Element | Status |
+|---|---|
+| Q3 documentation | Historical FAIL (Section 14) and 2026-10-14 focused PASS (Section 16) preserved separately |
+| Change 03 — Source Disambiguation | Implemented and frozen |
+| Change 04 — KS-ID Provenance Traceability | Instructions present in local Skill §4.3; CAPE configuration verification and formal acceptance pending |
+| Change 05 — Claim-Level Grounding | Pending |
+| Change 06 — Controlled External Web Handling | Pending |
+| Governed source reconciliation (KS-003–010) | Pending — IR §7 UNVERIFIED; Trust Matrix §26.1 not reconciled with IR or Taxonomy §11 |
+| Formal 11-case regression | Pending |
+| Coverage-Honesty Gate | NOT CLEARED |
+| Production readiness | Not established |
+
+### Immediate next activity
+
+Confirm whether CAPE is loading the current local Skill text (which includes §4.3 Change 04). If it is, this constitutes the first execution under Change 04 instructions and the IR must be updated to record Change 04 as implemented. If it is not, identify the snapshot CAPE is loading and resolve the gap before running behavior tests.
