@@ -4,17 +4,17 @@
 
 Evaluation results are run-specific and should not be collapsed into a single activation claim. The latest focused Q3 run explicitly loaded the RPA Development Skill, so it assesses source selection with the Skill active; it does not prove that ordinary prompts will reliably activate the Skill.
 
-Current position as of 2026-10-08:
+Current position as of 2026-10-14 (latest Q3 evidence received; exact execution timestamp not supplied):
 
 - **Change 01 — Activation:** earlier activation evidence remains recorded. The explicitly loaded Q3 run does not validate automatic routing.
 - **Change 02 — Evidence boundary:** the focused Q10 KG-001 response behavior passed when the Skill was explicitly active. The overall Coverage-Honesty Gate remains uncleared.
-- **Change 03 — Source disambiguation:** the 2026-10-04 focused Q3 run passed the observed source-selection criterion but was a **Partial Pass** overall. The newly registered Stage A Q3 run is a **Fail** against its acceptance criteria because the lifecycle is incomplete and the answer includes unsupported or misattributed details. Preserve both results separately.
-- **Change 04 — KS-ID provenance:** the Stage A Q3 run does not validate Change 04. Its Load Skill result contains the older Q10-only KG-001 wording and no Change 04 section, so it did not execute the current local Skill text.
+- **Change 03 — Source disambiguation and lifecycle:** the 2026-10-04 focused run passed source selection but was a **Partial Pass** overall; the earlier Stage A Q3 run remains a historical **FAIL — Lifecycle Accuracy**. The newly supplied focused Q3 response meets the current source-selection and ten-phase lifecycle criteria. Preserve all runs separately.
+- **Change 04 — KS-ID provenance:** the new Q3 response does not establish retrieval provenance or claim-level support; no source retrieval trace was supplied. The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**.
 - **End-to-end review — 2026-10-08:** the pasted Skill has a coherent governance design; the review recommends focused clarifications and tests, not a wholesale rewrite. These observations are recorded in Section 15 and do not themselves authorize Skill changes.
 - **Next hardening:** claim-level grounding remains a separate change; do not fold it into Change 03.
 
 Current status by test:
-- Q3: **Fail** — Stage A response failed lifecycle completeness, source-scope accuracy, and unsupported-claim criteria. The 2026-10-04 focused result remains separately recorded as a source-selection pass / overall partial pass.
+- Q3: **Focused PASS — source selection and lifecycle accuracy** in the newly supplied response; the earlier Stage A **FAIL — Lifecycle Accuracy** remains historical. Provenance/claim-level grounding was not assessed because no retrieval trace was supplied.
 - Q6: Review required
 - Q10: Historical fail; focused Change 02 response-behavior pass; full gate/regression status remains open
 - Q15: Review required
@@ -538,9 +538,64 @@ The review assessed the pasted RPA Development Skill — Pilot v0.1 for internal
 ### Priority follow-up before broader regression
 
 1. Verify that CAPE loads the exact current candidate, including the corrected KG-001 wording and Change 04, before running behavior tests.
-2. Finalize Q3 acceptance criteria for lifecycle fidelity and source scope; retain the Stage A Q3 FAIL in Section 14 until a corrected-config rerun provides new evidence.
+2. A focused Q3 rerun has now provided new source-selection and lifecycle evidence; preserve the Stage A Q3 FAIL in Section 14 as historical and assess the new run separately in Section 16. Do not treat the new response as provenance validation.
 3. Reconcile the Trust Matrix, 20-source pilot subset, and seven populated Eligible-source counts against the authoritative artifacts.
 4. Decide whether to refine compound-intent handling and the Section 4.1/Section 8 general-guidance boundary; do not treat these review recommendations as implemented.
 5. Complete the authorized focused tests, including the stated edge cases, and record evidence-based verdicts before considering the full 11-case regression or clearing the Coverage-Honesty Gate.
 
 No Skill wording was changed, no new test result was produced, and the full 11-case regression remains pending as part of this review update.
+At the time of this 2026-10-08 review, no Skill wording was changed or new test result produced. The full 11-case regression remains pending.
+
+---
+
+## 16. Focused Q3 rerun — evidence received 2026-10-14
+
+### Test metadata
+
+- **Test:** Q3 — RPA project lifecycle and architecture review
+- **Prompt:** “What framework governs the lifecycle of an RPA project at Inchcape, and what are the main phases from request through deployment and BAU handover?”
+- **Skill load evidence:** CAPE returned a `Load Skill` result naming **RPA Development Skill — Pilot v0.1**. The supplied evidence does not establish whether this was automatic routing or an explicit load.
+- **Evidence date:** 2026-10-14, when the result was supplied for review. The execution timestamp and timezone were not included.
+- **Scope:** Focused Q3 source-selection and lifecycle-accuracy check only. This is not the full 11-case regression and does not clear the Coverage-Honesty Gate.
+
+### CAPE response (verbatim)
+
+```text
+Using the RPA Development Skill for this.
+
+The governing framework is **KS-006, RPA Project Intake Framework** (Primary, Assessment Status: Provisional). It sets the end-to-end RPA delivery lifecycle, in this order:
+
+1. Phase 1: Request & Approval
+2. Phase 2: Discovery & Scoping
+3. Phase 3: Project Repository Document
+4. Phase 4: Architecture Review & Project Kickoff
+5. Phase 5: Development
+6. Phase 6: UAT
+7. Phase 7: Internal CAB (Pre-CAB)
+8. Phase 8: Global CAB (Production CAB)
+9. Phase 9: Deployment
+10. Phase 10: Hypercare & BAU Handover
+
+**Supporting governance:** KS-007, RPA Architecture Review Framework (Primary, Provisional), applies only to Phase 4. It covers when an architecture review is required, its prerequisites, approval tiers, and authorization to begin development. It does not establish CAB requirements.
+
+**Limitations:** The validated knowledge base confirms the phase names and order, but this answer does not include the detailed entry and exit criteria for each phase. I could not verify those from the validated set, so I have not described them.
+```
+
+### Assessment against current Q3 criteria
+
+| Criterion | Result | Evidence |
+|---|---|---|
+| Intended Skill named in Load Skill result | Pass for this execution | CAPE returned Load Skill for RPA Development Skill — Pilot v0.1. Automatic routing was not established. |
+| KS-006 governs end-to-end lifecycle | Pass | Response names KS-006 as the governing lifecycle framework. |
+| KS-007 limited to architecture review | Pass | Response limits KS-007 to Phase 4 and explicitly says it does not establish CAB requirements. |
+| All ten lifecycle phases and names in order | Pass | All ten phases appear in the documented sequence. |
+| Internal CAB and Global CAB remain separate | Pass | Phases 7 and 8 are distinct. UAT, Deployment, and Hypercare & BAU Handover are also distinct. |
+| Unsupported phase additions or mergers avoided | Pass | No additional lifecycle stage is introduced; missing detailed entry/exit criteria are disclosed. |
+| Retrieval provenance / claim-level grounding | Not assessed | No source retrieval queries or source-level trace were supplied with this response. |
+| **Focused Q3 source-selection and lifecycle criteria** | **PASS** | Required sources and all ten ordered phases are represented within the stated scope. |
+
+### Conclusion and limits
+
+This run provides a focused **PASS** for the current Q3 source-selection and lifecycle-accuracy acceptance criteria. It does not erase or overwrite the earlier Stage A **FAIL — Lifecycle Accuracy**, which remains historical evidence in Section 14. It does not establish automatic Skill routing, Change 04 provenance, claim-level grounding, or full Q3 validation beyond the criteria assessed here.
+
+The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**. The full 11-case regression and Coverage-Honesty Gate remain pending.
