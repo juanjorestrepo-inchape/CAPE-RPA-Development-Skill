@@ -9,7 +9,7 @@ Current position as of 2026-10-14 (documentation review closed; Q3 evidence and 
 - **Change 01 — Activation:** earlier activation evidence remains recorded. The explicitly loaded Q3 run does not validate automatic routing.
 - **Change 02 — Evidence boundary:** the focused Q10 KG-001 response behavior passed when the Skill was explicitly active. The overall Coverage-Honesty Gate remains uncleared.
 - **Change 03 — Source disambiguation and lifecycle:** the 2026-10-04 focused run passed source selection but was a **Partial Pass** overall; the earlier Stage A Q3 run remains a historical **FAIL — Lifecycle Accuracy**. The 2026-10-14 focused Q3 response meets the current source-selection and ten-phase lifecycle criteria. All runs preserved separately.
-- **Change 04 — KS-ID provenance:** instructions present in local Skill §4.3 (commit `a822fdb`); CAPE configuration verification and formal acceptance remain pending. The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**.
+- **Change 04 — KS-ID provenance:** instructions present in local Skill §4.3 (commit `a822fdb`); detailed Design Specification v0.1 registered in `Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md`; CAPE connector metadata verification and formal acceptance remain pending. The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**.
 - **Governed source reconciliation — KS-003–010:** Source Role and Assessment Status remain **UNVERIFIED** in Implementation Record §7. Trust Matrix §26.1 records Primary / Provisional for these six sources but has not been reconciled with the IR. Do not treat those values as resolved until all three pages (Trust Matrix §26.1, IR §7, Taxonomy §11) are published, consistent, and re-verified.
 - **End-to-end review — 2026-10-08:** the pasted Skill has a coherent governance design; the review recommends focused clarifications and tests, not a wholesale rewrite. These observations are recorded in Section 15 and do not themselves authorize Skill changes.
 - **Next hardening:** Change 04 CAPE verification is the immediate next activity. Claim-level grounding (Change 05) remains separate; do not fold it into Change 03 or Change 04.
@@ -680,9 +680,7 @@ This boundary must be explicit in the specification and in the acceptance criter
 
 > **Gateway question (ChatGPT, 2026-10-14):** Do you approve these five components as the design scope for Change 04? Once confirmed, the detailed specification and acceptance criteria will be prepared, without modifying the active Skill or starting the formal regression.
 
-**Gateway status: OPEN — awaiting owner decision.**
-
-A response of "approved" or "approved with modifications" is required before the detailed specification is drafted. Partial approval of individual components must be recorded explicitly. Do not proceed to specification or begin any Skill modification until the gateway is closed.
+**Gateway status: CLOSED — Approved.** Scope confirmed; detailed specification delivered and registered in Section 19 and `Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md`.
 
 ### What this gateway does not authorize
 
@@ -690,3 +688,48 @@ A response of "approved" or "approved with modifications" is required before the
 - Starting the formal 11-case regression
 - Claiming Change 04 as validated
 - Proceeding to Change 05 design
+
+---
+
+## 19. Change 04 — Detailed Design Specification v0.1 Registered — 2026-10-14
+
+### Context
+
+Following the approval of the five design scope components in Section 18, the complete **Change 04 — KS-ID Provenance Traceability Design Specification v0.1** (14 October 2026) has been registered in the repository at [`Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md`](../CAPE_Change_04_Design_Specification_v0.1.md).
+
+### Summary of Registered Specification
+
+- **Objective:** Establish verifiable correspondence between actually retrieved content, its governed source identity (`KS-ID`), and the claims supported by that content, without inferring metadata or conflating page accessibility with evidence eligibility.
+- **Out of Scope for Change 04:** Reconciling the Trust Matrix, choosing between duplicate pages without a governed decision, adding sources, altering CAPE activation logic, or building a new retrieval architecture.
+- **Five-Stage Functional Flow:**
+  1. *Contenido recuperado:* Identify actual resource, location, and available metadata.
+  2. *Resolución de identidad:* Link resource to a verified KS record (no inference from title similarity).
+  3. *Validación de gobernanza:* Check role, assessment status, permitted use, and constraints (`UNVERIFIED` preserved).
+  4. *Evidencia y afirmaciones:* Ground claims in verified retrieved content.
+  5. *Respuesta controlada:* Answer within proven bounds or explicitly disclose limitations.
+- **Proposed Data Contract:** `retrieved_resource_id`, `resource_title`, `resource_location`, `resource_version`, `ks_id`, `source_role`, `assessment_status`, `permitted_use`, `evidence_reference`, `verification_state`.
+- **Runtime Verification State:** Distinct from governance states; distinguishes technical resource identity from Trust Matrix classification.
+- **Acceptance Criteria (P04-01 to P04-08):**
+  - `P04-01` Identidad verificable
+  - `P04-02` Metadatos fieles (`UNVERIFIED` preserved)
+  - `P04-03` No inferencia
+  - `P04-04` Control de duplicados
+  - `P04-05` Uso permitido
+  - `P04-06` Relación evidencia-afirmación
+  - `P04-07` Fallo seguro
+  - `P04-08` Evidencia reproducible
+  - *Approval Rule:* Missing data = `NOT VERIFIABLE`; absence of data does NOT equal PASS.
+- **Verification Plan (Seven Cases):** Q1, Q3, Q5, Q8, Q15, Q16, and Q19 reused from Implementation Record without prompt alteration.
+
+### Pre-Implementation Technical Verification Sequence
+
+Before editing the active Skill or claiming acceptance, the specification mandates a limited technical verification of CAPE connector behavior:
+1. Confirm what metadata is actually exposed by `Confluence Search` and `Confluence Get Page`.
+2. Check whether a reliable mapping exists between retrieved resources and KS records.
+3. Determine which P04 criteria can be verified with available runtime data.
+4. Identify governance dependencies that must be resolved before full acceptance.
+5. Only then draft the refined Skill instructions and run focused test cases.
+
+### Gateway Status: Specification Review and Technical Pre-Check
+
+> **Decision required:** Approval of the functional specification, acceptance criteria (P04-01 to P04-08), and the rule of not declaring PASS when traceability cannot be verified. Once approved, the next operational step is inspecting CAPE tool outputs and connector metadata before modifying the active Skill.
