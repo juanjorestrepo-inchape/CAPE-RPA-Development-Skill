@@ -733,3 +733,70 @@ Before editing the active Skill or claiming acceptance, the specification mandat
 ### Gateway Status: Specification Review and Technical Pre-Check
 
 > **Decision required:** Approval of the functional specification, acceptance criteria (P04-01 to P04-08), and the rule of not declaring PASS when traceability cannot be verified. Once approved, the next operational step is inspecting CAPE tool outputs and connector metadata before modifying the active Skill.
+
+---
+
+## 20. Nikko's Sponsor Objectives Alignment & Change 07 Proposal — 2026-10-14
+
+### Context & Principle: "Trust Before Breadth"
+
+To integrate the performance and value objectives proposed by project sponsor Nikko Gonzales without diluting technical rigor, the project maintains the governing principle: **Trust Before Breadth**. 
+
+First, technical and behavioral controls (Changes 01–06) must prove that the Skill correctly utilizes governed knowledge, honors knowledge boundaries, and avoids synthesizing unsupported standards. Subsequently, developer efficiency and business value are quantified against an empirical baseline. Performance goals represent global project outcomes, whereas Changes represent concrete implementation controls.
+
+### 1. Mapping Sponsor Objectives to Project Changes
+
+| Sponsor Objective (Nikko) | Associated Change / Deliverable | Recommended Treatment |
+|---|---|---|
+| Validate CAPE pilot with documented scenarios and results | Changes 01–03 and 11-case regression | Update global acceptance criteria without creating redundant implementation changes. |
+| Provide relevant, source-grounded answers | Change 04 (Provenance) & Change 05 (Claim Grounding) | Keep separated: identifying a source does not prove claim-level grounding. |
+| Identify knowledge gaps without inventing information | Change 02 & Change 02.1 | Maintain boundary enforcement; verify behavior in formal regression. |
+| Document findings, improvements, and recommendations | Implementation Record & Regression Reports | Add as formal validation deliverable and pilot closure artifact. |
+| Implement at least three evidence-based improvements | Changes 01–03 (implemented); Changes 04–06 (pending) | Changes 01–03 count toward this objective if supported by documented pilot findings and before/after evidence. Do not count changes without empirical proof. |
+| Reduce answer search time by at least 30% | Not covered by technical Changes 01–06 | Create a dedicated value measurement change (**Change 07**) with baseline, protocol, and comparable metrics. |
+
+### 2. Proposal: Change 07 — Developer Efficiency Measurement and Pilot Value Validation
+
+- **Status:** Proposed — Design pending.
+- **Positioning:** Sequenced after Change 06 and before final pilot closure, without disrupting technical behavioral hardening.
+- **Objective:** Evaluate whether the RPA Development Skill reduces the time required to resolve representative technical and governance queries by $\ge 30\%$, while strictly preserving answer accuracy, evidence boundaries, and quality.
+- **Scope:**
+  - Define a representative, balanced set of technical and governance evaluation queries.
+  - Measure baseline resolution time without Skill assistance (manual Confluence/documentation search).
+  - Measure resolution time with Skill assistance.
+  - Track answer correctness, rework necessity, and perceived developer utility (combining quantitative time metrics with reported developer experience).
+  - Calculate net time reduction against the $\ge 30\%$ threshold.
+  - Document methodology, empirical variance, limitations, and phase 2 recommendations.
+- **Core Governance Rule:** The 30% reduction is considered achieved only if supported by comparable, reproducible empirical data. Faster answers that introduce unsupported claims, hallucinated standards, or rework do not represent value.
+
+### 3. Three-Layer Project Architecture
+
+To prevent conflating implementation mechanisms, validation gates, and business value metrics, the project is structured into three clear layers:
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│ Capa C — Medición de Valor (Target: Exceeds)                           │
+│ Change 07: Eficiencia (≥30% reducción tiempo), 3 mejoras demostradas    │
+├────────────────────────────────────────────────────────────────────────┤
+│ Capa B — Validación del Piloto (Target: Meets)                         │
+│ Regresión 11 casos, controles negativos, Coverage-Honesty Gate, informe│
+├────────────────────────────────────────────────────────────────────────┤
+│ Capa A — Controles Técnicos de Comportamiento                          │
+│ Changes 01–06: Activación, Límites, Desambiguación, Procedencia,        │
+│                Grounding, Fuentes Web Controladas                      │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+- **Capa A (Controles de Comportamiento):** Changes 01–06 enforce deterministic behavior, boundary integrity, provenance, and grounding.
+- **Capa B (Validación del Piloto):** 11-case formal regression, negative activation controls, Coverage-Honesty Gate reassessment, and audit trail. Satisfies the sponsor's **Meets** threshold.
+- **Capa C (Medición de Valor):** Change 07 empirical efficiency benchmarking ($\ge 30\%$ time reduction) and documented evidence-based improvements. Satisfies the sponsor's **Exceeds** threshold.
+
+### 4. Consolidated Seven-Step Master Sequence
+
+1. **Change 04:** Verify CAPE connector metadata and runtime provenance trace capabilities.
+2. **Change 05:** Implement and verify claim-level grounding.
+3. **Change 06:** Implement controlled external web source boundaries.
+4. **Change 07:** Formulate developer efficiency measurement protocol and establish pre-Skill baseline.
+5. **Freeze & Regression:** Freeze candidate Skill version; execute full 11-case formal regression.
+6. **Gate Reassessment & Audit:** Formally reassess Coverage-Honesty Gate; execute negative controls; complete independent developer review.
+7. **Value Quantification:** Conduct comparative efficiency trials; validate 30% metric; package sponsor recommendations for Nikko.
