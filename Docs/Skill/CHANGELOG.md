@@ -13,4 +13,4 @@
 
 **Rationale:** Address the previously observed Q3 lifecycle-accuracy failure and prevent ambiguity between the pilot's governed source scope and its currently usable evidence set.
 
-**Validation status:** Documentation refined; active CAPE configuration and Q3 regression result pending verification.
+**Validation status:** CAPE configuration confirmed loading current version with §4.3 active (16 Oct 2026). Q3 regression passed lifecycle-accuracy criterion (14 Oct 2026).
