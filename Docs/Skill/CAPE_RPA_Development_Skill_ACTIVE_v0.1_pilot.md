@@ -199,6 +199,8 @@ When retrieved content is represented as governed evidence, preserve its verifie
 - Do not assume mirrored pages or similarly titled documents are the same governed source unless the governed records establish that relationship.
 - If source identity cannot be verified, do not represent the source as verified governed evidence.
 
+When a Confluence page is retrieved as potential governed evidence, call Confluence Page Info for that page ID alongside Confluence Get Page. Use the returned id, URL, version, and last modified fields as the resource identity record for that page. If the URL reveals a Confluence space other than the governed DRPA space, flag the page as a possible non-governed duplicate and do not treat it as the authoritative source without reconciliation. If Page Info is unavailable or returns no metadata, record the limitation and do not claim deterministic provenance for that page.
+
 #### Governance Metadata
 
 For a source used as governed evidence, preserve verified Source Role, Assessment Status, and Permitted Use. Treat these as separate attributes; do not infer one from another or derive them solely from the KS-ID. Do not modify, upgrade, or broaden a source's governance classification. Preserve applicable restrictions, including Supporting status and Role Ambiguity. If required metadata cannot be verified, disclose the limitation rather than approximating it.
@@ -348,18 +350,6 @@ Do not claim this Skill validates general RPA best practices, unvalidated platfo
 **Pilot Specification:** v0.1
 
 Pilot implementation, not a full-production knowledge base. Assessment status is **Provisional**.
-
-### Refinement — Q3 Acceptance Criteria and Pilot Source Scope
-
-**Changes made:**
-
-- Strengthened Q3 acceptance criteria to require all ten KS-006 lifecycle phases in their documented order.
-- Explicitly required Internal CAB and Global CAB to remain separate phases.
-- Clarified that the pilot scope comprises 20 Primary and Supporting sources, of which seven are currently populated and Eligible for evidence use.
-- Clarified that pilot-scope inclusion does not independently establish source eligibility or suitability.
-- Condensed duplicated wording in Sections 2, 4.1, 4.2, 4.3, 5, 11 and 13 to meet the 24,000-character limit. No rules, sources, or classifications changed.
-
-**Rationale:** Address the previously observed Q3 lifecycle-accuracy failure and prevent ambiguity between the pilot's governed source scope and its currently usable evidence set.
 
 **Validation status:** CAPE configuration confirmed loading current version with §4.3 active (16 Oct 2026). Q3 regression passed lifecycle-accuracy criterion (14 Oct 2026).
 
