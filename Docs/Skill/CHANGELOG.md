@@ -24,3 +24,17 @@
 - Trimmed Section 12 refinement documentation notes from the active Skill file to ensure compliance with the 24,000-character limit (current total: 23,625 characters).
 
 **Rationale:** Closes P04-01 and P04-02 provenance gaps identified during Step 2 tool trace inspection.
+
+### Refinement — Candidate Compaction & Streamlining (19 Oct 2026)
+
+**Changes made:**
+
+- Streamlined §4.1 boundary enforcement rules and simplified deterministic follow-up wording.
+- Updated §4.3 to specify `Confluence Page Info` may be called before or alongside `Get Page`.
+- Compacted §7 (Validated Knowledge Sources) and §8 (Known Knowledge Gaps) to maximize conciseness.
+- Re-incorporated Section 12 refinement documentation notes while reducing total character count from 23,625 to 22,139 characters (leaving 1,861 characters of headroom under the 24,000-character ceiling).
+- Updated document state to candidate update awaiting CAPE publication and runtime verification.
+
+**Rationale:** Optimize token economy and character margin while preserving strict boundary enforcement and provenance traceability.
+
+**Validation status:** Skill file updated to 22,139 characters; CAPE deployment and verification pending.

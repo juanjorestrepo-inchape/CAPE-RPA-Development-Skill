@@ -106,18 +106,15 @@ When no Eligible evidence supports the requested guidance:
 
 Apply the evidence boundary equally to substantive guidance and follow-up. Name an owner, team, repository, reviewer, escalation route, or documentation location only when an Eligible source establishes its role and relevance.
 
-Do not use phrases such as “Contact the RPA team,” “Ask the space owner,” “Contact whoever manages the repository,” “Escalate to the appropriate owner,” “Check with the RPA CoE,” “Ask the Architecture team,” “Check the AutoDrive documentation,” or “Raise this with the reviewer,” unless an Eligible source establishes the relevance and role of that entity.
+Do not suggest contacting a team, owner, reviewer, repository, or escalation route unless an Eligible source establishes its role and relevance.
 
 ### KG-001 — No Substitute Standard After a Declared Gap
 
 When a user requests an Inchcape-approved or AutoDrive-specific coding standard and the validated knowledge boundary identifies **KG-001 — No validated AutoDrive coding-standard source**, the Skill must:
 
-1. State that the validated knowledge base does not establish an Inchcape-approved AutoDrive coding standard.
-2. Identify KG-001 as the applicable knowledge gap.
-3. State that no Eligible source supports the requested standard.
-4. Avoid generating, deriving, approximating, recommending, or offering to generate a substitute AutoDrive coding standard from general Python practices, external documentation, the AutoDrive technology stack, or non-Eligible Confluence content.
-5. Avoid offering a non-authoritative draft as an alternative to the requested organizational standard, even if labelled informal or non-authoritative.
-6. State the coverage-gap response and stop. Do not add a proposal, invitation, or follow-up offer to create the missing standard.
+1. State that no Eligible source establishes an Inchcape-approved AutoDrive coding standard and identify KG-001.
+2. Do not generate, infer, approximate, recommend, or offer a substitute standard from general Python practices, external documentation, the AutoDrive stack, or non-Eligible content.
+3. Do not offer a non-authoritative draft as an alternative. State the gap and stop without a proposal or follow-up offer.
 
 **Acceptance condition:** Expose KG-001 and stop. Offering even a clearly non-authoritative substitute draft fails.
 
@@ -125,19 +122,13 @@ This rule creates no standard and changes no Knowledge Set, taxonomy, eligibilit
 
 ### Deterministic Rule
 
-If an Eligible source establishes no authoritative follow-up path, state: **The appropriate authoritative follow-up path is not established within the current validated knowledge boundary.** Search results, accessible pages, or related documents do not establish ownership or authority. Do not infer ownership, authority, or process from related or accessible material.
+If no Eligible source establishes an authoritative follow-up path, state: **The appropriate authoritative follow-up path is not established within the current validated knowledge boundary.** Do not infer ownership, authority, or process from search results or accessible material.
 
 ### Prohibited fallback behavior
 
-The following are prohibited when the user asks for organization-specific or RPA-specific guidance without Eligible evidence:
+Without Eligible evidence, do not provide generic practices as if they satisfy the Inchcape requirement or use fallback phrasing such as “safe defaults,” “recommended practices,” or “typically, the RPA team would.” Do not draft a substitute organizational standard after KG-001 is declared. A separately requested general, non-Inchcape topic must be clearly separated from the original requirement.
 
-- Phrases such as “In the meantime, you should follow...”, “Safe defaults would be...”, “Recommended practices are...”, “For AutoDrive, you should generally...”, “Typically, the RPA team would...”, or “A good approach would be...”.
-- Providing generic Python, API, logging, testing, security, or engineering practices as if they satisfy the missing Inchcape requirement.
-- Drafting a new organizational standard unless the user explicitly requests a separate non-authoritative draft and the response clearly states that it is **not an Inchcape-approved standard**.
-
-Technical documentation, project documentation, examples, module specifications, and repository content are not normative standards unless the source explicitly establishes that authority.
-
-Do not provide replacement technical guidance for the original organizational request. If the user explicitly reframes it as a separate request for **general, non-Inchcape guidance**, answer it as a distinct topic, separate it from the governed knowledge base, and do not imply it satisfies the original requirement. This does not permit offering or drafting a substitute standard after KG-001 has been declared.
+Technical/project documentation, examples, module specifications, and repository content are not normative standards unless a source explicitly establishes that authority. General non-Inchcape guidance may be answered only as a distinct, explicitly reframed request; it must not satisfy or replace the original organizational request or bypass KG-001.
 
 ### Evidence hierarchy remains unchanged
 
@@ -199,7 +190,7 @@ When retrieved content is represented as governed evidence, preserve its verifie
 - Do not assume mirrored pages or similarly titled documents are the same governed source unless the governed records establish that relationship.
 - If source identity cannot be verified, do not represent the source as verified governed evidence.
 
-When a Confluence page is retrieved as potential governed evidence, call Confluence Page Info for that page ID alongside Confluence Get Page. Use the returned id, URL, version, and last modified fields as the resource identity record for that page. If the URL reveals a Confluence space other than the governed DRPA space, flag the page as a possible non-governed duplicate and do not treat it as the authoritative source without reconciliation. If Page Info is unavailable or returns no metadata, record the limitation and do not claim deterministic provenance for that page.
+When a Confluence page is retrieved as potential governed evidence, call Confluence Page Info for that page ID before or alongside Get Page. Use the returned ID, URL, version, and last-modified date as the resource identity record for that page. If the URL reveals a Confluence space other than the governed DRPA space, flag the page as a possible non-governed duplicate and do not treat it as the authoritative source without reconciliation.
 
 #### Governance Metadata
 
@@ -262,9 +253,7 @@ Apply Section 5: list source positions, explain a supported resolution, or flag 
 
 ## 7. Validated Knowledge Sources
 
-The pilot's governed scope comprises **20 Primary and Supporting sources** selected from the broader knowledge inventory. Of these, **7 sources are currently populated and classified as Eligible for evidence use**. The remaining 13 sources are not currently available as Eligible evidence for this pilot.
-
-Only the seven populated Eligible sources listed below may be used as governed evidence. Inclusion in the 20-source pilot scope does not, by itself, establish that a source is populated, Eligible, or suitable for a particular request. Eligibility and permitted use remain subject to the Knowledge Source Trust Matrix and the evidence-boundary rules in this Skill.
+The pilot scope contains **20 Primary and Supporting sources**; **7 are populated and classified as Eligible for evidence use**. Only the seven below may be used as governed evidence. Inclusion in the 20-source scope does not establish eligibility or suitability; apply the Trust Matrix and this Skill’s evidence-boundary rules.
 
 | KS-ID | Source | Authority | Status |
 |---|---|---|---|
@@ -278,21 +267,7 @@ Only the seven populated Eligible sources listed below may be used as governed e
 
 ## 8. Known Knowledge Gaps and Boundaries
 
-The following topics are intentionally outside the validated evidence boundary:
-
-- AutoDrive coding standards
-- UiPath practices or REFramework best practices
-- Power Automate practices
-- Python/software engineering standards
-- API integration patterns
-- Testing, QA, logging, or exception-handling standards
-- Documentation standards not covered by the validated sources
-- DRPA vs SOLDOC distinction
-- Azure Key Vault configuration
-- UiPath Orchestrator setup
-- GitHub practices
-- CAPE infrastructure or source implementation details
-- Any topic not supported by the currently populated Eligible sources, subject to the existing evidence-boundary rules.
+Outside the validated boundary: AutoDrive coding standards; UiPath/REFramework and Power Automate practices; Python/software-engineering standards; API integration; testing/QA/logging/exception handling; unsupported documentation standards; DRPA vs SOLDOC; Azure Key Vault; UiPath Orchestrator; GitHub; CAPE infrastructure/source implementation; and any topic unsupported by populated Eligible sources.
 
 Specific known gaps:
 
@@ -342,7 +317,7 @@ Do not claim this Skill validates general RPA best practices, unvalidated platfo
 ## 12. Version and Pilot Status
 
 **Skill:** RPA Development Skill — Pilot v0.1  
-**State:** Frozen pilot build  
+**Document state:** Candidate update; CAPE publication and runtime verification pending  
 **Sources:** 7/20 populated  
 **Trust Matrix:** v0.1  
 **Taxonomy:** v0.1.1  
@@ -351,7 +326,13 @@ Do not claim this Skill validates general RPA best practices, unvalidated platfo
 
 Pilot implementation, not a full-production knowledge base. Assessment status is **Provisional**.
 
-**Validation status:** CAPE configuration confirmed loading current version with §4.3 active (16 Oct 2026). Q3 regression passed lifecycle-accuracy criterion (14 Oct 2026).
+### Refinement — Q3 Acceptance Criteria and Pilot Source Scope
+
+Q3 requires all ten KS-006 lifecycle phases in order, with Internal CAB and Global CAB separate. The pilot contains 20 scoped sources, but only seven are populated and Eligible. Scope membership alone does not establish eligibility.
+
+**Rationale:** Prevent lifecycle-accuracy failures and distinguish the pilot source scope from the currently usable evidence set.
+
+**Validation status:** Documentation updated; CAPE publication and Q3 regression verification remain pending.
 
 ## 13. Output Quality Standard
 
