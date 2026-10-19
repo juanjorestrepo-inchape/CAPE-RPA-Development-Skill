@@ -4,18 +4,19 @@
 
 Evaluation results are run-specific and should not be collapsed into a single activation claim. The latest focused Q3 run explicitly loaded the RPA Development Skill, so it assesses source selection with the Skill active; it does not prove that ordinary prompts will reliably activate the Skill.
 
-Current position as of 2026-10-14 (documentation review closed; Q3 evidence and Change 04 status updated):
+Current position as of 2026-10-19 (documentation review closed; Q3 evidence and Change 04 status updated; KS-010 CAPTCHA/MFA test registered):
 
 - **Change 01 — Activation:** earlier activation evidence remains recorded. The explicitly loaded Q3 run does not validate automatic routing.
 - **Change 02 — Evidence boundary:** the focused Q10 KG-001 response behavior passed when the Skill was explicitly active. The overall Coverage-Honesty Gate remains uncleared.
 - **Change 03 — Source disambiguation and lifecycle:** the 2026-10-04 focused run passed source selection but was a **Partial Pass** overall; the earlier Stage A Q3 run remains a historical **FAIL — Lifecycle Accuracy**. The 2026-10-14 focused Q3 response meets the current source-selection and ten-phase lifecycle criteria. All runs preserved separately.
-- **Change 04 — KS-ID provenance:** instructions present in local Skill §4.3 (commit `a822fdb`); detailed Design Specification v0.1 registered in `Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md`; CAPE connector metadata verification and formal acceptance remain pending. The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**.
-- **Governed source reconciliation — KS-003–010:** Source Role and Assessment Status remain **UNVERIFIED** in Implementation Record §7. Trust Matrix §26.1 records Primary / Provisional for these six sources but has not been reconciled with the IR. Do not treat those values as resolved until all three pages (Trust Matrix §26.1, IR §7, Taxonomy §11) are published, consistent, and re-verified.
+- **Change 04 — KS-ID provenance:** instructions present in local Skill §4.3 (commit `a822fdb` / 16 Oct 2026 refinement); detailed Design Specification v0.1 registered in `Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md`. Focused verification on KS-010 (CAPTCHA/MFA) executed and achieved **Focused PASS — with a governance limitation outstanding** (see Section 21). Full 7-case acceptance and connector metadata verification remain pending. The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**.
+- **Governed source reconciliation — KS-003–010:** Source Role and Assessment Status remain **UNVERIFIED** in Implementation Record §7. Trust Matrix §26.1 records Primary / Provisional for these six sources but has not been reconciled with the IR. DRPA vs SOLDOC canonical identity for KS-010 remains unreconciled despite behavioral pass. Do not treat those values as resolved until all three pages (Trust Matrix §26.1, IR §7, Taxonomy §11) are published, consistent, and re-verified.
 - **End-to-end review — 2026-10-08:** the pasted Skill has a coherent governance design; the review recommends focused clarifications and tests, not a wholesale rewrite. These observations are recorded in Section 15 and do not themselves authorize Skill changes.
-- **Next hardening:** Change 04 CAPE verification is the immediate next activity. Claim-level grounding (Change 05) remains separate; do not fold it into Change 03 or Change 04.
+- **Next hardening:** Complete remaining Change 04 verification cases (Q1, Q8, Q15, Q16, Q19) and resolve canonical source for KS-010. Claim-level grounding (Change 05) remains separate; do not fold it into Change 03 or Change 04.
 
 Current status by test:
 - Q3: **Focused PASS — source selection and lifecycle accuracy** in the newly supplied response; the earlier Stage A **FAIL — Lifecycle Accuracy** remains historical. Provenance/claim-level grounding was not assessed because no retrieval trace was supplied.
+- Q5: **Focused PASS — with a governance limitation outstanding** (Change 04 KS-010 verification registered 2026-10-19 in Section 21; earlier baseline PASS with grounding note preserved as historical). Canonical reconciliation of KS-010 remains pending.
 - Q6: Review required
 - Q10: Historical fail; focused Change 02 response-behavior pass; full gate/regression status remains open
 - Q15: Review required
@@ -757,7 +758,7 @@ First, technical and behavioral controls (Changes 01–06) must prove that the S
 
 ### 2. Proposal: Change 07 — Developer Efficiency Measurement and Pilot Value Validation
 
-- **Status:** Proposed — Design pending.
+- **Status:** Proposed — Task Bank v0.1 registered in [Docs/Skill/CAPE_Change_07_Task_Bank_v0.1.md](../CAPE_Change_07_Task_Bank_v0.1.md); pending governance gateway approval.
 - **Positioning:** Sequenced after Change 06 and before final pilot closure, without disrupting technical behavioral hardening.
 - **Objective:** Evaluate whether the RPA Development Skill reduces the time required to resolve representative technical and governance queries by $\ge 30\%$, while strictly preserving answer accuracy, evidence boundaries, and quality.
 - **Scope:**
@@ -800,3 +801,98 @@ To prevent conflating implementation mechanisms, validation gates, and business 
 5. **Freeze & Regression:** Freeze candidate Skill version; execute full 11-case formal regression.
 6. **Gate Reassessment & Audit:** Formally reassess Coverage-Honesty Gate; execute negative controls; complete independent developer review.
 7. **Value Quantification:** Conduct comparative efficiency trials; validate 30% metric; package sponsor recommendations for Nikko.
+
+---
+
+## 21. Change 04 — KS-010 CAPTCHA/MFA Test Execution & Behavioral Verdict — 2026-10-19
+
+### 1. Test Metadata
+
+- **Skill:** `RPA Development Skill — Pilot v0.1` (with §4.3 Confluence Page Info instruction active, commit `a822fdb` / 16 Oct 2026 refinement)
+- **Test Domain:** Security / CAPTCHA and MFA
+- **Question:** `What security requirements apply when a new RPA solution handles CAPTCHA or MFA?`
+- **Execution Date:** Not specified in raw execution record; registered in project documentation on 2026-10-19
+- **Evaluator:** Documentation and evaluation assistant / Juan José Restrepo
+- **Evaluation Stage:** Live CAPE Pilot Validation — Focused Change 04 Provenance & Disambiguation Verification
+- **Governing Verification Case:** Change 04 Verification Plan (Case Q5 in `Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md` §7)
+- **Detailed Evaluation Report:** [CAPE_Change_04_Q5_Evaluation_Report.md](CAPE_Change_04_Q5_Evaluation_Report.md)
+
+### 2. Test Execution Evidence & Observed Tool Activity
+
+The live execution recorded **11 tool calls**, demonstrating active source discovery, metadata inspection, and content retrieval:
+1. **Skill Loading:** Loaded `RPA Development Skill — Pilot v0.1`.
+2. **Confluence Searches:** Title and content searches identified candidate policy pages across spaces.
+3. **Confluence Page Info Calls:** Used `Page Info` to inspect source identity, page ID, version, and modification metadata.
+   - Identified two candidate copies of the policy:
+     - **DRPA Space:** `RPA CAPTCHA and MFA Policy`, page ID `7308640261`, version 10, last modified `2026-02-20T04:28:03.149Z`.
+     - **SOLDOC Space:** `RPA - CAPTCHA and MFA Policy`, page ID `8847753943`, version 5, last modified `2026-02-20T04:29:21.668Z`.
+   - *Tool efficiency note:* A repeated `Page Info` call for the SOLDOC policy was observed; this constitutes a redundant tool call, not a behavioral test failure.
+4. **Confluence Get Page Calls:**
+   - Content comparison between DRPA page `7308640261` and SOLDOC page `8847753943` confirmed substantively identical policy text.
+   - Supplementary retrieval: `RPA Architecture — Security`, SOLDOC page ID `9025355936`, version 2, last modified `2026-04-01T06:08:23.543Z`. While retrieved, this page was not used in the final response to establish additional CAPTCHA/MFA policy requirements.
+5. **Source Selection in Final Response:**
+   - The Skill selected the DRPA page (`7308640261`) as its primary evidence base.
+   - The Skill explicitly treated the SOLDOC copy (`8847753943`) as unreconciled rather than as an authoritative or canonical source.
+
+### 3. Observed Response Analysis
+
+The Skill stated that the governed policy defines risk, scope, responsibility, and communication requirements, rather than providing detailed technical controls for CAPTCHA/MFA. It explained that these mechanisms cannot be bypassed without compromising security.
+
+**Identified Requirements (Observed from test response, not independently revalidated):**
+1. Assess feasibility before committing to automation.
+2. Document and accept the relevant risk.
+3. Treat CAPTCHA/MFA failures as accepted risk rather than ordinary bot errors.
+4. Keep only the automatable portions of the process in scope.
+5. Assign manual intervention to the process owner / business team.
+6. Classify the relevant incidents as P4, the lowest priority, according to the policy.
+7. Communicate the CAPTCHA/MFA limitation at project start and reference it in project documentation and the risk assessment.
+
+**Explicit Knowledge Boundaries & Limitations Disclosed by Skill:**
+The Skill explicitly stated that the validated knowledge base did NOT establish:
+- Detailed technical controls for MFA credentials or tokens.
+- CAPTCHA detection and human handoff design patterns.
+- Security exception approval and escalation routes.
+
+### 4. Evaluation Outcome & Behavioral Verdict
+
+**Verdict:** **PASS — with a governance limitation outstanding.**
+
+**Supported Pass Dimensions:**
+- **Page Info Utilization:** Successfully called `Page Info` to inspect source identity, page ID, version, and modification timestamp before citing.
+- **Candidate Identification:** Correctly discovered both DRPA and SOLDOC candidate copies.
+- **Source Selection Discipline:** Selected the DRPA page as primary evidence and flagged the SOLDOC duplicate as unreconciled.
+- **Boundary Discipline:** Avoided synthesizing unsupported technical requirements or hallucinating security escalation paths (resolving the previous Q5 grounding note from the initial pilot run).
+- **Honest Gap Disclosure:** Explicitly communicated knowledge boundaries and absence of low-level technical controls.
+
+**Change 04 Acceptance Criteria Assessment:**
+
+| Criteria ID | Criterion Description | Evaluation Result | Supporting Evidence / Notes |
+|---|---|---|---|
+| `P04-01` | Identidad verificable | **PASS** | Page ID `7308640261` and metadata inspected via Page Info. |
+| `P04-02` | Metadatos fieles | **PASS** | Page versions (v10 vs v5) and timestamps captured faithfully without invention. |
+| `P04-03` | No inferencia | **PASS** | Neither copy was assumed authoritative purely by title matching. |
+| `P04-04` | Control de duplicados | **PASS** | SOLDOC copy identified as unreconciled duplicate rather than silently collapsed. |
+| `P04-05` | Uso permitido | **PASS** | Primary evidence bounded to governing policy scope; supplementary architecture security page not abused. |
+| `P04-06` | Relación evidencia-afirmación | **PASS** | Seven stated requirements reflect policy text; unsupported claims avoided. |
+| `P04-07` | Fallo seguro | **PASS** | Explicitly disclosed absence of MFA token, CAPTCHA handoff, and exception route guidance. |
+| `P04-08` | Evidencia reproducible | **PASS** | Tool trace (11 calls), page IDs, versions, and response captured for audit. |
+
+### 5. Outstanding Governance Limitation & Scope Boundaries
+
+1. **Unresolved Canonical Source (KS-010):**
+   This test verdict confirms that the Skill *behaved correctly* in handling unreconciled sources, but it **does NOT constitute a governance resolution** of KS-010's canonical identity. The formal reconciliation between DRPA (`7308640261`) and SOLDOC (`8847753943`) remains pending a formal decision by RPA Leadership / Confluence administrators.
+2. **Supplementary Retrieval Scope:**
+   The supplementary retrieval of `RPA Architecture — Security` (SOLDOC `9025355936`, v2) was observed in the tool trace, but it must not be interpreted as establishing additional CAPTCHA/MFA requirements.
+3. **Redundant Tool Call:**
+   The duplicate Page Info call on SOLDOC policy represents tool calling redundancy, not a behavioral test failure.
+4. **No Efficiency / Timing Claims:**
+   No timing data was recorded; this test makes no claim regarding developer efficiency or search time reduction ($\ge 30\%$).
+5. **No Independent Policy Verification:**
+   This evaluation does not evaluate or validate the operational correctness of the CAPTCHA/MFA policy itself, only the Skill's adherence to governed sources.
+6. **Pilot Status & Regression Gate:**
+   This focused test does not replace the full 11-question regression or clear the Coverage-Honesty Gate. Overall pilot sample size and acceptance thresholds remain unchanged.
+
+### 6. Follow-Up Action
+
+- **Action Owner:** RPA Architecture & Governance Lead (Nikko Gonzales / Confluence Admins).
+- **Required Action:** Formally reconcile KS-010 in Confluence: designate either DRPA (`7308640261`) or SOLDOC (`8847753943`) as the authoritative canonical page, archive or redirect the duplicate, and update the Knowledge Source Trust Matrix (§26.1) and Implementation Record (§7) accordingly.
