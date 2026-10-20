@@ -38,3 +38,18 @@
 **Rationale:** Optimize token economy and character margin while preserving strict boundary enforcement and provenance traceability.
 
 **Validation status:** Skill file updated to 22,139 characters; CAPE deployment and verification pending.
+
+### Change 07 — Developer Efficiency Measurement Protocol v0.1 Registered (20 Oct 2026)
+
+**Changes made:**
+
+- Added `Docs/Skill/CAPE_Change_07_Efficiency_Protocol_v0.1.md` — the canonical Change 07 measurement protocol: objective and evaluation question, matched-pair experimental design (target 10 pairs / 20 executions), no-CAPE baseline conditions, CAPE condition and activation recording, timing and outcome taxonomy with a 600-second cap, proposed eight-dimension binary quality rubric with a proposed ≥ 6/8 acceptance rule and critical-failure vetoes, data-log schema, analysis method with the primary efficiency formula, seven-item approval gate, twelve open decisions, and known gaps.
+- Updated `Docs/Skill/CAPE_Change_07_Task_Bank_v0.1.md` to state the pilot target (10 pairs / 20 executions) against the three pairs / six executions prepared, and to flag that the draft pairs use non-identical prompts pending decision `C07-D08`. Rubric, timing, schema, and analysis content was migrated to the protocol to avoid duplicated definitions; the Task Bank now points to it.
+- Registered the protocol in the project evaluation register: new Section 22 of `Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md`, updated Section 20 status, and updated the Executive Summary position to 2026-10-20.
+- Added the protocol to the README project map for Change 07 discoverability.
+
+**Rationale:** Fix the Change 07 measurement rules — design, controls, rubric, schema, analysis, and approval gate — in version control before any execution, and keep project status, proposed decisions, approved decisions, and measured results explicitly separate.
+
+**Status:** `PROPOSED — PENDING APPROVAL`. Not frozen. The acceptance threshold, critical-failure list, task-pair equivalence method, permitted source spaces, condition-order method, retention rules, and participant plan remain pending approval.
+
+**Validation status:** Documentation only. No baseline or comparison execution has been performed; no timing data exists; the 30% reduction remains a target. The Task Bank holds three of the ten target pairs. Coverage-Honesty Gate remains `NOT CLEARED`. Implementation Record remains at its latest verified state v55 (Document Control `v0.1 / Revision v0.1-r4`); no Confluence page or revision was changed.

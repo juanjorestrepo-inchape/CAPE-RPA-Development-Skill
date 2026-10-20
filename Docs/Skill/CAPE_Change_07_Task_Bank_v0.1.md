@@ -1,26 +1,33 @@
 # CAPE RPA Development Skill — Change 07 Task Bank v0.1
 
 **Original draft date:** October 16, 2026  
-**Revision date:** October 19, 2026  
-**Status:** Draft — pending governance gateway approval  
+**Revision date:** October 20, 2026  
+**Status:** Draft — pending governance gateway approval (`PROPOSED — PENDING APPROVAL`)  
 **Author:** Juan José Restrepo Rosero  
+**Governing protocol:** [`CAPE_Change_07_Efficiency_Protocol_v0.1.md`](CAPE_Change_07_Efficiency_Protocol_v0.1.md) — this Task Bank supplies the task set; the protocol is canonical for design, rubric, data schema, analysis, and approval gates.  
 **Source-validation note:** Pair 2 (KS-010) remains subject to confirmation of the canonical governed page ID against the Knowledge Source Trust Matrix. Do not freeze the protocol or begin baseline measurement until that identity is reconciled.
 
 ---
 
 ## Evaluation Design
 
-Three matched pairs of questions for the developer efficiency measurement protocol. Within each pair, Task A goes to the no-CAPE condition (developer searches manually) and Task B goes to the CAPE condition. Questions within a pair cover the same knowledge domain but are not identical.
+Three matched pairs of questions prepared to date, against a pilot target of ten matched pairs. Within each pair, Task A goes to the no-CAPE condition (developer searches manually) and Task B goes to the CAPE condition. In this draft, questions within a pair cover the same knowledge domain but are not identical.
 
 | Field | Value |
 |---|---|
-| **Pairs** | 3 |
+| **Pilot target pairs** | 10 |
+| **Pairs prepared in this draft** | 3 |
 | **Tasks per pair** | 2 (Task A = no-CAPE, Task B = CAPE) |
-| **Total task executions** | 6 |
+| **Target total task executions** | 20 |
+| **Executions prepared in this draft** | 6 |
 | **Time limit per task** | 10 minutes |
 | **Unresolved threshold** | Task not completed within 10 minutes = recorded as UNRESOLVED |
 | **Unresolved treatment** | Kept in the data; not excluded from the calculation |
 | **Author** | Juan José Restrepo Rosero |
+
+> **Coverage status:** this draft does not yet contain all ten pairs. Seven additional pairs / fourteen executions must be prepared and reviewed before execution, unless an explicit documented decision changes the sample size (protocol §2.2 and §11).
+
+> **Pair-equivalence status — open decision `C07-D08`:** the protocol requires the same task definition and expected outcome in both conditions of a pair unless an approved methodology establishes equivalent task variants. The Task A / Task B prompt pairs below are **not identical** and are **not approved as equivalent variants**. They cannot be executed as matched pairs until either the prompts are aligned or the variant methodology is explicitly approved.
 
 ---
 
@@ -138,39 +145,18 @@ There is no Confluence page to validate because the gap is the point. Pair 3 is 
 
 ---
 
-## Quality Rubric — 8 Binary Dimensions (Pass/Fail)
+## Protocol Alignment
 
-Score each dimension as Pass (1) or Fail (0). Maximum score: 8. Do not award partial credit.
+The following components are defined in the governing protocol and are **not duplicated here**:
 
-| # | Dimension | Pass condition | Mandatory / critical |
-|---:|---|---|---|
-| 1 | Correctness | The answer reaches the correct source-backed conclusion and contains no false or invented Inchcape policy. | Yes — failure is a critical failure. |
-| 2 | Completeness | The answer covers at least 75% of the task's expected key points. | No |
-| 3 | Source identification | The answer identifies the correct governed Confluence source or, for KG-001, identifies the declared knowledge gap. | No |
-| 4 | Source authority | The answer applies the correct source role and scope; Primary sources are not displaced by Supporting sources, and a gap is not treated as a source. | No |
-| 5 | Boundary compliance | The answer stays within documented evidence and does not assert requirements beyond the source or fill a declared gap. | Yes — failure is a critical failure. |
-| 6 | No invented guidance | The answer does not synthesize Inchcape requirements from general knowledge, informal practice, or ineligible content. | No; any material invention is also a critical failure under dimensions 1 and/or 5. |
-| 7 | Rework status | The answer is usable as-is and requires no material correction before it can be used for the task. | No |
-| 8 | Time compliance | The task reaches an acceptable answer within the 10-minute limit. | No; if the limit expires without an acceptable answer, record UNRESOLVED and fail the task. |
-
-**Task acceptance rule:** At least **6 of 8 dimensions must pass**, and both mandatory dimensions (1 — Correctness and 5 — Boundary compliance) must pass. Failure of either mandatory dimension means the task fails regardless of the total score. A score of 6/8 does not override any critical failure.
-
-**Critical failures — task fails regardless of score:**
-- Inventing an Inchcape policy, standard, approval path, or source that is not documented.
-- Treating a declared knowledge gap as resolved.
-- Using CAPE during a no-CAPE task.
-- Bypassing the documented source boundary or presenting general practices as Inchcape-approved requirements.
-- Ignoring the 10-minute limit or treating an unresolved task as successfully completed.
-- Presenting a faster but incorrect answer as successful completion.
-
----
-
-## Time Limit Rule
-
-Each task has a hard 10-minute limit. If the participant has not produced an acceptable answer within 10 minutes, the task is recorded as UNRESOLVED. Unresolved tasks remain in the dataset and are not excluded from the calculation.
-
----
+- **Eight-dimension quality rubric, acceptance threshold, and critical-failure vetoes:** protocol §6. The rubric remains **proposed**; the 6/8 threshold is not approved.
+- **Timing, outcome taxonomy, and time-limit rule:** protocol §5. Each task has a hard 10-minute limit; a task not completed within 10 minutes is recorded as `UNRESOLVED` with active time exactly 600 seconds. Unresolved tasks remain in the dataset and are not excluded from the calculation.
+- **Data log and evidence schema:** protocol §7.
+- **Analysis method and reporting rules:** protocol §8.
+- **Approval and execution gate:** protocol §9.
 
 ## Governance Note
 
-This task bank is a draft preparation artifact. Sponsor approval is required before any measurement begins. The task bank is not frozen, and no efficiency result may be claimed until the approved protocol is executed and reviewed.
+This task bank is a draft preparation artifact. It does not contain the full ten-pair sample, is not frozen, and has not been approved for execution. Sponsor/owner approval of the protocol is required before any measurement begins. No efficiency result may be claimed until the approved protocol is executed and reviewed.
+
+No execution has occurred: baseline measurements = 0, CAPE measurements = 0. The 30% reduction remains a target, not a result. No Confluence page, Implementation Record revision, source classification, Trust Matrix entry, or Coverage-Honesty Gate status is changed by this document.
