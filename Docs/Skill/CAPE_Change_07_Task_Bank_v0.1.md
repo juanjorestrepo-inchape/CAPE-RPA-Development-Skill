@@ -11,7 +11,7 @@
 
 ## Evaluation Design
 
-Three matched pairs of questions prepared to date, against a pilot target of ten matched pairs. Within each pair, Task A goes to the no-CAPE condition (developer searches manually) and Task B goes to the CAPE condition. In this draft, questions within a pair cover the same knowledge domain but are not identical.
+Three matched pairs of questions prepared to date, against a pilot target of ten matched pairs. Task A goes to the no-CAPE condition (developer searches manually) and Task B goes to the CAPE condition. Under the protocol's approved design basis (`C07-D08`, 2026-10-20), questions within a pair must be **equivalent** — matched by domain, intent, expected outcome, and approximate difficulty; identical wording is not required and may be avoided where familiarity could bias the second execution. Per-pair equivalence rationales are not yet documented (protocol checklist item 2).
 
 | Field | Value |
 |---|---|
@@ -27,7 +27,7 @@ Three matched pairs of questions prepared to date, against a pilot target of ten
 
 > **Coverage status:** this draft does not yet contain all ten pairs. Seven additional pairs / fourteen executions must be prepared and reviewed before execution, unless an explicit documented decision changes the sample size (protocol §2.2 and §11).
 
-> **Pair-equivalence status — open decision `C07-D08`:** the protocol requires the same task definition and expected outcome in both conditions of a pair unless an approved methodology establishes equivalent task variants. The Task A / Task B prompt pairs below are **not identical** and are **not approved as equivalent variants**. They cannot be executed as matched pairs until either the prompts are aligned or the variant methodology is explicitly approved.
+> **Pair-equivalence status — `C07-D08` resolved as design basis; documentation still required:** the protocol's approved design basis (2026-10-20) requires **equivalent** tasks within a pair, matched by domain, intent, expected outcome, and approximate difficulty; identical wording is **not** required. The Task A / Task B prompt pairs below are non-identical by design, but **no per-pair equivalence rationale has been documented yet**. Each pair must have its documented and reviewed matching rationale (protocol §2.2, checklist item 2) before it may be executed. This is a documentation gap, not a methodology gap.
 
 ---
 
@@ -149,7 +149,7 @@ There is no Confluence page to validate because the gap is the point. Pair 3 is 
 
 The following components are defined in the governing protocol and are **not duplicated here**:
 
-- **Eight-dimension quality rubric, acceptance threshold, and critical-failure vetoes:** protocol §6. The rubric remains **proposed**; the 6/8 threshold is not approved.
+- **Eight-dimension quality rubric, acceptance threshold, and critical-failure vetoes:** protocol §6. The rubric and the ≥ 6/8 threshold are part of the user-approved **design basis**; formal approval is still pending, and the critical-failure catalogue remains a proposed candidate list.
 - **Timing, outcome taxonomy, and time-limit rule:** protocol §5. Each task has a hard 10-minute limit; a task not completed within 10 minutes is recorded as `UNRESOLVED` with active time exactly 600 seconds. Unresolved tasks remain in the dataset and are not excluded from the calculation.
 - **Data log and evidence schema:** protocol §7.
 - **Analysis method and reporting rules:** protocol §8.

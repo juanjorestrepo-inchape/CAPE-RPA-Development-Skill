@@ -23,6 +23,6 @@ Skill versions are separated by role:
 - [04 User Feedback](04_User_Feedback/) — survey and feedback findings.
 - [05 Next Steps](05_Next_Steps/) — project phase and next-step tracking.
 - [Docs/Skill](Docs/Skill/) — active Skill and baseline.
-- [Change 04 design specification](Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md) and [Change 07 efficiency measurement protocol](Docs/Skill/CAPE_Change_07_Efficiency_Protocol_v0.1.md) (status `PROPOSED — PENDING APPROVAL`) with its [Task Bank](Docs/Skill/CAPE_Change_07_Task_Bank_v0.1.md).
+- [Change 04 design specification](Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md) and [Change 07 efficiency measurement protocol](Docs/Skill/CAPE_Change_07_Efficiency_Protocol_v0.1.md) (status `PROPOSED — PENDING APPROVAL`; design basis `APPROVED BY USER`, formal approval and execution `PENDING` / `NOT CLEARED`) with its [Task Bank](Docs/Skill/CAPE_Change_07_Task_Bank_v0.1.md).
 - [CAPE Test Plans and Results](Docs/Skill/Tests/) — test instructions, scorecard, raw archives, and Change 01/02 evidence.
 - [Docs/Word](Docs/Word/) and [Docs/Excel](Docs/Excel/) — deliverables and supporting workbooks.

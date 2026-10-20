@@ -4,7 +4,7 @@
 
 Evaluation results are run-specific and should not be collapsed into a single activation claim. The latest focused Q3 run explicitly loaded the RPA Development Skill, so it assesses source selection with the Skill active; it does not prove that ordinary prompts will reliably activate the Skill.
 
-Current position as of 2026-10-20 (Change 07 measurement protocol v0.1 registered, no execution; documentation review closed; Q3 evidence and Change 04 status updated; KS-010 CAPTCHA/MFA test registered):
+Current position as of 2026-10-20 (Change 07 measurement protocol v0.1 registered and its design basis approved by the user — formal approval and execution still pending, no execution; documentation review closed; Q3 evidence and Change 04 status updated; KS-010 CAPTCHA/MFA test registered):
 
 - **Change 01 — Activation:** earlier activation evidence remains recorded. The explicitly loaded Q3 run does not validate automatic routing.
 - **Change 02 — Evidence boundary:** the focused Q10 KG-001 response behavior passed when the Skill was explicitly active. The overall Coverage-Honesty Gate remains uncleared.
@@ -13,7 +13,7 @@ Current position as of 2026-10-20 (Change 07 measurement protocol v0.1 registere
 - **Governed source reconciliation — KS-003–010:** Source Role and Assessment Status remain **UNVERIFIED** in Implementation Record §7. Trust Matrix §26.1 records Primary / Provisional for these six sources but has not been reconciled with the IR. DRPA vs SOLDOC canonical identity for KS-010 remains unreconciled despite behavioral pass. Do not treat those values as resolved until all three pages (Trust Matrix §26.1, IR §7, Taxonomy §11) are published, consistent, and re-verified.
 - **End-to-end review — 2026-10-08:** the pasted Skill has a coherent governance design; the review recommends focused clarifications and tests, not a wholesale rewrite. These observations are recorded in Section 15 and do not themselves authorize Skill changes.
 - **Next hardening:** Complete remaining Change 04 verification cases (Q1, Q8, Q15, Q16, Q19) and resolve canonical source for KS-010. Claim-level grounding (Change 05) remains separate; do not fold it into Change 03 or Change 04.
-- **Change 07 — Developer efficiency measurement:** Measurement Protocol v0.1 registered 2026-10-20 in `Docs/Skill/CAPE_Change_07_Efficiency_Protocol_v0.1.md`. Status is `PROPOSED — PENDING APPROVAL`. No efficiency baseline has been measured, no CAPE-versus-no-CAPE comparison has been executed, and the 30% reduction remains a target rather than a result. The Task Bank holds three of the ten target pairs. The Coverage-Honesty Gate remains `NOT CLEARED`. See Section 22.
+- **Change 07 — Developer efficiency measurement:** Measurement Protocol v0.1 registered 2026-10-20 in `Docs/Skill/CAPE_Change_07_Efficiency_Protocol_v0.1.md`; revision r2 records the **user-approved design basis** (Section 23). Protocol status remains `PROPOSED — PENDING APPROVAL`: design basis `APPROVED BY USER`, formal protocol approval `PENDING`, measurements `NOT STARTED`, execution gate `NOT CLEARED`. No efficiency baseline has been measured, no CAPE-versus-no-CAPE comparison has been executed, and the 30% reduction remains a target rather than a result. The Task Bank holds three of the ten target pairs. The Coverage-Honesty Gate remains `NOT CLEARED`. See Sections 22 and 23.
 
 Current status by test:
 - Q3: **Focused PASS — source selection and lifecycle accuracy** in the newly supplied response; the earlier Stage A **FAIL — Lifecycle Accuracy** remains historical. Provenance/claim-level grounding was not assessed because no retrieval trace was supplied.
@@ -924,7 +924,7 @@ The Skill explicitly stated that the validated knowledge base did NOT establish:
 | §6 Quality rubric | Eight binary dimensions with operational pass/fail examples, proposed ≥ 6/8 acceptance rule with mandatory Correctness and Boundary compliance, proposed critical-failure vetoes, edge-case scoring rules |
 | §7 Data log and evidence | Full field-level schema plus data-handling and retention rules |
 | §8 Analysis method | Primary efficiency formula, mandatory accompanying reporting, zero-denominator guard, quality-separated reporting, no broad claims |
-| §9 Approval gate | Seven pre-execution requirements, all currently OPEN, plus freeze procedure |
+| §9 Approval gate | Seven pre-execution requirements, all currently OPEN, plus freeze procedure *(superseded at v0.1-r2 by the nine-item preparation checklist — see Section 23)* |
 | §10 Open decisions | Twelve named decisions pending approval, including the acceptance threshold and task-variant question |
 | §11 Known gaps | Task Bank coverage, pair equivalence, KS-010 identity, space list, retention, order method, participant plan, threshold approval, absent baseline, gate status |
 | §12 Non-authorization | Explicit list of what the protocol does not authorize |
@@ -960,3 +960,47 @@ The Skill explicitly stated that the validated knowledge base did NOT establish:
 
 - **Action Owner:** Project owner/reviewer with governance authority for Change 07 (RPA Architecture & Governance Lead).
 - **Required Action:** Resolve the twelve open decisions in protocol §10, approve or revise the eight-dimension rubric and acceptance threshold, approve the task-pair equivalence method, define the permitted source spaces and retention rules, complete the remaining seven pairs, then freeze the protocol. Measurement may begin only after the §9 gate passes.
+
+---
+
+## 23. Change 07 — Design Basis Approved by User (Protocol v0.1-r2) — 2026-10-20
+
+### 1. Nature of This Entry
+
+- **What happened:** The user approved the **design basis** of the Change 07 measurement protocol and directed that it be recorded in the canonical GitHub document.
+- **What this is not:** This is **not** formal protocol approval, **not** a protocol freeze, and **not** authorization to execute the pilot. Design agreement and formal execution authorization remain explicitly separate.
+- **Artifact updated:** [`CAPE_Change_07_Efficiency_Protocol_v0.1.md`](../CAPE_Change_07_Efficiency_Protocol_v0.1.md) revision **v0.1-r2** (same file; no duplicate protocol document created).
+- **Confluence impact:** None. No Confluence page, Implementation Record revision (remains v55 / `v0.1 / Revision v0.1-r4`), Trust Matrix entry, Knowledge Taxonomy, Knowledge Inventory, or Coverage-Honesty Gate status is changed. Confluence governance/decision record update remains a separate, not-yet-performed action.
+
+### 2. Approved Design-Basis Items (recorded in protocol §0.4)
+
+1. Target sample: 10 matched task pairs / 20 executions.
+2. Equivalent tasks within each pair (matched by domain, intent, expected outcome, approximate difficulty); identical wording not required.
+3. Condition order randomized or counterbalanced where practical, recorded with limitations documented.
+4. Same participant for both conditions within each pair for the initial pilot.
+5. Eight-dimension binary rubric and ≥ 6/8 acceptance threshold, with Correctness and Boundary compliance mandatory and critical-failure vetoes.
+6. Separation of answer-quality evaluation from operational indicators.
+7. Maximum 10 minutes (600 seconds) active resolution time per execution; interruptions recorded separately.
+8. Consistent, pre-defined treatment of unresolved, timed-out, invalid, interrupted, and activation-failure executions across both conditions.
+9. Primary efficiency formula and structured, versioned execution data log.
+10. CAPE/Skill activation failure recorded as an outcome; never silently excluded or replaced.
+11. No measurements before formal approval and freeze.
+
+### 3. State Recorded at This Entry
+
+- **Design basis:** `APPROVED BY USER` (2026-10-20).
+- **Formal protocol approval:** `PENDING`.
+- **Measurements:** `NOT STARTED` — zero baseline executions, zero CAPE executions; no timing data exists.
+- **Execution gate:** `NOT CLEARED` — all nine checklist items in protocol §9 remain **OPEN**.
+- **Task Bank:** still three of ten pairs; seven pairs remain to be prepared and reviewed.
+- **30% reduction:** remains a target, not a result.
+
+### 4. Remaining Gates Before Execution
+
+1. Document and review per-pair equivalence rationales for all ten pairs.
+2. Prepare and review the remaining seven pairs.
+3. Record the concrete condition-order method.
+4. Define permitted Confluence spaces and the duplicate/non-canonical page rule (incl. KS-010 canonical identity).
+5. Ratify the exact critical-failure catalogue and edge-case rules (§6.3–§6.4).
+6. Approve evidence access, retention, and storage.
+7. Freeze the protocol version and obtain explicit owner/reviewer execution approval (§9 items 8–9).

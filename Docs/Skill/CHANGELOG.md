@@ -53,3 +53,21 @@
 **Status:** `PROPOSED — PENDING APPROVAL`. Not frozen. The acceptance threshold, critical-failure list, task-pair equivalence method, permitted source spaces, condition-order method, retention rules, and participant plan remain pending approval.
 
 **Validation status:** Documentation only. No baseline or comparison execution has been performed; no timing data exists; the 30% reduction remains a target. The Task Bank holds three of the ten target pairs. Coverage-Honesty Gate remains `NOT CLEARED`. Implementation Record remains at its latest verified state v55 (Document Control `v0.1 / Revision v0.1-r4`); no Confluence page or revision was changed.
+
+### Change 07 — Design Basis Approved; Protocol v0.1-r2 (20 Oct 2026)
+
+**Changes made:**
+
+- Updated `Docs/Skill/CAPE_Change_07_Efficiency_Protocol_v0.1.md` to revision **v0.1-r2** to record the user's approval of the protocol **design basis** (new §0.4), with explicit separation from formal protocol approval and execution authorization: design basis `APPROVED BY USER`, formal approval `PENDING`, measurements `NOT STARTED`, execution gate `NOT CLEARED`.
+- Adopted **equivalent-task pairing** (§2.2): pairs matched by domain, intent, expected outcome, and approximate difficulty; identical wording not required and may be avoided where familiarity could bias the second execution; per-pair matching rationale documented before execution (resolves `C07-D08` at design-basis level).
+- Replaced the seven-item gate with a nine-item **preparation checklist and execution gate** (§9) covering task equivalence documentation, duplicate/non-canonical source treatment, freeze, and explicit execution approval.
+- Reframed the §6.3 critical-failure veto list as a **proposed candidate catalogue** (categories C1–C5), explicitly noting these are design candidates and not evidence of any incident; the exact catalogue remains pending formal approval.
+- Added §6.5 requiring reports to separate **answer-quality acceptance** (dimensions 1–6) from **operational performance** (Rework status, Time compliance, active times, activation failures), without changing the ≥ 6/8 acceptance rule.
+- Added `task_difficulty` and `task_matching_rationale` fields to the versioned data schema (§7.1); updated the decision table (§10) with per-decision design-basis status and updated known gaps (§11).
+- Updated `Docs/Skill/CAPE_Change_07_Task_Bank_v0.1.md` notes for the equivalence decision, and registered the approval in `Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md` (new Section 23; Executive Summary updated).
+
+**Rationale:** Record the approved design basis in version control before any execution, keep design agreement explicitly separate from formal execution authorization, and fix the remaining approval gates and preparation gaps in the canonical protocol.
+
+**Status:** Design basis `APPROVED BY USER`; formal protocol approval `PENDING`; execution gate `NOT CLEARED`. The acceptance threshold and rubric are design-basis approved but not formally approved.
+
+**Validation status:** Documentation only. No measurement, baseline, or comparison execution has been performed; no timing data exists; the 30% reduction remains a target. The Task Bank holds three of the ten target pairs. Coverage-Honesty Gate remains `NOT CLEARED`. Implementation Record remains at v55 (Document Control `v0.1 / Revision v0.1-r4`); no Confluence page or revision was changed.
