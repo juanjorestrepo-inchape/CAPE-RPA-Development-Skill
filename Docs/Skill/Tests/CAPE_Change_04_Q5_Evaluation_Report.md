@@ -1,13 +1,16 @@
 # CAPE RPA Development Skill — Change 04 Evaluation Report (Case Q5)
 
 **Document Type:** Formal Test Evaluation & Verification Report  
-**Skill Version Evaluated:** `RPA Development Skill — Pilot v0.1` (refinement §4.3 Confluence Page Info active, commit `a822fdb`)  
+**Skill Version Evaluated:** `RPA Development Skill — Pilot v0.1` (refinement §4.3 Confluence Page Info active, commit `b22d09c`)  
 **Evaluation Date:** Registered 2026-10-19  
 **Evaluator:** Documentation and Evaluation Assistant / Juan José Restrepo Rosero  
 **Governing Case:** Change 04 Verification Plan — Case Q5 (`Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md` §7)  
 **Test Domain:** Security / CAPTCHA and MFA  
 **Question:** `What security requirements apply when a new RPA solution handles CAPTCHA or MFA?`  
 **Overall Verdict:** **PASS — with a governance limitation outstanding**  
+**Attribution correction (2026-10-21):** the §4.3 commit reference was corrected from `a822fdb` to `b22d09c`. The evaluated Skill content, evidence, and verdict are unchanged. See project register Section 25 for the Git evidence.
+
+**Change 04 status:** instructions present in the active Skill (implementation); Case Q5 focused test executed (focused PASS with a governance limitation); formal Change 04 acceptance **PENDING** (Cases Q1, Q8, Q15, Q16, Q19; connector metadata verification; Trust Matrix cross-check).
 
 ---
 

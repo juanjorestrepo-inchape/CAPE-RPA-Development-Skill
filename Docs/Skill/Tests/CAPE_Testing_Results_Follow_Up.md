@@ -9,7 +9,7 @@ Current position as of 2026-10-20 (Change 07 measurement protocol v0.1 registere
 - **Change 01 — Activation:** earlier activation evidence remains recorded. The explicitly loaded Q3 run does not validate automatic routing.
 - **Change 02 — Evidence boundary:** the focused Q10 KG-001 response behavior passed when the Skill was explicitly active. The overall Coverage-Honesty Gate remains uncleared.
 - **Change 03 — Source disambiguation and lifecycle:** the 2026-10-04 focused run passed source selection but was a **Partial Pass** overall; the earlier Stage A Q3 run remains a historical **FAIL — Lifecycle Accuracy**. The 2026-10-14 focused Q3 response meets the current source-selection and ten-phase lifecycle criteria. All runs preserved separately.
-- **Change 04 — KS-ID provenance:** instructions present in local Skill §4.3 (commit `a822fdb` / 16 Oct 2026 refinement); detailed Design Specification v0.1 registered in `Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md`. Focused verification on KS-010 (CAPTCHA/MFA) executed and achieved **Focused PASS — with a governance limitation outstanding** (see Section 21). Full 7-case acceptance and connector metadata verification remain pending. The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**.
+- **Change 04 — KS-ID provenance:** instructions present in local Skill §4.3 (commit `b22d09c` / 16 Oct 2026 refinement; attribution corrected 2026-10-21 — see Section 25); detailed Design Specification v0.1 registered in `Docs/Skill/CAPE_Change_04_Design_Specification_v0.1.md`. Focused verification on KS-010 (CAPTCHA/MFA) executed and achieved **Focused PASS — with a governance limitation outstanding** (see Section 21). Full 7-case acceptance and connector metadata verification remain pending. The Trust Matrix cross-check remains **PARTIAL / NOT PASSED**.
 - **Governed source reconciliation — KS-003–010:** Source Role and Assessment Status remain **UNVERIFIED** in Implementation Record §7. Trust Matrix §26.1 records Primary / Provisional for these six sources but has not been reconciled with the IR. DRPA vs SOLDOC canonical identity for KS-010 remains unreconciled despite behavioral pass. Do not treat those values as resolved until all three pages (Trust Matrix §26.1, IR §7, Taxonomy §11) are published, consistent, and re-verified.
 - **End-to-end review — 2026-10-08:** the pasted Skill has a coherent governance design; the review recommends focused clarifications and tests, not a wholesale rewrite. These observations are recorded in Section 15 and do not themselves authorize Skill changes.
 - **Next hardening:** Complete remaining Change 04 verification cases (Q1, Q8, Q15, Q16, Q19) and resolve canonical source for KS-010. Claim-level grounding (Change 05) remains separate; do not fold it into Change 03 or Change 04.
@@ -625,7 +625,7 @@ Rovo's summary presented `Primary` / `Provisional` as resolved facts for KS-003�
 Rovo's summary stated `Provisional + Role Ambiguity`. Implementation Record §7 lists `Role Ambiguity` only under Assessment Status; `Provisional` appears in Trust Matrix §26.1 but not separately in IR §7. The corrected text treats these as unreconciled until both pages are aligned.
 
 **Correction 3 — Change 04 note:**
-Rovo's summary included the note *"it shouldn't if the record is accurate, since Change 04 is still pending."* This is outdated: Change 04 instructions are present in the local Skill §4.3 (commit `a822fdb`). The Confluence IR still shows Change 04 as `PENDING IMPLEMENTATION` because the IR has not been updated. The corrected text reframes the question as: *which version is CAPE actually loading?*
+Rovo's summary included the note *"it shouldn't if the record is accurate, since Change 04 is still pending."* This is outdated: Change 04 instructions are present in the local Skill §4.3 (commit `b22d09c`). The Confluence IR still shows Change 04 as `PENDING IMPLEMENTATION` because the IR has not been updated. The corrected text reframes the question as: *which version is CAPE actually loading?*
 
 ### Engineering position as of 2026-10-14 (post-review)
 
@@ -687,7 +687,7 @@ This boundary must be explicit in the specification and in the acceptance criter
 
 ### What this gateway does not authorize
 
-- Any modification to the active Skill text (§4.3 already present from commit `a822fdb` is the current implementation baseline)
+- Any modification to the active Skill text (§4.3 already present from commit `b22d09c` is the current implementation baseline)
 - Starting the formal 11-case regression
 - Claiming Change 04 as validated
 - Proceeding to Change 05 design
@@ -810,7 +810,7 @@ To prevent conflating implementation mechanisms, validation gates, and business 
 
 ### 1. Test Metadata
 
-- **Skill:** `RPA Development Skill — Pilot v0.1` (with §4.3 Confluence Page Info instruction active, commit `a822fdb` / 16 Oct 2026 refinement)
+- **Skill:** `RPA Development Skill — Pilot v0.1` (with §4.3 Confluence Page Info instruction active, commit `b22d09c` / 16 Oct 2026 refinement)
 - **Test Domain:** Security / CAPTCHA and MFA
 - **Question:** `What security requirements apply when a new RPA solution handles CAPTCHA or MFA?`
 - **Execution Date:** Not specified in raw execution record; registered in project documentation on 2026-10-19
@@ -866,7 +866,7 @@ The Skill explicitly stated that the validated knowledge base did NOT establish:
 - **Boundary Discipline:** Avoided synthesizing unsupported technical requirements or hallucinating security escalation paths (resolving the previous Q5 grounding note from the initial pilot run).
 - **Honest Gap Disclosure:** Explicitly communicated knowledge boundaries and absence of low-level technical controls.
 
-**Change 04 Acceptance Criteria Assessment:**
+**Change 04 Acceptance Criteria — Case Q5 Assessment:**
 
 | Criteria ID | Criterion Description | Evaluation Result | Supporting Evidence / Notes |
 |---|---|---|---|
@@ -877,7 +877,11 @@ The Skill explicitly stated that the validated knowledge base did NOT establish:
 | `P04-05` | Uso permitido | **PASS** | Primary evidence bounded to governing policy scope; supplementary architecture security page not abused. |
 | `P04-06` | Relación evidencia-afirmación | **PASS** | Seven stated requirements reflect policy text; unsupported claims avoided. |
 | `P04-07` | Fallo seguro | **PASS** | Explicitly disclosed absence of MFA token, CAPTCHA handoff, and exception route guidance. |
-| `P04-08` | Evidencia reproducible | **PASS** | Tool trace (11 calls), page IDs, versions, and response captured for audit. |
+| `P04-08` | Evidencia reproducible | **PASS** | Documented transcription of the 11 tool calls (Section 21.2 and `CAPE_Change_04_Q5_Evaluation_Report.md` §3), including page IDs, versions, and the response; no primary exported trace (`.json`, `.log`, `.har`) is held in the repository. |
+
+**P04-08 evidence basis:** the 11 tool calls are documented as a transcription, not as an exported primary trace. The available evidence is sufficient to review the documented result, but not sufficient to reproduce the execution independently.
+
+These results assess Case Q5 only. Change 04 formal acceptance remains **PENDING**: Cases Q1, Q8, Q15, Q16 and Q19, connector metadata verification, and the Trust Matrix cross-check are outstanding.
 
 ### 5. Outstanding Governance Limitation & Scope Boundaries
 
@@ -1026,7 +1030,7 @@ The Skill explicitly stated that the validated knowledge base did NOT establish:
 
 ### 3. Verified Documentation Discrepancy
 
-The §4.3 *Confluence Page Info* instruction is attributed in this register and in `CAPE_Change_04_Q5_Evaluation_Report.md` to commit `a822fdb`. Git history shows `a822fdb` is the 2026-10-14 Q3 PASS record, and the Page Info instruction was introduced by **`b22d09c`** (2026-10-16), confirmed with `git log -S "Confluence Page Info"`. The implementation is present in the active Skill; the attribution alone is wrong. Correction is scheduled as a dedicated documentation-correction commit (review plan step 02) and does not alter evaluated behavior or any gate state.
+The §4.3 *Confluence Page Info* instruction is attributed in this register and in `CAPE_Change_04_Q5_Evaluation_Report.md` to commit `a822fdb`. Git history shows `a822fdb` is the 2026-10-14 Q3 PASS record, and the Page Info instruction was introduced by **`b22d09c`** (2026-10-16), confirmed with `git log -S "Confluence Page Info"`. The implementation is present in the active Skill; the attribution alone is wrong. Correction is recorded in Section 25 (applied 2026-10-21) and does not alter evaluated behavior or any gate state.
 
 ### 4. What This Entry Does Not Change
 
@@ -1034,3 +1038,43 @@ The §4.3 *Confluence Page Info* instruction is attributed in this register and 
 - No Change 07 protocol approval, freeze, or execution authorization is implied.
 - No Skill, Trust Matrix, Knowledge Taxonomy, Knowledge Inventory, or Coverage-Honesty Gate state is changed.
 - No Confluence page or Implementation Record revision is updated or claimed to be updated.
+
+---
+
+## 25. Documentation Corrections — Phase A Closure — 2026-10-21
+
+### 1. D1 — §4.3 Commit Attribution (corrected)
+
+The §4.3 *Confluence Page Info* instruction was attributed to `a822fdb` in this register and in `CAPE_Change_04_Q5_Evaluation_Report.md`. Git evidence:
+
+- `a822fdb` (2026-10-14) is the "Record focused Q3 PASS" commit. It modified the Skill file for Q3 refinement, but it does **not** contain the Page Info instruction.
+- `b22d09c` (2026-10-16) is "Add Confluence Page Info instruction to §4.3 and trim Section 12 notes" and adds the instruction.
+- Confirmed with `git log -S "Confluence Page Info" --oneline -- <skill file>`, which returns only `b22d09c`.
+
+Corrected locations (attribution only; no result, verdict, or evidence text changed): Executive Summary entry; Section 17 correction note; Section 18 "What this gateway does not authorize"; Section 21 test metadata; Q5 Evaluation Report metadata. One attribution remains at `a822fdb` in Section 17 (2026-10-14 cross-check): that reference describes the repository state at that date and is not a Page Info attribution, so it was left unchanged.
+
+### 2. D2 — Skill Character Count (verified, no correction)
+
+Recomputed on commit `7c58706` for `CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md`:
+
+| Criterion | Value |
+|---|---|
+| Character count, LF-normalized (UTF-16 code units) | **22,139** — matches the documented figure |
+| Character count with CRLF as stored | 22,478 |
+| UTF-8 bytes, LF-normalized | 22,203 |
+| UTF-8 bytes, as stored | 22,542 |
+| Lines | 339 |
+
+The documented figure of 22,139 characters is **correct** under the LF-normalized character criterion. An earlier audit compared bytes with characters and incorrectly flagged a discrepancy; that finding is withdrawn. The criterion is now stated in `README.md` and in the consolidation review. The count is a local repository measurement; CAPE's platform counting criterion has not been independently verified, so it does not by itself demonstrate compliance with the 24,000-character limit. No Skill content was changed.
+
+### 3. KS-007 Classification (corrected)
+
+The consolidation review had listed KS-007 alongside KS-010 as a pending canonical identity. Repository evidence does not document two candidate sources or a canonical-identity conflict for KS-007. The review now records KS-007 under the unverified governance status of KS-003–KS-010 and states explicitly that no canonical-identity conflict is documented. **No canonical source is declared for KS-007 or KS-010**, and the KS-010 duplicate remains an open governance decision.
+
+### 4. States Preserved
+
+- KS-010 canonical identity: **pending governance decision** — unchanged.
+- Trust Matrix §26.1 / IR §7 cross-check: **`PARTIAL / NOT PASSED`** — unchanged.
+- Coverage-Honesty Gate: **`NOT CLEARED`** — unchanged.
+- Historical results preserved; no regression executed; Changes 05 and 06 not implemented; Skill logic unchanged.
+- Measurements: **`NOT STARTED`**; Change 07 formal approval remains `PENDING`.

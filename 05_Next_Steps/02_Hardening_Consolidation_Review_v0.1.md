@@ -44,7 +44,7 @@ The table separates **work performed** from **evidence that the corresponding ob
 
 | Area | Verified state (repository evidence) | Open evidence or gap | Decision |
 |---|---|---|---|
-| **Skill architecture and scope** | Documental and functional baseline established: active Skill (22,139 chars), frozen baseline, archived draft; bounded source hierarchy (§7) and gap register (§8) | No demonstrated architectural defect | Preserve; do not redesign without a demonstrated gap |
+| **Skill architecture and scope** | Documental and functional baseline established: active Skill (22,139 local LF-normalized chars; 22,478 with CRLF; CAPE's platform counting criterion not independently verified), frozen baseline, archived draft; bounded source hierarchy (§7) and gap register (§8) | No demonstrated architectural defect | Preserve; do not redesign without a demonstrated gap |
 | **Knowledge and sources** | Inventory v0.2.0, taxonomy, and Trust Matrix exist; seven of twenty pilot sources populated and Eligible | Source Role / Assessment Status for KS-003–010 remain **UNVERIFIED** in IR §7; Trust Matrix §26.1 (Primary/Provisional) not reconciled with the IR; KS-010 canonical identity unreconciled | Resolve the specific governance gaps; do not rebuild the inventory |
 | **Skill behavior** | Change 01–04 instruction changes implemented; Q5 (KS-010) focused **PASS with a governance limitation**; focused Q10 and Q19 retests pass when the Skill is explicitly active | Q10 ordinary-request routing not established; Q11/Q12 required results outstanding; full 11-case regression not run; Change 01 activation cycle lacks raw evidence for Q3/Q6/Q10/Q15/Q16 | Preserve historical results; complete the pending regression |
 | **Validation in CAPE live** | Multiple executed runs with traces; focused Q3, Q5, Q10, Q19 evidence recorded | Activation evidence does not by itself prove the initial validation is complete; gate criteria unmet | Consolidate the evidence package and verify acceptance criteria |
@@ -68,7 +68,7 @@ A concrete documentation-fidelity defect was verified against the Git history:
 
 | Record | Current claim | Verified fact |
 |---|---|---|
-| Register §Executive Summary (Change 04) and `CAPE_Change_04_Q5_Evaluation_Report.md` | §4.3 Confluence Page Info instruction attributed to commit `a822fdb` (16 Oct 2026 refinement) | `a822fdb` is the 14 Oct 2026 "Record focused Q3 PASS" documentation commit. The Page Info instruction was introduced by **`b22d09c`** (16 Oct 2026, "Add Confluence Page Info instruction to §4.3 and trim Section 12 notes"), confirmed via `git log -S "Confluence Page Info"` |
+| Register §Executive Summary (Change 04) and `CAPE_Change_04_Q5_Evaluation_Report.md` | §4.3 Confluence Page Info instruction attributed to commit `a822fdb` (16 Oct 2026 refinement) | `a822fdb` is the 14 Oct 2026 "Record focused Q3 PASS" documentation commit. The Page Info instruction was introduced by **`b22d09c`** (16 Oct 2026, "Add Confluence Page Info instruction to §4.3 and trim Section 12 notes"), confirmed via `git log -S "Confluence Page Info"`. **Corrected 2026-10-21** (register §25) |
 
 **Impact:** the attribution is wrong, but the implementation is genuinely present in the active Skill; the evaluated behavior is unaffected. This is a documentation correction, **not** a Skill improvement.
 
@@ -89,7 +89,7 @@ A concrete documentation-fidelity defect was verified against the Git history:
 | B1 | Q10 routing/ordinary-request behavior | Pass at Skill level; routing unproven | Documented result from an ordinary (non-explicit) request, or a documented limitation accepted by the reviewer |
 | B2 | Q19 full regression evidence | Focused pass only | Q19 included in the frozen 11-case regression |
 | B3 | Q11 / Q12 current results | Outstanding | Required results recorded; gate reassessed |
-| B4 | KS-007 / KS-010 authority | KS-003–010 unverified in IR §7; Trust Matrix not reconciled; KS-010 duplicate unresolved (`7308640261` vs `8847753943`) | Recorded governance disposition; source-authority scoring unblocked |
+| B4 | Source governance — KS-003–KS-010 | Role/Assessment Status unverified in IR §7; Trust Matrix not reconciled; KS-010 duplicate unresolved (`7308640261` vs `8847753943`); **no documented canonical-identity conflict for KS-007** | Recorded governance disposition; source-authority scoring unblocked |
 | B5 | GitHub reference attribution | `a822fdb` misattributed (see §2.2) | Documentation correction committed |
 | B6 | Change 07 preparation | 3 of 10 pairs; protocol approval pending | Protocol §9 gate cleared |
 
@@ -107,7 +107,7 @@ Assemble the latest Skill version, test results, governance document versions, a
 
 ### 02 — Resolve the known blockers
 
-Investigate Q10 and Q19 in isolation. In parallel: verify KS-007 and KS-010 authority, keep the Trust Matrix cross-check at `NOT PASSED` until it is properly closed, and correct the GitHub reference discrepancy (§2.2).
+Investigate Q10 and Q19 in isolation. In parallel: verify the governance status of KS-003–KS-010 and resolve the KS-010 canonical duplicate, keep the Trust Matrix cross-check at `NOT PASSED` until it is properly closed, and correct the GitHub reference discrepancy (§2.2).
 
 **Exit criterion:** documented cause or limitation, justified decision, and a minimal change definition where one is required. One change at a time; no simultaneous multi-component changes that would destroy attribution.
 
@@ -166,7 +166,7 @@ The first task is an **evidence-based state review**, not another design round. 
 Three confirmations are required first:
 
 1. Whether **Q10 and Q19** remain open, or whether later evidence demonstrates resolution.
-2. Which **governance decisions** remain pending, especially the canonical identities of **KS-007 and KS-010**.
+2. Which **governance decisions** remain pending, especially the governance status of **KS-003–KS-010** and the canonical identity of **KS-010**.
 3. Which implemented changes can be credited as **verified Skill improvements**, and which are only documentation or preparation tasks.
 
 ---

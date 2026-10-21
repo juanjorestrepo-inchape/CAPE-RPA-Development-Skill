@@ -86,3 +86,16 @@
 **Status:** `RECOMMENDATION — PENDING OWNER REVIEW`. No gate, approval, or measurement state changed.
 
 **Validation status:** Documentation only. No tests executed; no measurement data; the 30% reduction remains a target. Coverage-Honesty Gate remains `NOT CLEARED`; Implementation Record remains v55 (`v0.1 / Revision v0.1-r4`); no Confluence page was changed.
+
+### Phase A Closure — Documentation Corrections (21 Oct 2026)
+
+**Changes made:**
+
+- **D1 corrected:** the §4.3 *Confluence Page Info* commit attribution was changed from `a822fdb` to `b22d09c` in the project register (Executive Summary, Section 17 correction note, Section 18 gateway note, Section 21 test metadata) and in `CAPE_Change_04_Q5_Evaluation_Report.md`. Verified with `git show -s` and `git log -S "Confluence Page Info"`; only `b22d09c` (16 Oct 2026) introduces the instruction.
+- **D2 withdrawn:** recomputation shows the documented 22,139 characters is correct under the LF-normalized character criterion (22,478 with CRLF; 22,203 UTF-8 bytes LF-normalized; 22,542 bytes as stored). The earlier byte-vs-character comparison was an audit error. The counting criterion is now explicit in `README.md` and the consolidation review; the count is local and CAPE's platform counting criterion has not been independently verified. No Skill content changed.
+- **KS-007 classification corrected:** the consolidation review no longer describes KS-007 as a canonical-identity conflict; KS-007 remains under the unverified governance status of KS-003–KS-010. No canonical source is declared.
+- Registered the corrections as Section 25 of the project register, including states preserved.
+
+**Rationale:** Close Phase A with minimal, evidence-backed documentation corrections and explicit traceability, without touching Skill logic, historical results, or pending governance decisions.
+
+**Status:** Documentation correction only. KS-010 canonical identity remains pending; Trust Matrix cross-check remains `PARTIAL / NOT PASSED`; Coverage-Honesty Gate remains `NOT CLEARED`; Change 07 measurements remain `NOT STARTED`.

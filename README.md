@@ -6,7 +6,7 @@ The active Skill file to upload to CAPE is:
 
 - [RPA Development Skill — Pilot v0.1 (ACTIVE)](Docs/Skill/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md)
 
-Verified at **22,139 characters** on 2026-10-19, below CAPE's 24,000-character limit. The frozen comparison copy is the [v0.1 pilot BASELINE](Docs/Skill/Baseline/CAPE_RPA_Development_Skill_BASELINE_v0.1_pilot.md); the older draft is [ARCHIVED v0](Docs/Skill/Archive/CAPE_RPA_Development_Skill_ARCHIVED_v0.md).
+Local measurement: **22,139 characters** (LF-normalized character count; 22,478 characters with CRLF line endings), taken 2026-10-19. This is a local repository count only; CAPE's platform counting criterion has not been independently verified, so the figure does not by itself demonstrate compliance with the 24,000-character limit. The frozen comparison copy is the [v0.1 pilot BASELINE](Docs/Skill/Baseline/CAPE_RPA_Development_Skill_BASELINE_v0.1_pilot.md); the older draft is [ARCHIVED v0](Docs/Skill/Archive/CAPE_RPA_Development_Skill_ARCHIVED_v0.md).
 
 Skill versions are separated by role:
 
