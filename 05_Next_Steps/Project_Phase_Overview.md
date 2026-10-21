@@ -1,8 +1,8 @@
 # Project Phase Overview
 
-**Last updated:** 2026-08-23
-**Current phase:** Phase 2 — RPA Knowledge Source Trust Matrix
-**Overall status:** Phase 1 baseline complete; Phase 2 assessment in progress
+**Last updated:** 2026-10-21
+**Current phase:** Iteration 2 — Hardening (consolidation and pilot preparation). Current state and plan: [Hardening Consolidation Review v0.1](02_Hardening_Consolidation_Review_v0.1.md).
+**Overall status:** Phase 1 baseline complete; Phase 2 trust assessment open; pilot validation and Change 07 preparation in progress. The phase labels and backlog below record the historical 2026-08-23 position and are retained for traceability.
 
 ## Completed workstreams and outputs
 
@@ -21,7 +21,9 @@
 
 Phase 1 is complete for the current project-definition and inventory purpose. The remaining source metadata checks are now Phase 2 Trust Matrix activities, not reasons to reopen the v0.2.0 documents.
 
-## Active next steps
+## Active next steps (historical — 2026-08-23)
+
+> The current execution plan is the five-step sequence in [Hardening Consolidation Review v0.1](02_Hardening_Consolidation_Review_v0.1.md) §4. The list below is retained as the earlier backlog.
 
 1. Populate the RPA Knowledge Source Trust Matrix for the existing RPA sources and the ten CAPE source records.
 2. Confirm source owners, exact Confluence/page identifiers, revision metadata, currency, and applicability.

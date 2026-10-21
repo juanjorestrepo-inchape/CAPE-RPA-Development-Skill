@@ -71,3 +71,18 @@
 **Status:** Design basis `APPROVED BY USER`; formal protocol approval `PENDING`; execution gate `NOT CLEARED`. The acceptance threshold and rubric are design-basis approved but not formally approved.
 
 **Validation status:** Documentation only. No measurement, baseline, or comparison execution has been performed; no timing data exists; the 30% reduction remains a target. The Task Bank holds three of the ten target pairs. Coverage-Honesty Gate remains `NOT CLEARED`. Implementation Record remains at v55 (Document Control `v0.1 / Revision v0.1-r4`); no Confluence page or revision was changed.
+
+### Consolidation Review — Continue Iteration 2 (Hardening) (21 Oct 2026)
+
+**Changes made:**
+
+- Added `05_Next_Steps/02_Hardening_Consolidation_Review_v0.1.md` — evidence-based state review and recommended path: consolidate rather than restart, continue Iteration 2 — Hardening, close Blockers B1–B6, then measure.
+- Recorded the verified state behind the recommendation: Coverage-Honesty Gate `NOT CLEARED` (Q10 passes at Skill level only; Q19 focused pass; Q11/Q12 outstanding; 11-case regression not run), Change 04 remaining cases, KS-003–010 governance status unverified, KS-010 duplicate unresolved, Change 07 design basis approved but execution not authorized.
+- Recorded a verified GitHub reference discrepancy: the §4.3 *Confluence Page Info* instruction is attributed to `a822fdb` in the register and Q5 report, but was introduced by `b22d09c` (16 Oct 2026). Scheduled as a dedicated documentation-correction commit; evidence documents left unaltered in this pass.
+- Registered the review as Section 24 of `Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md`, updated the Executive Summary, refreshed the phase header of `05_Next_Steps/Project_Phase_Overview.md`, and added the review to the README project map.
+
+**Rationale:** Protect completed work, distinguish work performed from evidence that objectives are met, and align the remaining effort with Nikko's Meets/Exceeds objectives before Q4 2026 closes.
+
+**Status:** `RECOMMENDATION — PENDING OWNER REVIEW`. No gate, approval, or measurement state changed.
+
+**Validation status:** Documentation only. No tests executed; no measurement data; the 30% reduction remains a target. Coverage-Honesty Gate remains `NOT CLEARED`; Implementation Record remains v55 (`v0.1 / Revision v0.1-r4`); no Confluence page was changed.

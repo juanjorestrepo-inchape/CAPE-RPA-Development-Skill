@@ -14,6 +14,7 @@ Current position as of 2026-10-20 (Change 07 measurement protocol v0.1 registere
 - **End-to-end review — 2026-10-08:** the pasted Skill has a coherent governance design; the review recommends focused clarifications and tests, not a wholesale rewrite. These observations are recorded in Section 15 and do not themselves authorize Skill changes.
 - **Next hardening:** Complete remaining Change 04 verification cases (Q1, Q8, Q15, Q16, Q19) and resolve canonical source for KS-010. Claim-level grounding (Change 05) remains separate; do not fold it into Change 03 or Change 04.
 - **Change 07 — Developer efficiency measurement:** Measurement Protocol v0.1 registered 2026-10-20 in `Docs/Skill/CAPE_Change_07_Efficiency_Protocol_v0.1.md`; revision r2 records the **user-approved design basis** (Section 23). Protocol status remains `PROPOSED — PENDING APPROVAL`: design basis `APPROVED BY USER`, formal protocol approval `PENDING`, measurements `NOT STARTED`, execution gate `NOT CLEARED`. No efficiency baseline has been measured, no CAPE-versus-no-CAPE comparison has been executed, and the 30% reduction remains a target rather than a result. The Task Bank holds three of the ten target pairs. The Coverage-Honesty Gate remains `NOT CLEARED`. See Sections 22 and 23.
+- **Program direction — 2026-10-21:** consolidation review recorded in [05_Next_Steps/02_Hardening_Consolidation_Review_v0.1.md](../../../05_Next_Steps/02_Hardening_Consolidation_Review_v0.1.md) (Section 24). Recommended path: continue **Iteration 2 — Hardening** without restarting the project, close the specific blockers (Q10 routing, Q19/Q11/Q12 regression evidence, KS-007/KS-010 authority, GitHub reference attribution, Change 07 preparation), then measure. No gate, approval, or measurement state changes as a result of that review.
 
 Current status by test:
 - Q3: **Focused PASS — source selection and lifecycle accuracy** in the newly supplied response; the earlier Stage A **FAIL — Lifecycle Accuracy** remains historical. Provenance/claim-level grounding was not assessed because no retrieval trace was supplied.
@@ -1004,3 +1005,32 @@ The Skill explicitly stated that the validated knowledge base did NOT establish:
 5. Ratify the exact critical-failure catalogue and edge-case rules (§6.3–§6.4).
 6. Approve evidence access, retention, and storage.
 7. Freeze the protocol version and obtain explicit owner/reviewer execution approval (§9 items 8–9).
+
+---
+
+## 24. Consolidation Review Recorded — Continue Iteration 2 (Hardening) — 2026-10-21
+
+### 1. Record
+
+- **Artifact:** [`05_Next_Steps/02_Hardening_Consolidation_Review_v0.1.md`](../../../05_Next_Steps/02_Hardening_Consolidation_Review_v0.1.md) — Current State and Recommended Path.
+- **Status:** `RECOMMENDATION — PENDING OWNER REVIEW`.
+- **Decision recorded:** continue from the current position without restarting the project; perform an evidence-based preparation review; close the specific blockers before advancing. The working frame is **Iteration 2 — Hardening**, not a new Discovery cycle.
+- **Nature:** direction and state consolidation only. It does not execute tests, approve Change 07, clear the Coverage-Honesty Gate, or change any governance classification.
+
+### 2. Verified State Referenced
+
+- Coverage-Honesty Gate: **`NOT CLEARED`** (Q10 passes at Skill level; Q19 focused pass only; Q11/Q12 outstanding; 11-case regression not run).
+- Change 04: Q5 focused **PASS with governance limitation**; remaining cases Q1, Q8, Q15, Q16, Q19; Trust Matrix cross-check **PARTIAL / NOT PASSED**.
+- Governance: KS-003–010 Source Role / Assessment Status **UNVERIFIED** in IR §7; KS-010 canonical identity unreconciled (`7308640261` vs `8847753943`); Implementation Record **v55**, `v0.1 / Revision v0.1-r4`.
+- Change 07: design basis `APPROVED BY USER`; formal approval `PENDING`; measurements `NOT STARTED`; gate `NOT CLEARED`; Task Bank 3 of 10 pairs.
+
+### 3. Verified Documentation Discrepancy
+
+The §4.3 *Confluence Page Info* instruction is attributed in this register and in `CAPE_Change_04_Q5_Evaluation_Report.md` to commit `a822fdb`. Git history shows `a822fdb` is the 2026-10-14 Q3 PASS record, and the Page Info instruction was introduced by **`b22d09c`** (2026-10-16), confirmed with `git log -S "Confluence Page Info"`. The implementation is present in the active Skill; the attribution alone is wrong. Correction is scheduled as a dedicated documentation-correction commit (review plan step 02) and does not alter evaluated behavior or any gate state.
+
+### 4. What This Entry Does Not Change
+
+- No measurement has started; no baseline, comparison, or efficiency figure exists.
+- No Change 07 protocol approval, freeze, or execution authorization is implied.
+- No Skill, Trust Matrix, Knowledge Taxonomy, Knowledge Inventory, or Coverage-Honesty Gate state is changed.
+- No Confluence page or Implementation Record revision is updated or claimed to be updated.
