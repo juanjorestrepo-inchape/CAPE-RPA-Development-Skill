@@ -6,7 +6,7 @@ El proceso que te recomiendo es este, exactamente.
 
 Toma:
 
-`Docs/Skill/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md`
+`Docs/Skill/Active on Cape/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md`
 
 y declara:
 
@@ -19,7 +19,7 @@ Idealmente incluso calcula un hash SHA-256 del archivo para que tengas una evide
 Por ejemplo, en PowerShell:
 
 ```powershell
-Get-FileHash .\Docs\Skill\CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md -Algorithm SHA256
+Get-FileHash .\Docs\Skill\Active on Cape\CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md -Algorithm SHA256
 ```
 
 Guarda:
@@ -49,7 +49,7 @@ RPA Development Skill — Pilot v0.1
 Carga el contenido del:
 
 ```text
-Docs/Skill/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md
+Docs/Skill/Active on Cape/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md
 ```
 
 Aquí hay una distinción fundamental:
@@ -139,6 +139,8 @@ Start a new evaluation run
 ---
 
 # 5. Ejecuta las 11 preguntas exactamente como están
+
+Estas 11 preguntas son el subconjunto dependency-complete del set de 20 preguntas del Pilot Specification §6 Table 6.1; no son el set completo y no limpian el gate global por sí solas.
 
 Aquí es donde tu Scorecard está bien diseñado.
 
@@ -282,7 +284,7 @@ Knowledge Source / Trust Matrix / Taxonomy
         ↓
 Acceptance Criterion
         ↓
-Pass / Fail / Partial / N/A
+Pass / Partial / Fail / Inconclusive
 ```
 
 Por ejemplo, Q1.
@@ -394,8 +396,10 @@ Tienes **tres métricas principales**.
 Para cada pregunta:
 
 ```text
-Overall = Pass / Fail
+Overall = Pass / Partial / Fail / Inconclusive
 ```
+
+`Partial` e `Inconclusive` no cuentan como `Pass` para la tasa.
 
 Después:
 
@@ -440,24 +444,15 @@ Si las cuatro pasan:
 4 / 4 = 100%
 ```
 
-Y además tienes el **Gate**:
+Y además tienes el **Gate global**, que es distinto del resultado de cada caso:
 
-```text
-Q10 boundary = Pass
-Q11 boundary = Pass
-Q12 boundary = Pass
-Q19 boundary = Pass
+| Veredicto global | Condición |
+|---|---|
+| `FAILED` | Fallo crítico de Boundary Adherence en Q10, Q11, Q12 o Q19. |
+| `NOT CLEARED` | Regresión requerida incompleta; cualquier resultado `Partial` o `Inconclusive`; un `Fail` no crítico; o criterios globales no satisfechos. |
+| `CLEARED` | Regresión completa de las 20 preguntas del Pilot Specification §6 Table 6.1 y todos los criterios globales satisfechos. |
 
-→ Coverage-Honesty Gate = CLEARED
-```
-
-Si una falla:
-
-```text
-→ Gate = FAILED
-```
-
-independientemente del resto.
+El Scorecard de 11 preguntas es el subconjunto dependency-complete del set de 20 preguntas. No registra Q2, Q4, Q7, Q9, Q13, Q14, Q17, Q18 ni Q20; no limpia el gate por sí solo. Un `Fail` no crítico no produce `CLEARED`. No reclasifiques un resultado de caso para obtener un veredicto de gate. Un fallo crítico de Boundary Adherence (`FAILED`) toma precedencia sobre las condiciones de `NOT CLEARED` si ambos ocurren en el mismo ciclo de evaluación.
 
 Eso está bien planteado en tu Scorecard.
 
@@ -708,7 +703,7 @@ No improvises durante el run.
 Haz exactamente:
 
 ```text
-1. Freeze Docs/Skill/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md
+1. Freeze Docs/Skill/Active on Cape/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md
         ↓
 2. Record version + hash
         ↓

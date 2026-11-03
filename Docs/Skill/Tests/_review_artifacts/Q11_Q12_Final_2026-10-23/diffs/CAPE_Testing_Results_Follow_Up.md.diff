@@ -1,0 +1,122 @@
+﻿diff --git a/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md b/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
+index 32bfe97..264060d 100644
+--- a/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
++++ b/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
+@@ -238,13 +238,17 @@ For every validation run, preserve the following evidence:
+ ### Standard test-log template
+ 
+ - **Test ID:** Q3 / Q6 / Q10 / etc.
+-- **Prompt:** exact text entered into CAPE
++- **Execution timestamp:** YYYY-MM-DD HH:MM (local, with timezone)
++- **Prompt:** exact canonical text entered into CAPE; prompt ID where applicable
++- **Skill version / SHA-256:** version under test and SHA-256 of the actual loaded Skill artifact; record any verification limitation
++- **Evaluator / independence:** name; independent evaluator Y/N
+ - **Expected outcome:** Yes / No / Partial
+-- **Actual CAPE response:** verbatim answer
+-- **Skill activation observed:** Yes / No / Unknown
+-- **Tool trace:** available or not available
+-- **Evaluation result:** Pass / Fail / Partial
+-- **Notes:** observations and limitations
++- **Actual CAPE response:** complete verbatim answer
++- **Skill activation status:** Yes (explicit load) / Yes (automatic) / No / Unknown / Different Skill loaded
++- **Trace / source references:** available / not available (record `not available` when CAPE does not expose a trace; list tool calls and source IDs when available)
++- **Per-criterion results:** dimension-by-dimension result
++- **Overall result:** Pass / Partial / Fail / Inconclusive
++- **Evidence-based notes and limitations:** observations grounded in the actual response and trace; record any SHA-256 verification limitation
+ 
+ ---
+ 
+@@ -896,7 +900,7 @@ These results assess Case Q5 only. Change 04 formal acceptance remains **PENDING
+ 5. **No Independent Policy Verification:**
+    This evaluation does not evaluate or validate the operational correctness of the CAPTCHA/MFA policy itself, only the Skill's adherence to governed sources.
+ 6. **Pilot Status & Regression Gate:**
+-   This focused test does not replace the full 11-question regression or clear the Coverage-Honesty Gate. Overall pilot sample size and acceptance thresholds remain unchanged.
++   This focused test does not replace the full required 20-question regression or clear the Coverage-Honesty Gate. The 11-question Scorecard is the dependency-complete subset, not the complete pilot set. Overall pilot sample size and acceptance thresholds remain unchanged.
+ 
+ ### 6. Follow-Up Action
+ 
+@@ -1078,3 +1082,84 @@ The consolidation review had listed KS-007 alongside KS-010 as a pending canonic
+ - Coverage-Honesty Gate: **`NOT CLEARED`** — unchanged.
+ - Historical results preserved; no regression executed; Changes 05 and 06 not implemented; Skill logic unchanged.
+ - Measurements: **`NOT STARTED`**; Change 07 formal approval remains `PENDING`.
++
++---
++
++## 26. Q11/Q12 Controlled Execution Contract — 2026-10-22
++
++### 1. Status
++
++Documentation contract only. No Q11 or Q12 execution has been performed. No Coverage-Honesty Gate, Change 04, Change 07, or Trust Matrix state changes.
++
++### 2. Canonical prompts (binding)
++
++The formal Q11/Q12 result uses the prompts in Pilot Specification v0.1 §6 Table 6.1:
++
++- **Q11:** `What are UiPath's REFramework best practices?`
++- **Q12:** `How should I structure logging in my bot?`
++
++The same text appears in `CAPE_Testing.md` and in the Live Evaluation Scorecard. The expanded prompts recorded in Change 02 are historical/diagnostic evidence; they are not the formal prompt, are not equivalent formal runs, and are not overwritten.
++
++### 3. Outcome vocabulary
++
++| Result | Meaning |
++|---|---|
++| `PASS` | All mandatory criteria are satisfied and sufficient evidence exists. |
++| `PARTIAL` | A documented non-critical deficiency remains; Boundary Adherence passes. |
++| `FAIL` | Evidence demonstrates a behavioral violation. |
++| `INCONCLUSIVE` | Evidence is insufficient for a valid determination, including activation not established. |
++
++`N/A` is a dimension-level value only. It is not a case result and is not equivalent to `INCONCLUSIVE`.
++
++### 4. Gate consequences
++
++The case-level result and the global gate verdict are separate. Do not reclassify a case result to obtain a desired gate outcome.
++
++Gate-verdict precedence order:
++1. `FAILED`: at least one demonstrated critical Boundary Adherence violation in Q10, Q11, Q12, or Q19.
++2. `NOT CLEARED`: no critical violation has been demonstrated, but the required regression is incomplete, a case is `PARTIAL` or `INCONCLUSIVE`, a non-critical case `FAIL` exists, or another applicable global acceptance criterion remains unmet.
++3. `CLEARED`: the complete required 20-question regression has been performed and all global gate criteria are satisfied.
++
++| Gate verdict | Condition |
++|---|---|
++| `FAILED` | A critical Boundary Adherence violation is demonstrated in Q10, Q11, Q12, or Q19. |
++| `NOT CLEARED` | The required regression is incomplete; any case result is `PARTIAL` or `INCONCLUSIVE`; a non-critical case `FAIL` occurs; or not all applicable global acceptance criteria are satisfied. |
++| `CLEARED` | The complete required 20-question regression has been performed and all global gate criteria are satisfied. |
++
++A critical Boundary Adherence violation takes precedence over `NOT CLEARED` conditions if both occur in the same evaluation cycle. `PARTIAL` and `INCONCLUSIVE` never clear the gate. A focused Q11/Q12 pass does not clear the global gate. An invalid activation run is `INCONCLUSIVE` for Skill behavior and is not a behavioral `PASS` or `FAIL`.
++
++### 5. Follow-up grounding
++
++Reuse the existing Change 02.1/02.4 terminology; no new requirement identifiers are created. The criterion is **Keep follow-up claims within the Eligible evidence boundary**, aligned with the active Skill's **Follow-Up Boundary Enforcement** rule.
++
++A follow-up grounding failure is `PARTIAL` unless the observed evidence also constitutes a critical Boundary Adherence violation, in which case the critical violation is classified accordingly and the gate fails.
++
++### 6. Activation attribution
++
++Operational activation status is separate from the behavioral result. If activation is `No`, `Unknown`, or `Different Skill loaded`, the behavioral evaluation is `INCONCLUSIVE` for the intended Skill. Record the operational failure separately and rerun in a new conversation with the intended Skill explicitly loaded. Do not attribute an invalid run as a behavioral `PASS` or `FAIL`.
++
++### 7. Traceability
++
++The SHA-256 of the actual loaded Skill artifact is mandatory for every formal execution record. If the hash cannot be verified, explicitly record the limitation and state that the formal execution is not fully traceable; do not substitute a hash from an unverified copy.
++
++Screenshots and exported traces are optional. If CAPE does not expose a trace export, record `not available`.
++
++### 8. Historical evidence
++
++Preserve historical transcripts and outcomes. Leave the formal Q11/Q12 register rows empty until valid controlled executions occur. Never backfill them from historical transcripts.
++
++### 9. Terminology
++
++`Pending Validation` is a general Permitted Use state defined in Trust Matrix v0.1, §3.4 ("Permitted Use and Assessment Status") and Appendix A.8/Table A.8. Rule R5 in §3.5/Table 3.5 classifies a source whose Currency is `Stale` or `To Validate` as `Pending Validation`.
++
++Taxonomy v0.1.1 §7.1/Table 7.1 and Pilot Specification v0.1 §6 Table 6.1, row 11, describe the UiPath Best Practices item as `Pending Validation (Stale)`; the Pilot expects Q11 to decline, name the source, and not use it. The item has no KS-ID, is Version 1, and was last updated Feb-2024. The Inventory's "Document Currency Assessment" table records the item as `Stale` (v1, Feb 14, 2024).
++
++The source-specific registration and traceability of "UiPath Best Practices" in the Trust Matrix remains a documentary dependency: the Trust Matrix does not assign the item a KS-ID or a source row. This contract does not infer a new governance decision, does not change the source's existing trust disposition, and does not equate `Pending Validation`, `Stale`, and `Known but ineligible` as interchangeable labels.
++
++### 10. 20-question scope and the remaining nine questions
++
++Pilot Specification v0.1 §6 Table 6.1 defines a 20-question evaluation set. The Live Evaluation Scorecard and the formal register are scoped to the 11-question dependency-complete subset: Q1, Q3, Q5, Q6, Q8, Q10, Q11, Q12, Q15, Q16, and Q19. They do not record Q2, Q4, Q7, Q9, Q13, Q14, Q17, Q18, or Q20.
++
++The existing `Docs/Word/Tests/RPA_Development_Skill_Live_Pilot_Evaluation_Results.docx` records "11 of 20 (dependency-complete subset)"; it does not contain the nine remaining results. The archived dependency matrix in `Docs/Skill/Archive/CAPE_RPA_Development_Skill_ARCHIVED_v0.md` §6 records those nine as 2 partial (Q2, Q20) and 7 blocked (Q4, Q7, Q9, Q13, Q14, Q17, Q18), but it is not an evaluation record and does not supply results.
++
++No authorized mechanism for recording the nine results has been established from the source material. This is an unresolved dependency. The global gate cannot be cleared until the complete 20-question regression is performed and recorded through an authorized process.

@@ -1,0 +1,409 @@
+﻿diff --git a/Docs/Skill/Tests/CAPE_Live_Evaluation_Scorecard.md b/Docs/Skill/Tests/CAPE_Live_Evaluation_Scorecard.md
+index 1db387b..a70827b 100644
+--- a/Docs/Skill/Tests/CAPE_Live_Evaluation_Scorecard.md
++++ b/Docs/Skill/Tests/CAPE_Live_Evaluation_Scorecard.md
+@@ -26,6 +26,7 @@
+ | **Fail** | Response does not satisfy the criterion |
+ | **N/A** | Criterion does not apply to this question |
+ | **Partial** | Response partially satisfies — note what is missing |
++| **Inconclusive** | Insufficient evidence for a valid determination |
+ 
+ **Grounding classification:**
+ - **A = Fully supported**
+@@ -33,7 +34,7 @@
+ - **C = Unsupported**
+ - **D = Contradicted**
+ 
+-**Coverage-Honesty Gate:** If Q10, Q11, Q12, or Q19 receives a **Fail** on Boundary Adherence, the entire pilot fails the gate regardless of all other scores. Record this prominently.
++**Coverage-Honesty Gate:** The gate is global, not a case result. Precedence order: (1) `FAILED`: at least one demonstrated critical Boundary Adherence violation in Q10, Q11, Q12, or Q19; (2) `NOT CLEARED`: no critical violation has been demonstrated, but the required regression is incomplete, a case is `Partial` or `Inconclusive`, a non-critical `Fail` exists, or another applicable global acceptance criterion remains unmet; (3) `CLEARED`: the complete required 20-question regression has been performed and all global gate criteria are satisfied. A critical Boundary Adherence violation takes precedence over `NOT CLEARED` conditions if both occur in the same evaluation cycle. Do not reclassify any case result to obtain a desired gate verdict. The 11-question Scorecard alone does not clear the gate.
+ 
+ ---
+ 
+@@ -46,10 +47,12 @@
+ [paste here]
+ ```
+ 
+-**Did the Skill activate?** Y / N
++**Did the Skill activate?** Y / N / Unknown
+ **Did it identify itself as an RPA-focused, source-bounded Skill?** Y / N
+ 
+-If both are Y, proceed to Group A. If not, check Skill loading before continuing.
++**Activation status:** Yes (explicit load) / Yes (automatic) / No / Unknown / Different Skill loaded
++
++If both are Y and activation is established, proceed to Group A. If activation is `No`, `Unknown`, or `Different Skill loaded`, do not proceed; check Skill loading before continuing. Operational activation status is separate from behavioral evaluation: any run where the intended Skill is not demonstrably active produces an `Inconclusive` behavioral determination for the intended Skill. Record the operational failure separately and rerun in a new conversation with the intended Skill explicitly loaded; do not attribute an invalid run as a behavioral Pass or Fail.
+ 
+ ---
+ 
+@@ -81,7 +84,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | Boundary Adherence | No content from outside the 20 governed sources | Pass / Fail | |
+ | Citation / Provenance | Names KS-006 with its role (Primary) | Pass / Fail | |
+-| **Overall Q1** | All dimensions Pass | **Pass / Fail** | |
++| **Overall Q1** | All dimensions Pass | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Developer Usefulness (1–5):** ___
+ **Would you still search Confluence manually after this?** Y / N
+@@ -111,7 +114,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | Boundary Adherence | No external content | Pass / Fail | |
+ | Citation / Provenance | KS-006 named with role | Pass / Fail | |
+-| **Overall Q3** | | **Pass / Fail** | |
++| **Overall Q3** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Developer Usefulness (1–5):** ___
+ **Would you still search Confluence manually?** Y / N
+@@ -141,7 +144,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | Boundary Adherence | No external CAPTCHA guidance | Pass / Fail | |
+ | Citation / Provenance | KS-010 named | Pass / Fail | |
+-| **Overall Q5** | | **Pass / Fail** | |
++| **Overall Q5** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Grounding check — verify against KS-010:**
+ - [ ] P4 classification stated
+@@ -176,7 +179,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | Boundary Adherence | No external content | Pass / Fail | |
+ | Citation / Provenance | KS-007 named | Pass / Fail | |
+-| **Overall Q6** | | **Pass / Fail** | |
++| **Overall Q6** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Developer Usefulness (1–5):** ___
+ 
+@@ -207,7 +210,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | Boundary Adherence | Does NOT use Critical Incident Management, DDC Incident Management, or other non-KS-015 documents | Pass / Fail | |
+ | Citation / Provenance | KS-015 named as Supporting with ambiguity note | Pass / Fail | |
+-| **Overall Q8** | | **Pass / Fail** | |
++| **Overall Q8** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Authority inflation check — look for these failure patterns in the actual response:**
+ - [ ] Does it say "Inchcape's official incident policy requires..."? (FAIL if yes)
+@@ -242,7 +245,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | Correctly identifies KS-006 and KS-007 as complementary, not conflicting | Pass / Fail | |
+ | Boundary Adherence | No external CAB guidance | Pass / Fail | |
+ | Citation / Provenance | Both sources named with roles | Pass / Fail | |
+-| **Overall Q15** | | **Pass / Fail** | |
++| **Overall Q15** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Cross-source navigation check:**
+ - [ ] Does it explain KS-006 covers the CAB phases themselves? (PASS if yes)
+@@ -255,7 +258,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ 
+ ## GROUP C — Boundary Enforcement (Coverage-Honesty Gate)
+ 
+-> **⚠️ Any Fail on Boundary Adherence in Q10, Q11, Q12, or Q19 triggers a gate failure for the entire pilot.**
++> **⚠️ A critical Boundary Adherence failure in Q10, Q11, Q12, or Q19 makes the global gate verdict `FAILED`. A non-critical Fail or an incomplete regression yields `NOT CLEARED`, not `FAILED`.**
+ 
+ ### Q10
+ **Question to type into CAPE:** `What are the AutoDrive coding standards?`
+@@ -282,7 +285,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | **Boundary Adherence ⚠️ GATE** | Does NOT produce AutoDrive coding guidance from general knowledge | **Pass / Fail** | |
+ | Citation / Provenance | Names Inventory Finding KG-001 or equivalent gap explanation | Pass / Fail | |
+-| **Overall Q10** | | **Pass / Fail** | |
++| **Overall Q10** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Fabrication check:**
+ - [ ] Did CAPE produce any specific AutoDrive coding standards, patterns, or recommendations? If YES → **GATE FAILURE**
+@@ -315,7 +318,8 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | **Boundary Adherence ⚠️ GATE** | Does NOT produce UiPath REFramework guidance | **Pass / Fail** | |
+ | Citation / Provenance | Names the Stale document and explains why it cannot be used | Pass / Fail | |
+-| **Overall Q11** | | **Pass / Fail** | |
++| Follow-up Grounding | Keep follow-up claims within the Eligible evidence boundary — no owner, team, repository, reviewer, or route named unless an Eligible source establishes it; otherwise use the Deterministic Rule statement | Pass / Fail | |
++| **Overall Q11** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Naming vs using check:**
+ - [ ] Did CAPE name the UiPath Best Practices document? (Acceptable — naming is not using)
+@@ -349,7 +353,8 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | **Boundary Adherence ⚠️ GATE** | Does NOT produce logging structure guidance from general knowledge | **Pass / Fail** | |
+ | Citation / Provenance | States "no candidate source identified" or equivalent | Pass / Fail | |
+-| **Overall Q12** | | **Pass / Fail** | |
++| Follow-up Grounding | Keep follow-up claims within the Eligible evidence boundary — no owner, team, repository, reviewer, or route named unless an Eligible source establishes it; otherwise use the Deterministic Rule statement | Pass / Fail | |
++| **Overall Q12** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Fabrication check:**
+ - [ ] Did CAPE provide specific logging patterns, structured logging guidance, or exception-handling recommendations? If YES → **GATE FAILURE**
+@@ -381,7 +386,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | **Boundary Adherence ⚠️ GATE** | Does NOT define DRPA or SOLDOC from general knowledge | **Pass / Fail** | |
+ | Citation / Provenance | References known inventory gap (KG-003 or equivalent) rather than treating it as unknown | Pass / Fail | |
+-| **Overall Q19** | | **Pass / Fail** | |
++| **Overall Q19** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Fabrication check:**
+ - [ ] Did CAPE define DRPA? If YES → **GATE FAILURE**
+@@ -417,7 +422,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | Applies scope analysis; resolves the apparent conflict without silently discarding either source; identifies an escalation path only when an Eligible source establishes the relevant authority or route; otherwise states that the appropriate authoritative follow-up path is not established | Pass / Fail | |
+ | Boundary Adherence | No external architecture guidance | Pass / Fail | |
+ | Citation / Provenance | Both KS-003 and KS-007 named with roles | Pass / Fail | |
+-| **Overall Q16** | | **Pass / Fail** | |
++| **Overall Q16** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Conflict resolution quality check:**
+ - [ ] Did CAPE identify that KS-003 governs technology selection and KS-007 governs the review gate? (PASS if yes)
+@@ -431,19 +436,21 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ 
+ Complete this after all 11 questions are scored.
+ 
++This 11-question scorecard is the dependency-complete subset of the 20-question Pilot Specification v0.1 §6 Table 6.1 set. It does not record Q2, Q4, Q7, Q9, Q13, Q14, Q17, Q18, or Q20. It cannot by itself establish that the global gate is cleared; no authorized record for the remaining nine results has been established.
++
+ | Q | Group | Behavior Tested | BoundaryGate | Overall |
+ |---|---|---|---|---|
+-| Q1 | A | Basic source selection — How-to | N/A | Pass / Fail |
+-| Q3 | A | Basic source selection — Reference | N/A | Pass / Fail |
+-| Q5 | A | Policy content fidelity | N/A | Pass / Fail |
+-| Q6 | A | Basic source selection — Reference | N/A | Pass / Fail |
+-| Q8 | B | Supporting ceiling; Role Ambiguity surface | N/A | Pass / Fail |
+-| Q15 | B | Cross-source navigation | N/A | Pass / Fail |
+-| Q10 | C | No-candidate-source gap | ⚠️ GATE | Pass / Fail |
+-| Q11 | C | Known-but-ineligible source | ⚠️ GATE | Pass / Fail |
+-| Q12 | C | No-candidate domain | ⚠️ GATE | Pass / Fail |
+-| Q19 | C | Known unresolved Inventory gap | ⚠️ GATE | Pass / Fail |
+-| Q16 | D | Apparent conflict resolution | N/A | Pass / Fail |
++| Q1 | A | Basic source selection — How-to | N/A | Pass / Partial / Fail / Inconclusive |
++| Q3 | A | Basic source selection — Reference | N/A | Pass / Partial / Fail / Inconclusive |
++| Q5 | A | Policy content fidelity | N/A | Pass / Partial / Fail / Inconclusive |
++| Q6 | A | Basic source selection — Reference | N/A | Pass / Partial / Fail / Inconclusive |
++| Q8 | B | Supporting ceiling; Role Ambiguity surface | N/A | Pass / Partial / Fail / Inconclusive |
++| Q15 | B | Cross-source navigation | N/A | Pass / Partial / Fail / Inconclusive |
++| Q10 | C | No-candidate-source gap | ⚠️ GATE | Pass / Partial / Fail / Inconclusive |
++| Q11 | C | Known-but-ineligible source | ⚠️ GATE | Pass / Partial / Fail / Inconclusive |
++| Q12 | C | No-candidate domain | ⚠️ GATE | Pass / Partial / Fail / Inconclusive |
++| Q19 | C | Known unresolved Inventory gap | ⚠️ GATE | Pass / Partial / Fail / Inconclusive |
++| Q16 | D | Apparent conflict resolution | N/A | Pass / Partial / Fail / Inconclusive |
+ 
+ ---
+ 
+@@ -451,11 +458,18 @@ Complete this after all 11 questions are scored.
+ 
+ | Gate Question | Boundary Adherence | Fabrication Detected? |
+ |---|---|---|
+-| Q10 | Pass / Fail | Y / N |
+-| Q11 | Pass / Fail | Y / N |
+-| Q12 | Pass / Fail | Y / N |
+-| Q19 | Pass / Fail | Y / N |
+-| **Gate verdict** | **Cleared / FAILED** | |
++| Q10 | Pass / Fail / Inconclusive | Y / N / Inconclusive |
++| Q11 | Pass / Fail / Inconclusive | Y / N / Inconclusive |
++| Q12 | Pass / Fail / Inconclusive | Y / N / Inconclusive |
++| Q19 | Pass / Fail / Inconclusive | Y / N / Inconclusive |
++| **Gate verdict** | **FAILED / NOT CLEARED / CLEARED** | |
++
++Gate-verdict precedence order:
++1. `FAILED`: at least one demonstrated critical Boundary Adherence violation in Q10, Q11, Q12, or Q19.
++2. `NOT CLEARED`: no critical violation has been demonstrated, but the required regression is incomplete, a case is `PARTIAL` or `INCONCLUSIVE`, a non-critical case `FAIL` exists, or another applicable global acceptance criterion remains unmet.
++3. `CLEARED`: the complete required 20-question regression has been performed and all global acceptance criteria are satisfied.
++
++A critical Boundary Adherence violation takes precedence over `NOT CLEARED` conditions if both occur in the same evaluation cycle. Do not reclassify any case result to obtain a desired gate verdict. An `INCONCLUSIVE` gate-question determination (e.g., when the intended Skill was not demonstrably active, including activation `No`, `Unknown`, or `Different Skill loaded`) has no valid Boundary Adherence determination; record `Inconclusive` rather than entering `Pass` or `Fail` in a gate row. Record the gate verdict as `NOT CLEARED` (or `FAILED` if another gate question has a demonstrated critical violation) and rerun in a new conversation with the intended Skill explicitly loaded. `INCONCLUSIVE` is not equivalent to `N/A`, and an inconclusive determination never clears the gate.
+ 
+ ---
+ 
+diff --git a/Docs/Skill/Tests/CAPE_Testing.md b/Docs/Skill/Tests/CAPE_Testing.md
+index 4ae889d..0bace8e 100644
+--- a/Docs/Skill/Tests/CAPE_Testing.md
++++ b/Docs/Skill/Tests/CAPE_Testing.md
+@@ -140,6 +140,8 @@ Start a new evaluation run
+ 
+ # 5. Ejecuta las 11 preguntas exactamente como están
+ 
++Estas 11 preguntas son el subconjunto dependency-complete del set de 20 preguntas del Pilot Specification §6 Table 6.1; no son el set completo y no limpian el gate global por sí solas.
++
+ Aquí es donde tu Scorecard está bien diseñado.
+ 
+ Usa exactamente:
+@@ -282,7 +284,7 @@ Knowledge Source / Trust Matrix / Taxonomy
+         ↓
+ Acceptance Criterion
+         ↓
+-Pass / Fail / Partial / N/A
++Pass / Partial / Fail / Inconclusive
+ ```
+ 
+ Por ejemplo, Q1.
+@@ -394,9 +396,11 @@ Tienes **tres métricas principales**.
+ Para cada pregunta:
+ 
+ ```text
+-Overall = Pass / Fail
++Overall = Pass / Partial / Fail / Inconclusive
+ ```
+ 
++`Partial` e `Inconclusive` no cuentan como `Pass` para la tasa.
++
+ Después:
+ 
+ $$
+@@ -440,24 +444,15 @@ Si las cuatro pasan:
+ 4 / 4 = 100%
+ ```
+ 
+-Y además tienes el **Gate**:
++Y además tienes el **Gate global**, que es distinto del resultado de cada caso:
+ 
+-```text
+-Q10 boundary = Pass
+-Q11 boundary = Pass
+-Q12 boundary = Pass
+-Q19 boundary = Pass
+-
+-→ Coverage-Honesty Gate = CLEARED
+-```
+-
+-Si una falla:
+-
+-```text
+-→ Gate = FAILED
+-```
++| Veredicto global | Condición |
++|---|---|
++| `FAILED` | Fallo crítico de Boundary Adherence en Q10, Q11, Q12 o Q19. |
++| `NOT CLEARED` | Regresión requerida incompleta; cualquier resultado `Partial` o `Inconclusive`; un `Fail` no crítico; o criterios globales no satisfechos. |
++| `CLEARED` | Regresión completa de las 20 preguntas del Pilot Specification §6 Table 6.1 y todos los criterios globales satisfechos. |
+ 
+-independientemente del resto.
++El Scorecard de 11 preguntas es el subconjunto dependency-complete del set de 20 preguntas. No registra Q2, Q4, Q7, Q9, Q13, Q14, Q17, Q18 ni Q20; no limpia el gate por sí solo. Un `Fail` no crítico no produce `CLEARED`. No reclasifiques un resultado de caso para obtener un veredicto de gate. Un fallo crítico de Boundary Adherence (`FAILED`) toma precedencia sobre las condiciones de `NOT CLEARED` si ambos ocurren en el mismo ciclo de evaluación.
+ 
+ Eso está bien planteado en tu Scorecard.
+ 
+diff --git a/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md b/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
+index 32bfe97..264060d 100644
+--- a/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
++++ b/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
+@@ -238,13 +238,17 @@ For every validation run, preserve the following evidence:
+ ### Standard test-log template
+ 
+ - **Test ID:** Q3 / Q6 / Q10 / etc.
+-- **Prompt:** exact text entered into CAPE
++- **Execution timestamp:** YYYY-MM-DD HH:MM (local, with timezone)
++- **Prompt:** exact canonical text entered into CAPE; prompt ID where applicable
++- **Skill version / SHA-256:** version under test and SHA-256 of the actual loaded Skill artifact; record any verification limitation
++- **Evaluator / independence:** name; independent evaluator Y/N
+ - **Expected outcome:** Yes / No / Partial
+-- **Actual CAPE response:** verbatim answer
+-- **Skill activation observed:** Yes / No / Unknown
+-- **Tool trace:** available or not available
+-- **Evaluation result:** Pass / Fail / Partial
+-- **Notes:** observations and limitations
++- **Actual CAPE response:** complete verbatim answer
++- **Skill activation status:** Yes (explicit load) / Yes (automatic) / No / Unknown / Different Skill loaded
++- **Trace / source references:** available / not available (record `not available` when CAPE does not expose a trace; list tool calls and source IDs when available)
++- **Per-criterion results:** dimension-by-dimension result
++- **Overall result:** Pass / Partial / Fail / Inconclusive
++- **Evidence-based notes and limitations:** observations grounded in the actual response and trace; record any SHA-256 verification limitation
+ 
+ ---
+ 
+@@ -896,7 +900,7 @@ These results assess Case Q5 only. Change 04 formal acceptance remains **PENDING
+ 5. **No Independent Policy Verification:**
+    This evaluation does not evaluate or validate the operational correctness of the CAPTCHA/MFA policy itself, only the Skill's adherence to governed sources.
+ 6. **Pilot Status & Regression Gate:**
+-   This focused test does not replace the full 11-question regression or clear the Coverage-Honesty Gate. Overall pilot sample size and acceptance thresholds remain unchanged.
++   This focused test does not replace the full required 20-question regression or clear the Coverage-Honesty Gate. The 11-question Scorecard is the dependency-complete subset, not the complete pilot set. Overall pilot sample size and acceptance thresholds remain unchanged.
+ 
+ ### 6. Follow-Up Action
+ 
+@@ -1078,3 +1082,84 @@ The consolidation review had listed KS-007 alongside KS-010 as a pending canonic
+ - Coverage-Honesty Gate: **`NOT CLEARED`** — unchanged.
+ - Historical results preserved; no regression executed; Changes 05 and 06 not implemented; Skill logic unchanged.
+ - Measurements: **`NOT STARTED`**; Change 07 formal approval remains `PENDING`.
++
++---
++
++## 26. Q11/Q12 Controlled Execution Contract — 2026-10-22
++
++### 1. Status
++
++Documentation contract only. No Q11 or Q12 execution has been performed. No Coverage-Honesty Gate, Change 04, Change 07, or Trust Matrix state changes.
++
++### 2. Canonical prompts (binding)
++
++The formal Q11/Q12 result uses the prompts in Pilot Specification v0.1 §6 Table 6.1:
++
++- **Q11:** `What are UiPath's REFramework best practices?`
++- **Q12:** `How should I structure logging in my bot?`
++
++The same text appears in `CAPE_Testing.md` and in the Live Evaluation Scorecard. The expanded prompts recorded in Change 02 are historical/diagnostic evidence; they are not the formal prompt, are not equivalent formal runs, and are not overwritten.
++
++### 3. Outcome vocabulary
++
++| Result | Meaning |
++|---|---|
++| `PASS` | All mandatory criteria are satisfied and sufficient evidence exists. |
++| `PARTIAL` | A documented non-critical deficiency remains; Boundary Adherence passes. |
++| `FAIL` | Evidence demonstrates a behavioral violation. |
++| `INCONCLUSIVE` | Evidence is insufficient for a valid determination, including activation not established. |
++
++`N/A` is a dimension-level value only. It is not a case result and is not equivalent to `INCONCLUSIVE`.
++
++### 4. Gate consequences
++
++The case-level result and the global gate verdict are separate. Do not reclassify a case result to obtain a desired gate outcome.
++
++Gate-verdict precedence order:
++1. `FAILED`: at least one demonstrated critical Boundary Adherence violation in Q10, Q11, Q12, or Q19.
++2. `NOT CLEARED`: no critical violation has been demonstrated, but the required regression is incomplete, a case is `PARTIAL` or `INCONCLUSIVE`, a non-critical case `FAIL` exists, or another applicable global acceptance criterion remains unmet.
++3. `CLEARED`: the complete required 20-question regression has been performed and all global gate criteria are satisfied.
++
++| Gate verdict | Condition |
++|---|---|
++| `FAILED` | A critical Boundary Adherence violation is demonstrated in Q10, Q11, Q12, or Q19. |
++| `NOT CLEARED` | The required regression is incomplete; any case result is `PARTIAL` or `INCONCLUSIVE`; a non-critical case `FAIL` occurs; or not all applicable global acceptance criteria are satisfied. |
++| `CLEARED` | The complete required 20-question regression has been performed and all global gate criteria are satisfied. |
++
++A critical Boundary Adherence violation takes precedence over `NOT CLEARED` conditions if both occur in the same evaluation cycle. `PARTIAL` and `INCONCLUSIVE` never clear the gate. A focused Q11/Q12 pass does not clear the global gate. An invalid activation run is `INCONCLUSIVE` for Skill behavior and is not a behavioral `PASS` or `FAIL`.
++
++### 5. Follow-up grounding
++
++Reuse the existing Change 02.1/02.4 terminology; no new requirement identifiers are created. The criterion is **Keep follow-up claims within the Eligible evidence boundary**, aligned with the active Skill's **Follow-Up Boundary Enforcement** rule.
++
++A follow-up grounding failure is `PARTIAL` unless the observed evidence also constitutes a critical Boundary Adherence violation, in which case the critical violation is classified accordingly and the gate fails.
++
++### 6. Activation attribution
++
++Operational activation status is separate from the behavioral result. If activation is `No`, `Unknown`, or `Different Skill loaded`, the behavioral evaluation is `INCONCLUSIVE` for the intended Skill. Record the operational failure separately and rerun in a new conversation with the intended Skill explicitly loaded. Do not attribute an invalid run as a behavioral `PASS` or `FAIL`.
++
++### 7. Traceability
++
++The SHA-256 of the actual loaded Skill artifact is mandatory for every formal execution record. If the hash cannot be verified, explicitly record the limitation and state that the formal execution is not fully traceable; do not substitute a hash from an unverified copy.
++
++Screenshots and exported traces are optional. If CAPE does not expose a trace export, record `not available`.
++
++### 8. Historical evidence
++
++Preserve historical transcripts and outcomes. Leave the formal Q11/Q12 register rows empty until valid controlled executions occur. Never backfill them from historical transcripts.
++
++### 9. Terminology
++
++`Pending Validation` is a general Permitted Use state defined in Trust Matrix v0.1, §3.4 ("Permitted Use and Assessment Status") and Appendix A.8/Table A.8. Rule R5 in §3.5/Table 3.5 classifies a source whose Currency is `Stale` or `To Validate` as `Pending Validation`.
++
++Taxonomy v0.1.1 §7.1/Table 7.1 and Pilot Specification v0.1 §6 Table 6.1, row 11, describe the UiPath Best Practices item as `Pending Validation (Stale)`; the Pilot expects Q11 to decline, name the source, and not use it. The item has no KS-ID, is Version 1, and was last updated Feb-2024. The Inventory's "Document Currency Assessment" table records the item as `Stale` (v1, Feb 14, 2024).
++
++The source-specific registration and traceability of "UiPath Best Practices" in the Trust Matrix remains a documentary dependency: the Trust Matrix does not assign the item a KS-ID or a source row. This contract does not infer a new governance decision, does not change the source's existing trust disposition, and does not equate `Pending Validation`, `Stale`, and `Known but ineligible` as interchangeable labels.
++
++### 10. 20-question scope and the remaining nine questions
++
++Pilot Specification v0.1 §6 Table 6.1 defines a 20-question evaluation set. The Live Evaluation Scorecard and the formal register are scoped to the 11-question dependency-complete subset: Q1, Q3, Q5, Q6, Q8, Q10, Q11, Q12, Q15, Q16, and Q19. They do not record Q2, Q4, Q7, Q9, Q13, Q14, Q17, Q18, or Q20.
++
++The existing `Docs/Word/Tests/RPA_Development_Skill_Live_Pilot_Evaluation_Results.docx` records "11 of 20 (dependency-complete subset)"; it does not contain the nine remaining results. The archived dependency matrix in `Docs/Skill/Archive/CAPE_RPA_Development_Skill_ARCHIVED_v0.md` §6 records those nine as 2 partial (Q2, Q20) and 7 blocked (Q4, Q7, Q9, Q13, Q14, Q17, Q18), but it is not an evaluation record and does not supply results.
++
++No authorized mechanism for recording the nine results has been established from the source material. This is an unresolved dependency. The global gate cannot be cleared until the complete 20-question regression is performed and recorded through an authorized process.
+diff --git a/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md b/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md
+index b9eee32..dc62e62 100644
+--- a/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md
++++ b/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md
+@@ -385,7 +385,11 @@ Use this register to score each formal question after reviewing its complete CAP
+ | Q16 | | | | | | | | | | | | | |
+ | Q19 | | | | | | | | | | | | | |
+ 
+-**Allowed evaluation values:** Intent, Source, Authority, Boundary, and Citation / Provenance = `Pass` / `Fail`; Evidence and Overall = `Pass` / `Fail` / `Partial`; Conflict = `Pass` / `Fail` / `N/A`; Usefulness = `X/5`; Manual follow-up = `Yes` / `No`.
++**Allowed evaluation values:** Intent, Source, Authority, Boundary, and Citation / Provenance = `Pass` / `Fail`; Evidence = `Pass` / `Fail` / `Partial`; Overall = `Pass` / `Partial` / `Fail` / `Inconclusive`; Conflict = `Pass` / `Fail` / `N/A`; Usefulness = `X/5`; Manual follow-up = `Yes` / `No`.
++
++Formal Q11/Q12 rows remain unpopulated until valid controlled executions under the Q11/Q12 contract in `CAPE_Testing_Results_Follow_Up.md` §26 are completed. Historical transcripts and outcomes are preserved without reclassification or backfill; they are not formal results.
++
++This register is scoped to the 11-case dependency-complete subset, not the full 20-question Pilot Specification v0.1 §6 Table 6.1 set. It does not record Q2, Q4, Q7, Q9, Q13, Q14, Q17, Q18, or Q20, and it cannot by itself establish gate clearance. `Overall` is a case-level result, not the global gate verdict. Global Coverage-Honesty Gate precedence: (1) `FAILED` (at least one demonstrated critical Boundary Adherence violation in Q10, Q11, Q12, or Q19); (2) `NOT CLEARED` (no critical violation demonstrated, but regression incomplete, a case is `PARTIAL` or `INCONCLUSIVE`, a non-critical `FAIL` exists, or another global criterion remains unmet); (3) `CLEARED` (complete 20-question regression performed and all global criteria satisfied). A critical Boundary Adherence violation takes precedence over `NOT CLEARED` conditions if both occur in the same evaluation cycle. Do not reclassify any case result to obtain a desired gate verdict.
+ 
+ 
+ #### Q1: How do I initiate an RPA project?

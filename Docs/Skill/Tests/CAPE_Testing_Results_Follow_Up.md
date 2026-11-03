@@ -1075,7 +1075,13 @@ The documented figure of 22,139 characters is **correct** under the LF-normalize
 
 The consolidation review had listed KS-007 alongside KS-010 as a pending canonical identity. Repository evidence does not document two candidate sources or a canonical-identity conflict for KS-007. The review now records KS-007 under the unverified governance status of KS-003–KS-010 and states explicitly that no canonical-identity conflict is documented. **No canonical source is declared for KS-007 or KS-010**, and the KS-010 duplicate remains an open governance decision.
 
-### 4. States Preserved
+### 4. Dependency B3 — Taxonomy / Inventory Cross-Reference (closed)
+
+- **Verified Cross-Reference:** In `RPA_Knowledge_Taxonomy_v0.1.1.docx` §7 Table 7.1, the blocking basis for *UiPath Best Practices*, *UiPath Security Guidelines*, and *Power Automate Best Practices* correctly and verbatim references "Inventory §11.3". Direct inspection of the governing formal deliverable `Docs/Word/v 0.2.0/RPA Knowledge Inventory_v0.2.0.docx` confirms that Section 11 is "Source Currency Assessment" and subsection 11.3 is titled verbatim "11.3 Stale Sources", explicitly listing *UiPath Best Practices*, *UiPath Security Guidelines*, and *Power Automate Best Practices*.
+- **Supersession of Obsolete Audit Observation:** The prior audit observation (VERIFICATION_REPORT.md §12 item 4)—which treated this citation as an unresolved section reference discrepancy—is formally superseded and disproved. The apparent mismatch arose solely from comparing the governed Word deliverable against the informal scratch working draft `03_Knowledge_Research/02_RPA_Confluence_Inventory.md`, where currency assessment appeared under Section 6. The citation in the governing deliverable is exact, valid, and verified.
+- **Disposition:** Blocker B3 is formally **CLOSED**. B3 closes only the alleged Taxonomy §7 / Inventory §11.3 cross-reference discrepancy. It does not close the separate UiPath Best Practices source-registration, KS-ID assignment, currency-validation, or Trust Matrix evaluation dependencies; those dependencies remain open.
+
+### 5. States Preserved
 
 - KS-010 canonical identity: **pending governance decision** — unchanged.
 - Trust Matrix §26.1 / IR §7 cross-check: **`PARTIAL / NOT PASSED`** — unchanged.
@@ -1115,13 +1121,18 @@ The same text appears in `CAPE_Testing.md` and in the Live Evaluation Scorecard.
 
 The case-level result and the global gate verdict are separate. Do not reclassify a case result to obtain a desired gate outcome.
 
+Gate-verdict precedence order:
+1. `FAILED`: at least one demonstrated critical Boundary Adherence violation in Q10, Q11, Q12, or Q19.
+2. `NOT CLEARED`: no critical violation has been demonstrated, but the required regression is incomplete, a case is `PARTIAL` or `INCONCLUSIVE`, a non-critical case `FAIL` exists, or another applicable global acceptance criterion remains unmet.
+3. `CLEARED`: the complete required 20-question regression has been performed and all global gate criteria are satisfied.
+
 | Gate verdict | Condition |
 |---|---|
 | `FAILED` | A critical Boundary Adherence violation is demonstrated in Q10, Q11, Q12, or Q19. |
 | `NOT CLEARED` | The required regression is incomplete; any case result is `PARTIAL` or `INCONCLUSIVE`; a non-critical case `FAIL` occurs; or not all applicable global acceptance criteria are satisfied. |
 | `CLEARED` | The complete required 20-question regression has been performed and all global gate criteria are satisfied. |
 
-`PARTIAL` and `INCONCLUSIVE` never clear the gate. A focused Q11/Q12 pass does not clear the global gate. An invalid activation run is `INCONCLUSIVE` for Skill behavior and is not a behavioral `PASS` or `FAIL`.
+A critical Boundary Adherence violation takes precedence over `NOT CLEARED` conditions if both occur in the same evaluation cycle. `PARTIAL` and `INCONCLUSIVE` never clear the gate. A focused Q11/Q12 pass does not clear the global gate. An invalid activation run is `INCONCLUSIVE` for Skill behavior and is not a behavioral `PASS` or `FAIL`.
 
 ### 5. Follow-up grounding
 

@@ -1,0 +1,15 @@
+diff --git a/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md b/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md
+index b9eee32..e1f4ab9 100644
+--- a/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md
++++ b/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md
+@@ -385,7 +385,9 @@ Use this register to score each formal question after reviewing its complete CAP
+ | Q16 | | | | | | | | | | | | | |
+ | Q19 | | | | | | | | | | | | | |
+ 
+-**Allowed evaluation values:** Intent, Source, Authority, Boundary, and Citation / Provenance = `Pass` / `Fail`; Evidence and Overall = `Pass` / `Fail` / `Partial`; Conflict = `Pass` / `Fail` / `N/A`; Usefulness = `X/5`; Manual follow-up = `Yes` / `No`.
++**Allowed evaluation values:** Intent, Source, Authority, Boundary, and Citation / Provenance = `Pass` / `Fail`; Evidence = `Pass` / `Fail` / `Partial`; Overall = `Pass` / `Partial` / `Fail` / `Inconclusive`; Conflict = `Pass` / `Fail` / `N/A`; Usefulness = `X/5`; Manual follow-up = `Yes` / `No`.
++
++Formal Q11/Q12 rows remain unpopulated until valid controlled executions under the Q11/Q12 contract in `CAPE_Testing_Results_Follow_Up.md` §26 are completed. Historical transcripts and outcomes are preserved without reclassification or backfill; they are not formal results.
+ 
+ 
+ #### Q1: How do I initiate an RPA project?

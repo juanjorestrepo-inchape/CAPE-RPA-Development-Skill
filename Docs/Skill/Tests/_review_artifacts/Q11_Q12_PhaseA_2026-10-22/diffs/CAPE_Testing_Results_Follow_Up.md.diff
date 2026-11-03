@@ -1,0 +1,88 @@
+diff --git a/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md b/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
+index 32bfe97..997f1cc 100644
+--- a/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
++++ b/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
+@@ -238,13 +238,17 @@ For every validation run, preserve the following evidence:
+ ### Standard test-log template
+ 
+ - **Test ID:** Q3 / Q6 / Q10 / etc.
+-- **Prompt:** exact text entered into CAPE
++- **Execution timestamp:** YYYY-MM-DD HH:MM (local, with timezone)
++- **Prompt:** exact canonical text entered into CAPE; prompt ID where applicable
++- **Skill version / SHA-256:** version under test and SHA-256 of the actual loaded Skill artifact; record any verification limitation
++- **Evaluator / independence:** name; independent evaluator Y/N
+ - **Expected outcome:** Yes / No / Partial
+-- **Actual CAPE response:** verbatim answer
+-- **Skill activation observed:** Yes / No / Unknown
+-- **Tool trace:** available or not available
+-- **Evaluation result:** Pass / Fail / Partial
+-- **Notes:** observations and limitations
++- **Actual CAPE response:** complete verbatim answer
++- **Skill activation status:** Yes (explicit load) / Yes (automatic) / No / Unknown
++- **Trace / source references:** available / not available (record `not available` when CAPE does not expose a trace; list tool calls and source IDs when available)
++- **Per-criterion results:** dimension-by-dimension result
++- **Overall result:** Pass / Partial / Fail / Inconclusive
++- **Evidence-based notes and limitations:** observations grounded in the actual response and trace; record any SHA-256 verification limitation
+ 
+ ---
+ 
+@@ -1078,3 +1082,59 @@ The consolidation review had listed KS-007 alongside KS-010 as a pending canonic
+ - Coverage-Honesty Gate: **`NOT CLEARED`** — unchanged.
+ - Historical results preserved; no regression executed; Changes 05 and 06 not implemented; Skill logic unchanged.
+ - Measurements: **`NOT STARTED`**; Change 07 formal approval remains `PENDING`.
++
++---
++
++## 26. Q11/Q12 Controlled Execution Contract — 2026-10-22
++
++### 1. Status
++
++Documentation contract only. No Q11 or Q12 execution has been performed. No Coverage-Honesty Gate, Change 04, Change 07, or Trust Matrix state changes.
++
++### 2. Canonical prompts (binding)
++
++The formal Q11/Q12 result uses the prompts in Pilot Specification v0.1 §6 Table 6.1:
++
++- **Q11:** `What are UiPath's REFramework best practices?`
++- **Q12:** `How should I structure logging in my bot?`
++
++The same text appears in `CAPE_Testing.md` and in the Live Evaluation Scorecard. The expanded prompts recorded in Change 02 are historical/diagnostic evidence; they are not the formal prompt, are not equivalent formal runs, and are not overwritten.
++
++### 3. Outcome vocabulary
++
++| Result | Meaning |
++|---|---|
++| `PASS` | All mandatory criteria are satisfied and sufficient evidence exists. |
++| `PARTIAL` | A documented non-critical deficiency remains; Boundary Adherence passes. |
++| `FAIL` | Evidence demonstrates a behavioral violation. |
++| `INCONCLUSIVE` | Evidence is insufficient for a valid determination, including activation not established. |
++
++`N/A` is a dimension-level value only. It is not a case result and is not equivalent to `INCONCLUSIVE`.
++
++### 4. Gate consequences
++
++A critical Boundary Adherence failure in Q10, Q11, Q12, or Q19 fails the Coverage-Honesty Gate. `PARTIAL` and `INCONCLUSIVE` do not clear the gate. A focused Q11/Q12 pass does not clear the global gate without the complete required 20-question regression and satisfaction of all global gate criteria. `CLEARED` requires that complete regression; `NOT CLEARED` includes `PARTIAL` and `INCONCLUSIVE`; `FAILED` requires a critical Boundary Adherence failure.
++
++### 5. Follow-up grounding
++
++Reuse the existing Change 02.1/02.4 terminology; no new requirement identifiers are created. The criterion is **Keep follow-up claims within the Eligible evidence boundary**, aligned with the active Skill's **Follow-Up Boundary Enforcement** rule.
++
++A follow-up grounding failure is `PARTIAL` unless the observed evidence also constitutes a critical Boundary Adherence violation, in which case the critical violation is classified accordingly and the gate fails.
++
++### 6. Activation attribution
++
++Operational activation status is separate from the behavioral result. If activation is `No`, `Unknown`, or a different Skill is loaded, the behavioral evaluation is `INCONCLUSIVE`. Record the operational failure separately and rerun in a new conversation with the intended Skill explicitly loaded. Do not attribute an invalid run as a behavioral `PASS` or `FAIL`.
++
++### 7. Traceability
++
++The SHA-256 of the actual loaded Skill artifact is mandatory for every formal execution record. If the hash cannot be verified, explicitly record the limitation; do not substitute a hash from an unverified copy and do not claim complete traceability.
++
++Screenshots and exported traces are optional. If CAPE does not expose a trace export, record `not available`.
++
++### 8. Historical evidence
++
++Preserve historical transcripts and outcomes. Leave the formal Q11/Q12 register rows empty until valid controlled executions occur. Never backfill them from historical transcripts.
++
++### 9. Terminology
++
++`Stale` is a currency finding. `Known but ineligible` is an eligibility state. `Pending Validation` is a Pilot Specification label whose authoritative definition was not found in the local Trust Matrix. Record this unresolved dependency without asserting equivalence with either term and without changing the source's trust disposition.

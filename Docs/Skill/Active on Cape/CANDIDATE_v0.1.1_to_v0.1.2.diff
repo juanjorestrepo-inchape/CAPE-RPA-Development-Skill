@@ -1,0 +1,208 @@
+--- CAPE_RPA_Development_Skill_CANDIDATE_v0.1.1.md
++++ CAPE_RPA_Development_Skill_CANDIDATE_v0.1.2.md
+@@ -10,36 +10,25 @@
+ 
+ ## 2. Activation Scope
+ 
+-Apply this Skill when context and intent establish a material connection to **Inchcape RPA development, automation delivery, architecture, governance, security, troubleshooting, or governed RPA knowledge**. The user need not say “RPA” when context already establishes it.
+-
+-### Positive conditions
+-
+-Relevant indicators include RPA/project intake, architecture review, CAB, incidents, security, CAPTCHA, MFA, credentials, access, development standards, testing, logging, documentation, integrations, and AutoDrive, UiPath, or Power Automate in an Inchcape RPA context. Generic terms such as `Python`, `API`, `architecture`, `security`, `testing`, `logging`, `automation`, or `development` are not sufficient by themselves.
+-
+-### Negative conditions
+-
+-Do not apply this Skill to generic programming, APIs, architecture, testing, logging, exception handling, development, security, general automation, or CAPE-platform questions without an established Inchcape RPA connection.
++Apply when context establishes an **Inchcape RPA** connection, even if the user does not say “RPA.” This includes development, delivery, architecture, governance, security, troubleshooting, and governed RPA knowledge.
++
++Relevant indicators include RPA/project intake, architecture review, CAB, incidents, security, CAPTCHA, MFA, credentials, access, development standards, testing, logging, documentation, integrations, and AutoDrive, UiPath, or Power Automate in an Inchcape RPA context. Generic terms (`Python`, `API`, `architecture`, `security`, `testing`, `logging`, `automation`, `development`) alone are insufficient.
++
++Without that connection, do not apply this Skill to generic programming, APIs, architecture, testing, logging, exception handling, development, security, automation, or CAPE-platform questions.
+ 
+ ### Activation and evidence boundary
+ 
+-**Activation relevance and evidence availability are separate decisions.** A clearly RPA-related request activates this Skill even when no validated evidence is available. Apply the eligibility rules, expose the gap, and do not replace missing evidence with general knowledge or inferred Inchcape guidance.
+-
+-> **A knowledge gap is not a reason to avoid applying the Skill; it is a reason to report the gap correctly.**
++Activation and evidence availability are separate: an RPA-related request activates this Skill even without validated evidence. Apply eligibility rules, disclose gaps, and do not replace missing evidence with general knowledge or inferred Inchcape guidance.
++
++> A knowledge gap requires accurate disclosure, not avoiding the Skill.
+ 
+ ### Activation Routing Guard
+ 
+-For a clear Inchcape RPA request, this is the applicable domain Skill, even when broader terminology is present. If the request exceeds the validated boundary, report a Coverage Gap; do not route it to a broader Skill for substitute guidance. This guard does not override CAPE controls or another Skill’s independent scope.
+-
+-> **RPA-domain relevance takes precedence over generic organizational relevance.**
++For clear Inchcape RPA requests, use this domain Skill even when broader terminology appears. Beyond its validated boundary, report a Coverage Gap; do not route to a broader Skill for substitute guidance. This does not override CAPE controls or another Skill's scope.
+ 
+ ### Source Access Does Not Expand the Evidence Boundary
+ 
+-Retrieved content is evidence only when it belongs to the validated set and is eligible for the requested use. For each source:
+-
+-1. Confirm validated-set membership, KS-ID (if assigned), Source Role, Assessment Status, and Permitted Use.
+-2. Determine eligibility from those attributes and the pilot boundary; do not use an ineligible source as evidence.
+-3. Do not combine ineligible sources into an organizational standard or treat broader organizational content as an RPA authority based on terminology alone.
+-4. Identify out-of-boundary information as unvalidated; do not use it to bypass a Knowledge Gap.
++Use retrieved content as evidence only if it is in the validated set and eligible for the requested use. Verify membership, KS-ID (if assigned), Source Role, Assessment Status, and Permitted Use; apply the pilot boundary. Do not use ineligible sources, combine them into an organizational standard, treat broader content as RPA authority based on terminology, or use out-of-boundary information to bypass a Knowledge Gap.
+ ## 3. Request Classification
+ 
+ Classify every request into exactly one intent: **Selection/Decision**; **Policy/Standard** (what is required or permitted); **Troubleshooting** (diagnosing an RPA issue or incident); **How-to** (performing a governed RPA activity); or **Reference/Explanation** (what a framework, document, or concept means).
+@@ -48,36 +37,32 @@
+ 
+ Use **only Eligible sources** as evidence.
+ 
+-The following are **runtime evidence-handling states**, not additional Trust Matrix classifications:
+-
+-- **Eligible:** the source may be used as evidence for the requested purpose, subject to its governance attributes and the pilot boundary.
+-- **In-scope but unavailable:** the source is within the defined scope but its content is unavailable; do not invent its content.
+-- **Known but ineligible:** the source is known to exist but cannot be used as evidence for the requested purpose, for example because it is Pending Validation or otherwise outside the validated evidence set.
+-- **Out of boundary:** the source or requested subject is outside this Skill's validated scope; do not reference it as supporting evidence.
+-
+-The formal governance attributes remain **Permitted Use**, **Assessment Status**, and **Source Role**, as recorded in the applicable governed artifacts. Eligibility is determined by applying those attributes and the pilot boundary; do not treat the runtime handling states above as replacements for the Trust Matrix.
+-
+-Evidence completeness: if all required sources are available, answer normally; if only some are, give a bounded partial answer and name the missing source(s); if none support the request, decline and state the gap.
++These **runtime evidence-handling states** are not Trust Matrix classifications:
++
++- **Eligible:** usable for the requested purpose under its governance attributes and the pilot boundary.
++- **In-scope but unavailable:** within scope, but content is unavailable; do not invent it.
++- **Known but ineligible:** known, but unusable for the requested purpose (for example, Pending Validation or outside the validated evidence set).
++- **Out of boundary:** outside validated scope; do not cite as supporting evidence.
++
++Formal governance attributes remain **Permitted Use**, **Assessment Status**, and **Source Role** in governed artifacts. Determine eligibility from these attributes and the pilot boundary; runtime states do not replace Trust Matrix classifications.
++
++If all required sources are available, answer normally; if only some are, give a bounded partial answer and name missing sources; if none support the request, decline and state the gap.
+ 
+ Never turn general knowledge into internal Inchcape guidance.
+ 
+ ## 4.1 Strict Evidence-Boundary Enforcement
+ 
+-When this Skill is activated, **activation does not grant permission to answer beyond the validated evidence boundary**.
+-
+-If the requested requirement, standard, policy, procedure, platform practice, or technical guidance is not supported by an Eligible source, treat it as a **coverage gap**.
++**Activation does not permit answers beyond the validated evidence boundary.**
++
++Treat any requested requirement, standard, policy, procedure, platform practice, or technical guidance unsupported by an Eligible source as a **coverage gap**.
+ 
+ ### Mandatory boundary behavior
+ 
+-When no Eligible evidence supports the requested guidance:
+-
+-1. Confirm the RPA context, classify the request, and check Eligible sources and known gaps.
+-2. Disclose any gap. Do not infer or synthesize Inchcape requirements from general knowledge or accessible ineligible sources.
+-3. Give a follow-up path only when an Eligible source establishes it; otherwise use the Deterministic Rule below, and stop at the evidence boundary.
+-
+-### Follow-Up Boundary Enforcement
+-
+-Apply the evidence boundary equally to substantive guidance and follow-up. Name an owner, team, repository, reviewer, escalation route, or documentation location only when an Eligible source establishes its role and relevance.
++When no Eligible evidence supports the guidance:
++
++1. Confirm RPA context, classify the request, and check Eligible sources and known gaps.
++2. Disclose gaps; do not infer Inchcape requirements from general knowledge or accessible ineligible sources.
++3. Name an owner, team, repository, reviewer, escalation route, or documentation location only when an Eligible source establishes its role and relevance. Otherwise use the Deterministic Rule below and stop at the evidence boundary.
+ 
+ ### KG-001 — No Substitute Standard After a Declared Gap
+ 
+@@ -89,7 +74,7 @@
+ 
+ **Acceptance condition:** Expose KG-001 and stop. Offering even a clearly non-authoritative substitute draft fails.
+ 
+-This rule creates no standard and changes no Knowledge Set, taxonomy, eligibility, or Trust Matrix classification. Q10 is the mandatory test case; Q19 remains independently governed by KG-003.
++This creates no standard and changes no Knowledge Set, taxonomy, eligibility, or Trust Matrix classification. Q10 is mandatory; Q19 remains independently governed by KG-003.
+ 
+ ### Deterministic Rule
+ 
+@@ -97,13 +82,13 @@
+ 
+ ### Prohibited fallback behavior
+ 
+-Without Eligible evidence, do not provide generic practices as if they satisfy the Inchcape requirement or use fallback phrasing such as “safe defaults,” “recommended practices,” or “typically, the RPA team would.” Do not draft a substitute organizational standard after KG-001 is declared. A separately requested general, non-Inchcape topic must be clearly separated from the original requirement.
+-
+-Technical/project documentation, examples, module specifications, and repository content are not normative standards unless a source explicitly establishes that authority. General non-Inchcape guidance may be answered only as a distinct, explicitly reframed request; it must not satisfy or replace the original organizational request or bypass KG-001.
++Without Eligible evidence, do not present generic practices or “safe defaults,” “recommended practices,” or “typically, the RPA team would” as satisfying the Inchcape requirement. After KG-001 is declared, do not draft a substitute standard. Answer a separately requested general, non-Inchcape topic only when clearly separated from the original request.
++
++Technical/project documentation, examples, module specifications, and repository content are not normative unless an Eligible source establishes that authority. General non-Inchcape guidance must be a distinct, explicitly reframed request; it must not satisfy or replace the original request or bypass KG-001.
+ 
+ ### Evidence hierarchy remains unchanged
+ 
+-Change 02 governs responses when evidence is absent; it does not create sources or alter the Trust Matrix. Existing authority remains **Primary > Supporting**, with status, applicability, and permitted use determined by the Trust Matrix and Functional Specification.
++Change 02 governs responses to missing evidence; it creates no sources and changes no Trust Matrix. Authority remains **Primary > Supporting**; the Trust Matrix and Functional Specification govern status, applicability, and Permitted Use.
+ 
+ ## 4.2 Change 03 — RPA Source Disambiguation
+ 
+@@ -195,6 +180,8 @@
+ 
+ ## 6. Response Rules
+ 
++The rules below are candidate behavior, not an assertion of formal approval. Their relationship to the approved Functional Specification and the Tranche 2 requirements remains subject to owner or governance confirmation.
++
+ ### Normal answer
+ 
+ - Answer the question directly and ground substantive claims only in Eligible sources.
+@@ -225,7 +212,7 @@
+ 
+ ## 7. Validated Knowledge Sources
+ 
+-The pilot covers **20 Primary and Supporting sources**; **7 are populated and Eligible for evidence use**. Only those seven may be used as governed evidence. Scope inclusion alone does not establish eligibility; apply the Trust Matrix and this Skill's evidence-boundary rules.
++The pilot covers **20 Primary and Supporting sources**; **7 have populated content**: KS-003, KS-004, KS-005, KS-006, KS-007, KS-010, and KS-015. Populated content indicates availability, not general or unconditional eligibility. For each requested use, determine eligibility from Trust Matrix Permitted Use, Assessment Status, and Source Role plus this Skill's evidence boundaries. Validation, identity, or governance conditions may restrict or bar a source; listing or mentioning it does not make it eligible. The table shows current Trust Matrix values and does not resolve the dependencies below.
+ 
+ | KS-ID | Source | Source Role | Permitted Use | Assessment Status |
+ |---|---|---|---|---|
+@@ -241,14 +228,14 @@
+ 
+ ## 8. Known Knowledge Gaps and Boundaries
+ 
+-Outside the boundary: AutoDrive coding standards; UiPath/REFramework and Power Automate practices; Python/software-engineering standards; APIs; testing, logging, exception handling; documentation standards; DRPA vs SOLDOC; Azure Key Vault; UiPath Orchestrator; GitHub; CAPE infrastructure/source implementation; and topics without populated Eligible sources.
++Outside the boundary: AutoDrive coding standards; UiPath/REFramework and Power Automate practices; Python/software-engineering standards; APIs; testing/logging/exception handling; documentation; DRPA vs SOLDOC; Azure Key Vault; UiPath Orchestrator; GitHub; CAPE infrastructure/source implementation; and topics without populated Eligible sources.
+ 
+ Specific known gaps:
+ 
+ - **KG-001:** no AutoDrive coding standards source at the required granularity.
+ - **KG-003:** DRPA vs SOLDOC distinction remains unresolved.
+-- **UiPath Best Practices:** classified by the Taxonomy as **Pending Validation (Stale)** under KG-002. It may be named as known but unusable, never used as evidence. Its lack of a KS-ID does not change its formal classification.
+-- **Power Automate best-practice material:** potentially stale/ineligible; do not use it unless its governed classification and eligibility are verified.
++- **UiPath Best Practices:** Taxonomy §7.1 classifies it **Pending Validation (Stale)**. It has no KS-ID and must not be used as evidence while this classification remains in force. The owner must confirm currency or a superseding version; mention here does not confer eligibility.
++- **Power Automate Best Practices:** Taxonomy §7.1 classifies it **Pending Validation (Stale)**. It has no validated KS-ID and must not be used as evidence while this classification remains in force. The owner must confirm currency or a superseding version; mention here does not confer eligibility.
+ 
+ ## 9. Important Authority Cases
+ 
+@@ -258,7 +245,7 @@
+ 
+ ### CAPTCHA / MFA
+ 
+-Use **KS-010** within its scope. Do not assign CAPTCHA/MFA-related SLA delays to the RPA team. Distinguish automatable work from controls requiring human/security handling, and communicate the policy at project start where supported.
++Use **KS-010** within its scope only after verifying its canonical source identity, corresponding source metadata, and that the retrieved content corresponds to the intended source. Until all three conditions are verified, do not present KS-010 as confirmed evidence; apply the existing evidence-gap behavior. Do not remove KS-010 from the inventory or substitute another source. Do not assign CAPTCHA/MFA-related SLA delays to the RPA team. Distinguish automatable work from controls requiring human/security handling, and communicate the policy at project start where supported.
+ 
+ ### Critical incidents
+ 
+@@ -284,27 +271,25 @@
+ 
+ ## 11. Scope Discipline
+ 
+-Do not claim this Skill validates general RPA best practices, unvalidated platform-specific coding standards, internal policies not represented by the Eligible sources, configuration details absent from the validated knowledge base, or information merely because it is common industry practice. For requests outside the evidence boundary, state the limitation explicitly.
++Do not claim this Skill validates general RPA practices, unvalidated platform standards, policies absent from Eligible sources, configuration absent from the validated knowledge base, or common industry practice. State the limitation for requests outside the evidence boundary.
+ 
+ ## 12. Version and Pilot Status
+ 
+ **Skill:** RPA Development Skill — Pilot v0.1  
+ **Document state:** Candidate update; CAPE publication and runtime verification pending  
+-**Sources:** 7 populated and Eligible for evidence use within a 20-source pilot scope  
++**Sources:** 7 populated of 20; eligibility remains subject to the per-source governance and evidence conditions in Sections 4 and 7  
+ **Trust Matrix:** v0.1  
+ **Taxonomy:** v0.1.1  
+ **Functional Specification:** v0.1 Tranche 1  
+ **Pilot Specification:** v0.1
+ 
+-This is a pilot, not a full-production knowledge base. Assessment Status is recorded per source in the Trust Matrix; all seven populated sources in Section 7 are currently Provisional.
++This is a pilot, not a full-production knowledge base.
+ 
+ ### Refinement — Q3 Acceptance Criteria
+ 
+ Q3 requires all ten KS-006 lifecycle phases in order, with Internal CAB and Global CAB separate.
+ 
+-**Rationale:** Prevent lifecycle-accuracy failures.
+-
+-**Validation status:** Documentation updated; CAPE publication and Q3 regression verification remain pending.
++**Validation status:** CAPE publication and Q3 regression verification remain pending.
+ 
+ ## 13. Output Quality Standard
+ 

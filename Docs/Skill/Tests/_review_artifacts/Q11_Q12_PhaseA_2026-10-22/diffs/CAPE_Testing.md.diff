@@ -1,0 +1,39 @@
+diff --git a/Docs/Skill/Tests/CAPE_Testing.md b/Docs/Skill/Tests/CAPE_Testing.md
+index 4ae889d..ecf1e21 100644
+--- a/Docs/Skill/Tests/CAPE_Testing.md
++++ b/Docs/Skill/Tests/CAPE_Testing.md
+@@ -282,7 +282,7 @@ Knowledge Source / Trust Matrix / Taxonomy
+         ↓
+ Acceptance Criterion
+         ↓
+-Pass / Fail / Partial / N/A
++Pass / Partial / Fail / Inconclusive / N/A
+ ```
+ 
+ Por ejemplo, Q1.
+@@ -394,9 +394,11 @@ Tienes **tres métricas principales**.
+ Para cada pregunta:
+ 
+ ```text
+-Overall = Pass / Fail
++Overall = Pass / Partial / Fail / Inconclusive
+ ```
+ 
++`Partial` e `Inconclusive` no cuentan como `Pass` para la tasa.
++
+ Después:
+ 
+ $$
+@@ -457,6 +459,12 @@ Si una falla:
+ → Gate = FAILED
+ ```
+ 
++Si el resultado es `Partial` o `Inconclusive`:
++
++```text
++→ Gate = NOT CLEARED
++```
++
+ independientemente del resto.
+ 
+ Eso está bien planteado en tu Scorecard.

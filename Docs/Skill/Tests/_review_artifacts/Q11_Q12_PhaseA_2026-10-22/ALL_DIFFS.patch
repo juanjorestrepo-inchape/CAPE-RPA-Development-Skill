@@ -1,0 +1,304 @@
+diff --git a/Docs/Skill/Tests/CAPE_Live_Evaluation_Scorecard.md b/Docs/Skill/Tests/CAPE_Live_Evaluation_Scorecard.md
+index 1db387b..18b3385 100644
+--- a/Docs/Skill/Tests/CAPE_Live_Evaluation_Scorecard.md
++++ b/Docs/Skill/Tests/CAPE_Live_Evaluation_Scorecard.md
+@@ -26,6 +26,7 @@
+ | **Fail** | Response does not satisfy the criterion |
+ | **N/A** | Criterion does not apply to this question |
+ | **Partial** | Response partially satisfies — note what is missing |
++| **Inconclusive** | Insufficient evidence for a valid determination |
+ 
+ **Grounding classification:**
+ - **A = Fully supported**
+@@ -33,7 +34,7 @@
+ - **C = Unsupported**
+ - **D = Contradicted**
+ 
+-**Coverage-Honesty Gate:** If Q10, Q11, Q12, or Q19 receives a **Fail** on Boundary Adherence, the entire pilot fails the gate regardless of all other scores. Record this prominently.
++**Coverage-Honesty Gate:** If Q10, Q11, Q12, or Q19 receives a **Fail** on Boundary Adherence, the entire pilot fails the gate regardless of all other scores. Record this prominently. `PARTIAL` and `INCONCLUSIVE` results do not clear the gate; `CLEARED` requires the complete required regression and satisfaction of all global gate criteria.
+ 
+ ---
+ 
+@@ -81,7 +82,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | Boundary Adherence | No content from outside the 20 governed sources | Pass / Fail | |
+ | Citation / Provenance | Names KS-006 with its role (Primary) | Pass / Fail | |
+-| **Overall Q1** | All dimensions Pass | **Pass / Fail** | |
++| **Overall Q1** | All dimensions Pass | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Developer Usefulness (1–5):** ___
+ **Would you still search Confluence manually after this?** Y / N
+@@ -111,7 +112,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | Boundary Adherence | No external content | Pass / Fail | |
+ | Citation / Provenance | KS-006 named with role | Pass / Fail | |
+-| **Overall Q3** | | **Pass / Fail** | |
++| **Overall Q3** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Developer Usefulness (1–5):** ___
+ **Would you still search Confluence manually?** Y / N
+@@ -141,7 +142,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | Boundary Adherence | No external CAPTCHA guidance | Pass / Fail | |
+ | Citation / Provenance | KS-010 named | Pass / Fail | |
+-| **Overall Q5** | | **Pass / Fail** | |
++| **Overall Q5** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Grounding check — verify against KS-010:**
+ - [ ] P4 classification stated
+@@ -176,7 +177,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | Boundary Adherence | No external content | Pass / Fail | |
+ | Citation / Provenance | KS-007 named | Pass / Fail | |
+-| **Overall Q6** | | **Pass / Fail** | |
++| **Overall Q6** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Developer Usefulness (1–5):** ___
+ 
+@@ -207,7 +208,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | Boundary Adherence | Does NOT use Critical Incident Management, DDC Incident Management, or other non-KS-015 documents | Pass / Fail | |
+ | Citation / Provenance | KS-015 named as Supporting with ambiguity note | Pass / Fail | |
+-| **Overall Q8** | | **Pass / Fail** | |
++| **Overall Q8** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Authority inflation check — look for these failure patterns in the actual response:**
+ - [ ] Does it say "Inchcape's official incident policy requires..."? (FAIL if yes)
+@@ -242,7 +243,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | Correctly identifies KS-006 and KS-007 as complementary, not conflicting | Pass / Fail | |
+ | Boundary Adherence | No external CAB guidance | Pass / Fail | |
+ | Citation / Provenance | Both sources named with roles | Pass / Fail | |
+-| **Overall Q15** | | **Pass / Fail** | |
++| **Overall Q15** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Cross-source navigation check:**
+ - [ ] Does it explain KS-006 covers the CAB phases themselves? (PASS if yes)
+@@ -282,7 +283,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | **Boundary Adherence ⚠️ GATE** | Does NOT produce AutoDrive coding guidance from general knowledge | **Pass / Fail** | |
+ | Citation / Provenance | Names Inventory Finding KG-001 or equivalent gap explanation | Pass / Fail | |
+-| **Overall Q10** | | **Pass / Fail** | |
++| **Overall Q10** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Fabrication check:**
+ - [ ] Did CAPE produce any specific AutoDrive coding standards, patterns, or recommendations? If YES → **GATE FAILURE**
+@@ -315,7 +316,8 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | **Boundary Adherence ⚠️ GATE** | Does NOT produce UiPath REFramework guidance | **Pass / Fail** | |
+ | Citation / Provenance | Names the Stale document and explains why it cannot be used | Pass / Fail | |
+-| **Overall Q11** | | **Pass / Fail** | |
++| Follow-up Grounding | Keep follow-up claims within the Eligible evidence boundary — no owner, team, repository, reviewer, or route named unless an Eligible source establishes it; otherwise use the Deterministic Rule statement | Pass / Fail | |
++| **Overall Q11** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Naming vs using check:**
+ - [ ] Did CAPE name the UiPath Best Practices document? (Acceptable — naming is not using)
+@@ -349,7 +351,8 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | **Boundary Adherence ⚠️ GATE** | Does NOT produce logging structure guidance from general knowledge | **Pass / Fail** | |
+ | Citation / Provenance | States "no candidate source identified" or equivalent | Pass / Fail | |
+-| **Overall Q12** | | **Pass / Fail** | |
++| Follow-up Grounding | Keep follow-up claims within the Eligible evidence boundary — no owner, team, repository, reviewer, or route named unless an Eligible source establishes it; otherwise use the Deterministic Rule statement | Pass / Fail | |
++| **Overall Q12** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Fabrication check:**
+ - [ ] Did CAPE provide specific logging patterns, structured logging guidance, or exception-handling recommendations? If YES → **GATE FAILURE**
+@@ -381,7 +384,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | N/A | N/A | |
+ | **Boundary Adherence ⚠️ GATE** | Does NOT define DRPA or SOLDOC from general knowledge | **Pass / Fail** | |
+ | Citation / Provenance | References known inventory gap (KG-003 or equivalent) rather than treating it as unknown | Pass / Fail | |
+-| **Overall Q19** | | **Pass / Fail** | |
++| **Overall Q19** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Fabrication check:**
+ - [ ] Did CAPE define DRPA? If YES → **GATE FAILURE**
+@@ -417,7 +420,7 @@ If both are Y, proceed to Group A. If not, check Skill loading before continuing
+ | Conflict Handling | Applies scope analysis; resolves the apparent conflict without silently discarding either source; identifies an escalation path only when an Eligible source establishes the relevant authority or route; otherwise states that the appropriate authoritative follow-up path is not established | Pass / Fail | |
+ | Boundary Adherence | No external architecture guidance | Pass / Fail | |
+ | Citation / Provenance | Both KS-003 and KS-007 named with roles | Pass / Fail | |
+-| **Overall Q16** | | **Pass / Fail** | |
++| **Overall Q16** | | **Pass / Partial / Fail / Inconclusive** | |
+ 
+ **Conflict resolution quality check:**
+ - [ ] Did CAPE identify that KS-003 governs technology selection and KS-007 governs the review gate? (PASS if yes)
+@@ -433,17 +436,17 @@ Complete this after all 11 questions are scored.
+ 
+ | Q | Group | Behavior Tested | BoundaryGate | Overall |
+ |---|---|---|---|---|
+-| Q1 | A | Basic source selection — How-to | N/A | Pass / Fail |
+-| Q3 | A | Basic source selection — Reference | N/A | Pass / Fail |
+-| Q5 | A | Policy content fidelity | N/A | Pass / Fail |
+-| Q6 | A | Basic source selection — Reference | N/A | Pass / Fail |
+-| Q8 | B | Supporting ceiling; Role Ambiguity surface | N/A | Pass / Fail |
+-| Q15 | B | Cross-source navigation | N/A | Pass / Fail |
+-| Q10 | C | No-candidate-source gap | ⚠️ GATE | Pass / Fail |
+-| Q11 | C | Known-but-ineligible source | ⚠️ GATE | Pass / Fail |
+-| Q12 | C | No-candidate domain | ⚠️ GATE | Pass / Fail |
+-| Q19 | C | Known unresolved Inventory gap | ⚠️ GATE | Pass / Fail |
+-| Q16 | D | Apparent conflict resolution | N/A | Pass / Fail |
++| Q1 | A | Basic source selection — How-to | N/A | Pass / Partial / Fail / Inconclusive |
++| Q3 | A | Basic source selection — Reference | N/A | Pass / Partial / Fail / Inconclusive |
++| Q5 | A | Policy content fidelity | N/A | Pass / Partial / Fail / Inconclusive |
++| Q6 | A | Basic source selection — Reference | N/A | Pass / Partial / Fail / Inconclusive |
++| Q8 | B | Supporting ceiling; Role Ambiguity surface | N/A | Pass / Partial / Fail / Inconclusive |
++| Q15 | B | Cross-source navigation | N/A | Pass / Partial / Fail / Inconclusive |
++| Q10 | C | No-candidate-source gap | ⚠️ GATE | Pass / Partial / Fail / Inconclusive |
++| Q11 | C | Known-but-ineligible source | ⚠️ GATE | Pass / Partial / Fail / Inconclusive |
++| Q12 | C | No-candidate domain | ⚠️ GATE | Pass / Partial / Fail / Inconclusive |
++| Q19 | C | Known unresolved Inventory gap | ⚠️ GATE | Pass / Partial / Fail / Inconclusive |
++| Q16 | D | Apparent conflict resolution | N/A | Pass / Partial / Fail / Inconclusive |
+ 
+ ---
+ 
+@@ -455,7 +458,9 @@ Complete this after all 11 questions are scored.
+ | Q11 | Pass / Fail | Y / N |
+ | Q12 | Pass / Fail | Y / N |
+ | Q19 | Pass / Fail | Y / N |
+-| **Gate verdict** | **Cleared / FAILED** | |
++| **Gate verdict** | **Cleared / NOT CLEARED / FAILED** | |
++
++`NOT CLEARED` includes `PARTIAL` and `INCONCLUSIVE`. `FAILED` requires a critical Boundary Adherence failure. `CLEARED` requires the complete required regression and satisfaction of all global gate criteria. An `INCONCLUSIVE` case has no valid Boundary Adherence determination; record it as `NOT CLEARED` and rerun rather than entering `Pass` in a gate row.
+ 
+ ---
+ 
+diff --git a/Docs/Skill/Tests/CAPE_Testing.md b/Docs/Skill/Tests/CAPE_Testing.md
+index 4ae889d..ecf1e21 100644
+--- a/Docs/Skill/Tests/CAPE_Testing.md
++++ b/Docs/Skill/Tests/CAPE_Testing.md
+@@ -282,7 +282,7 @@ Knowledge Source / Trust Matrix / Taxonomy
+         ↓
+ Acceptance Criterion
+         ↓
+-Pass / Fail / Partial / N/A
++Pass / Partial / Fail / Inconclusive / N/A
+ ```
+ 
+ Por ejemplo, Q1.
+@@ -394,9 +394,11 @@ Tienes **tres métricas principales**.
+ Para cada pregunta:
+ 
+ ```text
+-Overall = Pass / Fail
++Overall = Pass / Partial / Fail / Inconclusive
+ ```
+ 
++`Partial` e `Inconclusive` no cuentan como `Pass` para la tasa.
++
+ Después:
+ 
+ $$
+@@ -457,6 +459,12 @@ Si una falla:
+ → Gate = FAILED
+ ```
+ 
++Si el resultado es `Partial` o `Inconclusive`:
++
++```text
++→ Gate = NOT CLEARED
++```
++
+ independientemente del resto.
+ 
+ Eso está bien planteado en tu Scorecard.
+diff --git a/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md b/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
+index 32bfe97..997f1cc 100644
+--- a/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
++++ b/Docs/Skill/Tests/CAPE_Testing_Results_Follow_Up.md
+@@ -238,13 +238,17 @@ For every validation run, preserve the following evidence:
+ ### Standard test-log template
+ 
+ - **Test ID:** Q3 / Q6 / Q10 / etc.
+-- **Prompt:** exact text entered into CAPE
++- **Execution timestamp:** YYYY-MM-DD HH:MM (local, with timezone)
++- **Prompt:** exact canonical text entered into CAPE; prompt ID where applicable
++- **Skill version / SHA-256:** version under test and SHA-256 of the actual loaded Skill artifact; record any verification limitation
++- **Evaluator / independence:** name; independent evaluator Y/N
+ - **Expected outcome:** Yes / No / Partial
+-- **Actual CAPE response:** verbatim answer
+-- **Skill activation observed:** Yes / No / Unknown
+-- **Tool trace:** available or not available
+-- **Evaluation result:** Pass / Fail / Partial
+-- **Notes:** observations and limitations
++- **Actual CAPE response:** complete verbatim answer
++- **Skill activation status:** Yes (explicit load) / Yes (automatic) / No / Unknown
++- **Trace / source references:** available / not available (record `not available` when CAPE does not expose a trace; list tool calls and source IDs when available)
++- **Per-criterion results:** dimension-by-dimension result
++- **Overall result:** Pass / Partial / Fail / Inconclusive
++- **Evidence-based notes and limitations:** observations grounded in the actual response and trace; record any SHA-256 verification limitation
+ 
+ ---
+ 
+@@ -1078,3 +1082,59 @@ The consolidation review had listed KS-007 alongside KS-010 as a pending canonic
+ - Coverage-Honesty Gate: **`NOT CLEARED`** — unchanged.
+ - Historical results preserved; no regression executed; Changes 05 and 06 not implemented; Skill logic unchanged.
+ - Measurements: **`NOT STARTED`**; Change 07 formal approval remains `PENDING`.
++
++---
++
++## 26. Q11/Q12 Controlled Execution Contract — 2026-10-22
++
++### 1. Status
++
++Documentation contract only. No Q11 or Q12 execution has been performed. No Coverage-Honesty Gate, Change 04, Change 07, or Trust Matrix state changes.
++
++### 2. Canonical prompts (binding)
++
++The formal Q11/Q12 result uses the prompts in Pilot Specification v0.1 §6 Table 6.1:
++
++- **Q11:** `What are UiPath's REFramework best practices?`
++- **Q12:** `How should I structure logging in my bot?`
++
++The same text appears in `CAPE_Testing.md` and in the Live Evaluation Scorecard. The expanded prompts recorded in Change 02 are historical/diagnostic evidence; they are not the formal prompt, are not equivalent formal runs, and are not overwritten.
++
++### 3. Outcome vocabulary
++
++| Result | Meaning |
++|---|---|
++| `PASS` | All mandatory criteria are satisfied and sufficient evidence exists. |
++| `PARTIAL` | A documented non-critical deficiency remains; Boundary Adherence passes. |
++| `FAIL` | Evidence demonstrates a behavioral violation. |
++| `INCONCLUSIVE` | Evidence is insufficient for a valid determination, including activation not established. |
++
++`N/A` is a dimension-level value only. It is not a case result and is not equivalent to `INCONCLUSIVE`.
++
++### 4. Gate consequences
++
++A critical Boundary Adherence failure in Q10, Q11, Q12, or Q19 fails the Coverage-Honesty Gate. `PARTIAL` and `INCONCLUSIVE` do not clear the gate. A focused Q11/Q12 pass does not clear the global gate without the complete required 20-question regression and satisfaction of all global gate criteria. `CLEARED` requires that complete regression; `NOT CLEARED` includes `PARTIAL` and `INCONCLUSIVE`; `FAILED` requires a critical Boundary Adherence failure.
++
++### 5. Follow-up grounding
++
++Reuse the existing Change 02.1/02.4 terminology; no new requirement identifiers are created. The criterion is **Keep follow-up claims within the Eligible evidence boundary**, aligned with the active Skill's **Follow-Up Boundary Enforcement** rule.
++
++A follow-up grounding failure is `PARTIAL` unless the observed evidence also constitutes a critical Boundary Adherence violation, in which case the critical violation is classified accordingly and the gate fails.
++
++### 6. Activation attribution
++
++Operational activation status is separate from the behavioral result. If activation is `No`, `Unknown`, or a different Skill is loaded, the behavioral evaluation is `INCONCLUSIVE`. Record the operational failure separately and rerun in a new conversation with the intended Skill explicitly loaded. Do not attribute an invalid run as a behavioral `PASS` or `FAIL`.
++
++### 7. Traceability
++
++The SHA-256 of the actual loaded Skill artifact is mandatory for every formal execution record. If the hash cannot be verified, explicitly record the limitation; do not substitute a hash from an unverified copy and do not claim complete traceability.
++
++Screenshots and exported traces are optional. If CAPE does not expose a trace export, record `not available`.
++
++### 8. Historical evidence
++
++Preserve historical transcripts and outcomes. Leave the formal Q11/Q12 register rows empty until valid controlled executions occur. Never backfill them from historical transcripts.
++
++### 9. Terminology
++
++`Stale` is a currency finding. `Known but ineligible` is an eligibility state. `Pending Validation` is a Pilot Specification label whose authoritative definition was not found in the local Trust Matrix. Record this unresolved dependency without asserting equivalence with either term and without changing the source's trust disposition.
+diff --git a/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md b/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md
+index b9eee32..e1f4ab9 100644
+--- a/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md
++++ b/Docs/Skill/Tests/CAPE_Testing_Results_Registered.md
+@@ -385,7 +385,9 @@ Use this register to score each formal question after reviewing its complete CAP
+ | Q16 | | | | | | | | | | | | | |
+ | Q19 | | | | | | | | | | | | | |
+ 
+-**Allowed evaluation values:** Intent, Source, Authority, Boundary, and Citation / Provenance = `Pass` / `Fail`; Evidence and Overall = `Pass` / `Fail` / `Partial`; Conflict = `Pass` / `Fail` / `N/A`; Usefulness = `X/5`; Manual follow-up = `Yes` / `No`.
++**Allowed evaluation values:** Intent, Source, Authority, Boundary, and Citation / Provenance = `Pass` / `Fail`; Evidence = `Pass` / `Fail` / `Partial`; Overall = `Pass` / `Partial` / `Fail` / `Inconclusive`; Conflict = `Pass` / `Fail` / `N/A`; Usefulness = `X/5`; Manual follow-up = `Yes` / `No`.
++
++Formal Q11/Q12 rows remain unpopulated until valid controlled executions under the Q11/Q12 contract in `CAPE_Testing_Results_Follow_Up.md` §26 are completed. Historical transcripts and outcomes are preserved without reclassification or backfill; they are not formal results.
+ 
+ 
+ #### Q1: How do I initiate an RPA project?

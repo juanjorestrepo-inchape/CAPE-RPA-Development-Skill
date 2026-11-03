@@ -591,4 +591,4 @@ These gaps must be closed or explicitly accepted before the gate in §9 can pass
 - Task Bank: [`CAPE_Change_07_Task_Bank_v0.1.md`](CAPE_Change_07_Task_Bank_v0.1.md)
 - Change 04 design specification: [`CAPE_Change_04_Design_Specification_v0.1.md`](CAPE_Change_04_Design_Specification_v0.1.md)
 - Project evaluation register: [`Tests/CAPE_Testing_Results_Follow_Up.md`](Tests/CAPE_Testing_Results_Follow_Up.md)
-- Active Skill: [`CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md`](CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md)
+- Active Skill: [`CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md`](Active on Cape/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md)
