@@ -1,0 +1,98 @@
+name: CAPE Quality Gate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cape-quality-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality-gate:
+    name: Governance, Skill Budget & Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run quality-gate unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Verify protected Active Skill immutability (LF SHA-256)
+        run: |
+          python - <<'PY'
+          import hashlib
+          import pathlib
+          import sys
+
+          expected = "BAA3D921D505B5EB08E1E5A5ED64625DDCD4420958EEB89321DF5DE06E02CC7C"
+          skill_path = pathlib.Path("Docs/Skill/Active on Cape/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md")
+          lf_bytes = skill_path.read_bytes().replace(b"\r\n", b"\n")
+          actual = hashlib.sha256(lf_bytes).hexdigest().upper()
+
+          if actual != expected:
+              print(f"ERROR: Protected Active Skill hash mismatch!\n  Expected: {expected}\n  Actual:   {actual}", file=sys.stderr)
+              sys.exit(1)
+          print(f"OK: Protected Active Skill LF SHA-256 verified ({actual})")
+          PY
+
+      - name: Check Skill character budgets (< 24,000 limit)
+        run: |
+          python scripts/cape_quality_gate.py check-skill \
+            "Docs/Skill/Active on Cape/CAPE_RPA_Development_Skill_ACTIVE_v0.1_pilot.md" \
+            "Candidate/v0.1.2/CAPE_RPA_Development_Skill_CANDIDATE_v0.1.2_REVISED.md" \
+            | tee skill_audit.json
+
+      - name: Audit governed Markdown artifacts (Gate G9)
+        run: |
+          python scripts/cape_quality_gate.py check-docs \
+            "Governance/Owner Review/v0.1.2/Owner_Review_Package_Candidate_v0.1.2.md" \
+            "Candidate/v0.1.2/CANDIDATE_v0.1.2_OWNER_DECISIONS_REVISED.md" \
+            "Governance/Delivery/CAPE_RPA_Skill_Execution_Metrics_and_Optimization_Playbook_v0.1.md" \
+            "Docs/Skill/CAPE_Change_07_Task_Bank_v0.2_DRAFT.md" \
+            "Docs/Skill/Tests/CAPE_Regression_Run_2026-11-19.md"
+
+      - name: Validate Change 07 CSV schema(s)
+        run: |
+          python scripts/cape_quality_gate.py score-c07 "Docs/Skill/Change_07_Execution_Log_TEMPLATE.csv"
+          shopt -s nullglob
+          for f in Docs/Skill/Change_07_Execution_Log_RUN*.csv; do
+            echo "Scoring $f ..."
+            python scripts/cape_quality_gate.py score-c07 "$f"
+          done
+
+      - name: Write GitHub Actions Job Summary
+        if: always()
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          import pathlib
+
+          print("## CAPE RPA Development Skill — Quality Gate Summary\n")
+          audit_path = pathlib.Path("skill_audit.json")
+          if audit_path.is_file():
+              items = json.loads(audit_path.read_text(encoding="utf-8"))
+              print("| Skill Artifact | LF Chars | Headroom (<24k) | Margin Warning | Status |")
+              print("| :--- | :---: | :---: | :---: | :---: |")
+              for item in items:
+                  status = "PASS" if (item["within_limit_lf"] and item["within_limit_raw"]) else "FAIL"
+                  warn = "LOW MARGIN" if item["low_margin_warning"] else "OK"
+                  print(f"| `{item['path']}` | {item['lf_characters']:,} | {item['lf_headroom']:,} | {warn} | **{status}** |")
+          else:
+              print("Skill audit JSON was not generated (an earlier step failed).")
+          PY
