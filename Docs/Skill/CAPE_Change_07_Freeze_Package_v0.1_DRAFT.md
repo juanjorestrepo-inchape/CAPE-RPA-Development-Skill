@@ -1,7 +1,7 @@
 # CAPE RPA Development Skill — Change 07 Pre-Freeze Verification & §9 Gate Package
 
 **Document ID:** `CAPE-RPA-C07-FREEZE-001`
-**Version:** v0.1 (`DRAFT — PENDING CONFLUENCE CHECK & §9 SIGN-OFF`)
+**Version:** v0.1 (`DRPA VERIFIED — READY FOR §9 FREEZE SIGN-OFF`)
 **Date:** 20 November 2026
 **Governing Protocol:** [`CAPE_Change_07_Efficiency_Protocol_v0.1.md`](CAPE_Change_07_Efficiency_Protocol_v0.1.md) (`v0.1-r2`)
 **Companion Task Bank:** [`CAPE_Change_07_Task_Bank_v0.2_DRAFT.md`](CAPE_Change_07_Task_Bank_v0.2_DRAFT.md) (`10/10` matched pairs drafted)
@@ -17,11 +17,11 @@ Pairs `P01`–`P03` and gap pairs `P08`–`P10` are already aligned to verified 
 
 | Check ID | Pair(s) | Target Governed Source(s) | Live DRPA Page ID & Version Observed (2026-11-19) | Exact Items to Verify in Confluence | Verified? |
 | :---: | :---: | :--- | :--- | :--- | :---: |
-| **`CHK-01`** | `P01`, `P04` | `KS-006` (*RPA Project Intake Framework*) | DRPA `8848212048` (**v3**, `2026-10-29`) | Confirm Phases 3–4 kickoff/review wording in v3 still matches `P01` key points (Scrum Master schedules kickoff; Project Repository presented to Architecture team) and confirm all 10 ordered phases + separate Internal/Global CAB for `P04` (including Phase 10 text truncated by `PLAT-05`). | `[ ]` |
-| **`CHK-02`** | `P01`, `P04`, `P05` | `KS-007` (*RPA Architecture Review Framework*) | DRPA `8853815357` (**v8**, `2026-10-29`) | Confirm Phase 4 Architecture Review scope, PSC DOCX prerequisite, and step 9 text (truncated at 9a by `PLAT-05`), confirming `KS-007` does not govern Phases 7–8 CAB. | `[ ]` |
-| **`CHK-03`** | `P05` | `KS-003` (*RPA Architecture — Overview*) | DRPA `9025257486` *(verify exact live version)* | Confirm platform/technology selection guidance (tiers / cost-first framing) and confirm absence of Architecture Review trigger rules, establishing scope complementarity with `KS-007`. | `[ ]` |
-| **`CHK-04`** | `P06` | `KS-015` (*Critical Incident Playbook — RPA Team*) | DRPA `8219525716` (**v5**, `2025-11-04`) | Confirm 3–5 concrete operational playbook bullets expected in `P06` answers, while preserving **Supporting** authority ceiling (`R13`), open **Role Ambiguity**, and exclusion of unvalidated CI pages (`8218509380`, `8152777079`). | `[ ]` |
-| **`CHK-05`** | `P07` | `KS-005` (*RPA Architecture — Security*) & `KS-004` (*RPA Architecture — Functional*) | Verify DRPA Page IDs & live versions in Confluence | Record exact Page IDs, live versions, and 4–6 concrete security/functional bullets expected in `P07`; confirm Azure Key Vault implementation specifics remain outside documented coverage. | `[ ]` |
+| **`CHK-01`** | `P01`, `P04` | `KS-006` (*RPA Project Intake Framework*) | DRPA `8848212048` (**v3**, `2026-10-29 15:46:49 UTC`) | Verified: Phase 3 requires Repository + PSC (DOCX); Phase 4 Scrum Master schedules kickoff, BA runs w/ PMO, developer submits Arch Review Form + presents Repository & PSC, Tier 1 & Tier 2 approvals; all 10 phases + full Phase 10 text (max 2 mo hypercare, KT ≥2 wks, standard/pragmatic closure, CICR) updated in Task Bank v0.2. | `[x]` |
+| **`CHK-02`** | `P01`, `P04`, `P05` | `KS-007` (*RPA Architecture Review Framework*) | DRPA `8853815357` (**v8**, `2026-10-29 15:38:42 UTC`) | Verified: New projects + major enhancements scope, exclusions, PSC DOCX prerequisite, Steps 9a/9b + Tier 2 TDM Final Go + Section 9 Automation Summary (MS Forms → Email → MS Teams Approval); confirmed does not govern Phases 7–8 CAB. | `[x]` |
+| **`CHK-03`** | `P05` | `KS-003` (*RPA Architecture — Overview*) | DRPA `9025257486` (**v3**, `2026-04-01 06:08:56 UTC`) | Verified: Tiers 1–3 & Cost-First Selection Principle (`Python/VBA → Power Platform → UiPath/C#`); confirmed zero Architecture Review triggers (100% complementary to `KS-007`). | `[x]` |
+| **`CHK-04`** | `P06` | `KS-015` (*Critical Incident Playbook — RPA Team*) | DRPA `8219525716` (**v5**, `2025-11-04 05:55:32 UTC`) | Verified: 5 operational stages (Detect/Verify P0–P1, ManageEngine ticket, Mobilize TL IC + inform chain, INTERNAL Teams War Room w/ no stakeholders & 2h huddles, Triage & Contain + RCA in 3–5 business days); Supporting ceiling (`R13`) & Role Ambiguity preserved. | `[x]` |
+| **`CHK-05`** | `P07` | `KS-005` (*RPA Architecture — Security*) & `KS-004` (*RPA Architecture — Functional*) | DRPA `9024078121` (**v4**, `2026-04-01 06:09:31 UTC`) & DRPA `9024241974` (**v4**, `2026-04-01 06:09:16 UTC`) | Verified: Both are component-by-component descriptions; `KS-005` Security Notes (PAM360/UiPath Credential Store, TLS 1.2/SFTP SSH, MFA/CAPTCHA P4, Data Policy) recorded; Azure Key Vault mentioned at high level only with zero implementation standards. | `[x]` |
 
 ---
 
@@ -50,7 +50,7 @@ Every pending decision from Protocol `v0.1-r2` §10 is pre-populated with a conc
 
 | # | §9 Gate Requirement | Current Readiness | Remaining Action to Close |
 | :---: | :--- | :---: | :--- |
-| **1** | Ten task pairs and expected outcomes documented and reviewed | `DRAFT READY (10/10)` | Complete `CHK-01`–`CHK-05` (§1 above) and approve `Task Bank v0.2`. |
+| **1** | Ten task pairs and expected outcomes documented and reviewed | `VERIFIED (10/10)` | `CHK-01`–`CHK-05` verified against live DRPA (2026-11-20); ready for `Task Bank v0.2` sign-off. |
 | **2** | Per-pair equivalence and matching rationale documented | `DRAFT READY (10/10)` | Approve rationales in `CAPE_Change_07_Task_Bank_v0.2_DRAFT.md`. |
 | **3** | Condition order and carryover/familiarity limitations addressed | `PROPOSED READY` | Approve `C07-D06` (50/50 counterbalance + clean sessions outside Projects). |
 | **4** | `NO_CAPE` and `CAPE` conditions, allowed spaces, prohibited assistance fixed | `PROPOSED READY` | Approve `C07-D07` permitted space list (`DRPA` pilot reference). |
