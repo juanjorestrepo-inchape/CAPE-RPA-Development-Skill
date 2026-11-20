@@ -23,6 +23,7 @@
 | **Behavioral Pass Rate — Pure `AUTO` Runs (11 cases)** | **`8 / 11 PASS (72.7%)`** | `8 PASS` (`Q1, Q5, Q8, Q10, Q11, Q12, Q15, Q19`), `2 PARTIAL` (`Q3, Q6`), `1 INCONCLUSIVE` (`Q16-A` Activation Failed), `0 FAIL`. |
 | **Behavioral Pass Rate — Skill-Active Isolation (incl. `Q16-B` Explicit)** | **`9 / 11 PASS (81.8%)`** | `Q16-B` (explicit Skill load) achieved **`PASS`** in `6` calls / `21s` (vs. `11` calls / `78s` without Skill), isolating `Q16` strictly as a §2 routing gap rather than a Skill reasoning defect. |
 | **Automatic Activation Rate (`AUTO`)** | **`10 / 11 (90.9%)`** | `Q16-A` did not load the Skill (`ACTIVATION_FAILED` — prompt lacked `"RPA"` token). `Q6` loaded the Skill late (call #9 of 12). |
+| **Negative Activation Controls (`N1`–`N5`, 2026-11-20 clean sessions)** | **`4 / 5` zero-load · `5 / 5 (100%)` behavioral non-application** | `N1`–`N4` `PASS` (0 tool calls, no `Load Skill`). `N5` (`PARTIAL`): CAPE invoked `Load Skill` on *"automate a repetitive Windows desktop task"*, but Skill §2 self-rejected (*"not an Inchcape RPA request, so the RPA skill does not apply"*). `0/5` `PLAT-03`/`PLAT-04`. |
 | **Authority Discipline (`Q8` — `KS-015` Supporting Ceiling)** | **`PASS (100%)`** | Explicitly declared `Supporting`, `Role Ambiguity`, `Provisional`, *"not an official Primary policy"*, and excluded non-governed CI pages. |
 | **Change 04 Live Provenance (`Confluence Page Info`)** | **Substantially demonstrated** | Live DRPA vs. SOLDOC duplicates explicitly surfaced and bounded in `Q1`, `Q5`, `Q6`, `Q8`, and `Q16-B`. |
 | **Change 07 Efficiency Metric (≥30% target)** | **Not measured (`0` runs)** | Functional regression only; no Change 07 baseline or comparison timing executed. |
@@ -80,3 +81,27 @@ The following defects observed during the 2026-11-19 run belong to the **CAPE ho
    - Scoped future refinement to §2 *Activation Routing Guard* adding `"Architecture Review Framework"` and `"Project Intake Framework"` as context indicators (subject to owner approval).
 3. **Empirical justification for tool-call deduplication (`Q6` 12 calls / 62s; `Q16-B` duplicate `Page Info`):** Duplicate `Confluence Get Page` / `Page Info` calls on the same `page_id` added avoidable latency. Adding a one-line §4.3 deduplication rule in the next approved Skill revision will directly support Change 07 efficiency.
 4. **Remaining 9 Pilot Questions (`Q2, Q4, Q7, Q9, Q13, Q14, Q17, Q18, Q20`):** Unchanged — still dependent on 13 unpopulated sources and an authorized recording mechanism (§26.10).
+
+---
+
+## 6. Negative Activation Controls (`N1`–`N5`) — Executed 2026-11-20 (Clean Sessions)
+
+- **Execution date:** `2026-11-20`
+- **Session isolation:** Clean standalone CAPE sessions **outside any CAPE Project** (no `Ticket Tracker` / `Project Memory` active)
+- **Skill in CAPE:** `RPA Development Skill — Pilot v0.1` (`FA84A451...`, unchanged)
+- **Canonical prompts:** Verbatim from [`CAPE_Change_01_Activation_Test_Cycle.md`](CAPE_Change_01_Activation_Test_Cycle.md) §5
+- **Platform observations:** `0/5` `PLAT-03` (double reply) and `0/5` `PLAT-04` (Project Memory leak), confirming clean-session isolation resolves `PLAT-04` and that `PLAT-03` correlates with multi-tool/Confluence turns.
+
+| Case | Control Type | `Load Skill` Called? | Skill Applied? | Tool Calls / Thought | Case Verdict | Key Evidence & Audit Interpretation |
+| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
+| **`N1`** | Generic Python | **NO** | **NO** | 0 calls / 6s | **`PASS`** | Treated as general Python project structure (`src/` layout, `pyproject.toml`, `mypy`, `pytest`). Zero RPA framing. |
+| **`N2`** | Generic API | **NO** | **NO** | 0 calls / 14s | **`PASS`** | Treated as general FastAPI design (OAuth2/JWT, Pydantic, structured logging). Zero RPA framing. |
+| **`N3`** | Generic Architecture | **NO** | **NO** | 0 calls / 6s | **`PASS`** | Treated as general monolith-vs-services trade-off table. Zero RPA framing. |
+| **`N4`** | Generic Security | **NO** | **NO** | 0 calls / 5s | **`PASS`** | Treated as general Python secrets management (env vars, vaults, `gitleaks`, `keyring`). Included benign general disclaimer (*"check your internal security standards"*); did not load or apply RPA Skill. |
+| **`N5`** | Generic Automation | **YES (`1` call)** | **NO (Self-Rejected)** | 1 call / 12s | **`PARTIAL`** *(Tool False-Load / Behavioral PASS)* | Prompt (*"automate a repetitive Windows desktop task using Python"*) triggered CAPE's pre-load router to invoke `Load Skill`. Upon reading §2 Negative Conditions, the Skill explicitly self-rejected: *"This is a general Python question, not an Inchcape RPA request, so the RPA skill does not apply."* Answered cleanly as general Python (`pywinauto`/`openpyxl`/`pyautogui`). |
+
+### Activation Precision Summary (`N1`–`N5`)
+
+- **Strict Tool-Level Negative Rejection (`Load Skill` absent):** **`4 / 5 (80%)`** (`20%` tool-level load rate on `N5`).
+- **Behavioral Non-Application Rate (Skill governance not misapplied):** **`5 / 5 (100%)`** (`0%` inappropriate Skill application).
+- **Actionable Engineering Finding:** Because `N5` loaded the Skill *before* §2 instructions were read, the false load originates in CAPE's **Skill discovery metadata/summary** (not §2 body, which worked as intended). Tightening the CAPE Skill registration description to require *Inchcape RPA context* (explicitly excluding generic Python/desktop scripting) is recommended alongside the Candidate v0.1.2 review.
