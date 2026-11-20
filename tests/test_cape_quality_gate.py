@@ -274,6 +274,49 @@ class TestChange07Scoring(unittest.TestCase):
         self.assertEqual(parsed["status"], "NO_DATA")
         self.assertFalse(parsed["target_30pct_achieved"])
 
+    def test_report_c07_generates_self_contained_html(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            csv_path = root / "run.csv"
+            out_html = root / "report.html"
+            rows = [
+                _make_c07_row(
+                    pair_id="P01",
+                    task_domain="lifecycle <script>",
+                    condition="NO_CAPE",
+                    active_time_seconds="400",
+                ),
+                _make_c07_row(
+                    pair_id="P01",
+                    execution_id="C07-P01-CAPE-2",
+                    task_domain="lifecycle <script>",
+                    condition="CAPE",
+                    activation_status="ACTIVATED",
+                    active_time_seconds="200",
+                ),
+            ]
+            self._write_csv(csv_path, rows)
+            buf = io.StringIO()
+            with redirect_stdout(buf):
+                code = cqg.main(["report-c07", str(csv_path), "--output", str(out_html)])
+            self.assertEqual(code, 0)
+            self.assertTrue(out_html.is_file())
+            content = out_html.read_text(encoding="utf-8")
+            self.assertIn("TARGET ACHIEVED", content)
+            self.assertIn("50.0%", content)
+            self.assertIn("lifecycle &lt;script&gt;", content)
+            self.assertNotIn("<script>", content)
+
+    def test_report_c07_handles_empty_template_safely(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            template_path = REPO_ROOT / "Docs" / "Skill" / "Change_07_Execution_Log_TEMPLATE.csv"
+            out_html = Path(tmp) / "empty.html"
+            summary = cqg.generate_change_07_html_report(template_path, out_html)
+            self.assertEqual(summary.status, "NO_DATA")
+            content = out_html.read_text(encoding="utf-8")
+            self.assertIn("NO DATA — 0 EXECUTIONS LOGGED", content)
+            self.assertIn("No valid comparable pairs logged yet.", content)
+
 
 if __name__ == "__main__":
     unittest.main()

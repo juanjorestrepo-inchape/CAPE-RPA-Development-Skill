@@ -25,6 +25,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import html
 import json
 import logging
 import re
@@ -683,6 +684,206 @@ def score_change_07_log(csv_path: Path) -> Change07Summary:
     )
 
 
+def _read_comparable_pairs(csv_path: Path) -> list[dict[str, Any]]:
+    """Extract sorted comparable pair rows for visual Change 07 reporting.
+
+    Args:
+        csv_path: Path to a validated Change 07 execution log CSV.
+
+    Returns:
+        Sorted list of per-pair comparison dictionaries containing baseline and
+        CAPE active times, domain, difficulty, and delta percentage.
+    """
+    pairs: dict[str, dict[str, dict[str, Any]]] = {}
+    with csv_path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        for row in reader:
+            outcome = (row.get("outcome") or "").strip().upper()
+            cond = (row.get("condition") or "").strip().upper()
+            pair_id = (row.get("pair_id") or "").strip()
+            if outcome not in COMPARABLE_OUTCOMES or cond not in VALID_CONDITIONS:
+                continue
+            try:
+                active = int((row.get("active_time_seconds") or "0").strip())
+            except ValueError:
+                continue
+            pairs.setdefault(pair_id, {})[cond] = {
+                "active_time_seconds": active,
+                "domain": (row.get("task_domain") or "").strip(),
+                "difficulty": (row.get("task_difficulty") or "").strip(),
+                "accepted": (row.get("accepted") or "").strip().upper(),
+                "critical_failure": (row.get("critical_failure") or "NO").strip().upper(),
+                "activation_status": (row.get("activation_status") or "").strip().upper(),
+            }
+
+    output: list[dict[str, Any]] = []
+    for pair_id in sorted(pairs.keys()):
+        bucket = pairs[pair_id]
+        if "NO_CAPE" in bucket and "CAPE" in bucket:
+            base_s = bucket["NO_CAPE"]["active_time_seconds"]
+            cape_s = bucket["CAPE"]["active_time_seconds"]
+            delta_pct = round(((base_s - cape_s) / base_s) * 100.0, 1) if base_s > 0 else None
+            output.append(
+                {
+                    "pair_id": pair_id,
+                    "domain": bucket["NO_CAPE"]["domain"] or bucket["CAPE"]["domain"],
+                    "difficulty": bucket["NO_CAPE"]["difficulty"] or bucket["CAPE"]["difficulty"],
+                    "no_cape_seconds": base_s,
+                    "cape_seconds": cape_s,
+                    "delta_pct": delta_pct,
+                    "no_cape_accepted": bucket["NO_CAPE"]["accepted"],
+                    "cape_accepted": bucket["CAPE"]["accepted"],
+                    "cape_activation": bucket["CAPE"]["activation_status"],
+                }
+            )
+    return output
+
+
+def generate_change_07_html_report(csv_path: Path, output_path: Path) -> Change07Summary:
+    """Generate a self-contained HTML executive dashboard from a Change 07 CSV log.
+
+    Renders KPI cards, separated Answer-Quality vs. Operational Performance
+    panels (Protocol v0.1-r2 §6.5), and per-pair ``NO_CAPE`` vs. ``CAPE``
+    horizontal bar comparisons using pure HTML/CSS with zero external assets.
+
+    Args:
+        csv_path: Path to the Change 07 execution log CSV file.
+        output_path: Destination path for the generated HTML report.
+
+    Returns:
+        ``Change07Summary`` computed from ``csv_path``.
+
+    Raises:
+        Change07LogError: If ``csv_path`` fails Protocol v0.1-r2 validation.
+    """
+    summary = score_change_07_log(csv_path)
+    pair_rows = _read_comparable_pairs(csv_path)
+    max_time = max(
+        [max(r["no_cape_seconds"], r["cape_seconds"]) for r in pair_rows] or [600]
+    )
+
+    def _fmt_pct(val: float | None) -> str:
+        return f"{val:.1f}%" if val is not None else "N/A"
+
+    def _fmt_sec(val: float | int | None) -> str:
+        return f"{val:.1f}s" if isinstance(val, float) else (f"{val}s" if val is not None else "N/A")
+
+    if summary.status == "NO_DATA":
+        badge_cls, badge_txt = "badge-neutral", "NO DATA — 0 EXECUTIONS LOGGED"
+    elif summary.target_30pct_achieved:
+        badge_cls, badge_txt = "badge-pass", "TARGET ACHIEVED (≥30% & QUALITY PRESERVED)"
+    else:
+        badge_cls, badge_txt = "badge-warn", "TARGET NOT YET ACHIEVED / QUALITY GATED"
+
+    rows_html_parts: list[str] = []
+    for row in pair_rows:
+        base_w = round((row["no_cape_seconds"] / max_time) * 100, 1) if max_time > 0 else 0
+        cape_w = round((row["cape_seconds"] / max_time) * 100, 1) if max_time > 0 else 0
+        delta_txt = _fmt_pct(row["delta_pct"])
+        rows_html_parts.append(
+            "<tr>"
+            f"<td><strong>{html.escape(row['pair_id'])}</strong></td>"
+            f"<td>{html.escape(row['domain'])}<br><small>{html.escape(row['difficulty'])}</small></td>"
+            f"<td><div class='bar-wrap'><div class='bar bar-base' style='width:{base_w}%'>{row['no_cape_seconds']}s</div></div>"
+            f"<div class='bar-wrap'><div class='bar bar-cape' style='width:{cape_w}%'>{row['cape_seconds']}s</div></div></td>"
+            f"<td class='num'>{delta_txt}</td>"
+            f"<td class='num'>{html.escape(row['no_cape_accepted'])} / {html.escape(row['cape_accepted'])}</td>"
+            f"<td class='num'>{html.escape(row['cape_activation'])}</td>"
+            "</tr>"
+        )
+    table_body = (
+        "\n".join(rows_html_parts)
+        if rows_html_parts
+        else "<tr><td colspan='6' class='empty'>No valid comparable pairs logged yet.</td></tr>"
+    )
+    notes_html = "".join(f"<li>{html.escape(n)}</li>" for n in summary.notes) or "<li>None.</li>"
+    generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
+    document = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CAPE RPA Skill — Change 07 Efficiency Report</title>
+<style>
+  body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 24px; color: #1e293b; background: #f8fafc; }}
+  .container {{ max-width: 1080px; margin: 0 auto; background: #ffffff; padding: 28px; border-radius: 12px; box-shadow: 0 2px 12px rgba(15,23,42,0.08); }}
+  h1 {{ margin: 0 0 6px 0; font-size: 22px; }}
+  .subtitle {{ color: #475569; margin: 0 0 18px 0; font-size: 13px; }}
+  .badge {{ display: inline-block; padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 18px; }}
+  .badge-pass {{ background: #dcfce7; color: #166534; }}
+  .badge-warn {{ background: #fef3c7; color: #92400e; }}
+  .badge-neutral {{ background: #e2e8f0; color: #334155; }}
+  .grid {{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }}
+  .card {{ background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }}
+  .card-label {{ font-size: 11px; text-transform: uppercase; color: #64748b; letter-spacing: 0.04em; }}
+  .card-value {{ font-size: 22px; font-weight: 700; margin-top: 4px; color: #0f172a; }}
+  .split {{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }}
+  .panel {{ border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }}
+  .panel h2 {{ font-size: 14px; margin: 0 0 10px 0; color: #0f172a; }}
+  table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
+  th, td {{ border-bottom: 1px solid #e2e8f0; padding: 10px 8px; text-align: left; vertical-align: middle; }}
+  th {{ background: #f1f5f9; font-size: 12px; color: #334155; }}
+  .num {{ text-align: right; white-space: nowrap; }}
+  .bar-wrap {{ background: #e2e8f0; border-radius: 4px; margin: 3px 0; overflow: hidden; }}
+  .bar {{ color: #ffffff; font-size: 11px; font-weight: 600; padding: 2px 6px; white-space: nowrap; }}
+  .bar-base {{ background: #64748b; }}
+  .bar-cape {{ background: #2563eb; }}
+  .legend {{ font-size: 12px; color: #475569; margin-bottom: 8px; }}
+  .dot {{ display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; }}
+  .empty {{ text-align: center; color: #64748b; padding: 24px; }}
+  .notes {{ font-size: 12px; color: #475569; margin-top: 18px; }}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>CAPE RPA Development Skill — Change 07 Efficiency Report</h1>
+  <p class="subtitle">Source CSV: <code>{html.escape(csv_path.name)}</code> · Protocol v0.1-r2 · Generated {generated_at} · Principle: <strong>Trust Before Breadth</strong></p>
+  <span class="badge {badge_cls}">{badge_txt}</span>
+
+  <div class="grid">
+    <div class="card"><div class="card-label">Valid Comparable Pairs</div><div class="card-value">{summary.valid_comparable_pairs} / 10</div></div>
+    <div class="card"><div class="card-label">Total Time Reduction (M-C1)</div><div class="card-value">{_fmt_pct(summary.total_active_time_reduction_pct)}</div></div>
+    <div class="card"><div class="card-label">Median Time Reduction (M-C2)</div><div class="card-value">{_fmt_pct(summary.median_active_time_reduction_pct)}</div></div>
+    <div class="card"><div class="card-label">CAPE Critical Failures</div><div class="card-value">{summary.cape_critical_failures}</div></div>
+  </div>
+
+  <div class="split">
+    <div class="panel">
+      <h2>Answer-Quality Acceptance (§6.5 — Separated from Speed)</h2>
+      <p><strong>NO_CAPE Acceptance Rate:</strong> {_fmt_pct(summary.baseline_quality_acceptance_rate)} (Critical Failures: {summary.baseline_critical_failures})</p>
+      <p><strong>CAPE Acceptance Rate:</strong> {_fmt_pct(summary.cape_quality_acceptance_rate)} (Critical Failures: {summary.cape_critical_failures})</p>
+    </div>
+    <div class="panel">
+      <h2>Operational Performance (§6.5)</h2>
+      <p><strong>Total Active Time:</strong> NO_CAPE {_fmt_sec(summary.baseline_total_active_seconds)} vs. CAPE {_fmt_sec(summary.cape_total_active_seconds)}</p>
+      <p><strong>Median Active Time:</strong> NO_CAPE {_fmt_sec(summary.baseline_median_active_seconds)} vs. CAPE {_fmt_sec(summary.cape_median_active_seconds)}</p>
+      <p><strong>Rework (NO_CAPE / CAPE):</strong> {summary.baseline_rework_count} / {summary.cape_rework_count} · <strong>Activation Failures:</strong> {summary.cape_activation_failures} · <strong>Excluded Rows:</strong> {summary.excluded_rows}</p>
+    </div>
+  </div>
+
+  <div class="legend"><span class="dot" style="background:#64748b"></span>NO_CAPE (Manual Baseline) &nbsp;&nbsp; <span class="dot" style="background:#2563eb"></span>CAPE (RPA Skill)</div>
+  <table>
+    <thead>
+      <tr><th>Pair</th><th>Domain &amp; Difficulty</th><th>Active Time Comparison (s)</th><th class="num">Delta</th><th class="num">Accepted (Base/CAPE)</th><th class="num">CAPE Activation</th></tr>
+    </thead>
+    <tbody>
+      {table_body}
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>Protocol Guardrails &amp; Notes:</strong>
+    <ul>{notes_html}</ul>
+  </div>
+</div>
+</body>
+</html>
+"""
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(document, encoding="utf-8")
+    return summary
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Build the CLI argument parser for ``cape_quality_gate``.
 
@@ -713,6 +914,18 @@ def build_parser() -> argparse.ArgumentParser:
         help="Validate and score a Change 07 matched-pair execution log CSV.",
     )
     c07_cmd.add_argument("csv_file", type=Path, help="Path to Change 07 execution log CSV.")
+
+    report_cmd = sub.add_parser(
+        "report-c07",
+        help="Generate a self-contained HTML executive dashboard from a Change 07 CSV.",
+    )
+    report_cmd.add_argument("csv_file", type=Path, help="Path to Change 07 execution log CSV.")
+    report_cmd.add_argument(
+        "--output",
+        type=Path,
+        required=True,
+        help="Output path for the generated HTML report.",
+    )
 
     return parser
 
@@ -753,6 +966,15 @@ def main(argv: Sequence[str] | None = None) -> int:
             logger.info(
                 "Change 07 scoring finished",
                 extra={"context": {"status": summary.status, "pairs": summary.valid_comparable_pairs}},
+            )
+            return 0
+
+        if args.command == "report-c07":
+            summary = generate_change_07_html_report(args.csv_file, args.output)
+            sys.stdout.write(json.dumps(asdict(summary), indent=2) + "\n")
+            logger.info(
+                "Change 07 HTML report generated",
+                extra={"context": {"output": str(args.output), "status": summary.status}},
             )
             return 0
 
