@@ -1,7 +1,7 @@
 # CAPE RPA Development Skill — Change 07 Task Bank v0.2 (Expanded 10-Pair Draft)
 
-**Draft date:** 19 November 2026 *(DRPA Confluence verification completed 20 November 2026)*
-**Status:** `VERIFIED DRAFT — READY FOR OWNER & TEST LEAD §9 FREEZE SIGN-OFF (NOT YET FROZEN)`
+**Draft date:** 19 November 2026 *(DRPA Confluence verification & §9 freeze completed 20 November 2026)*
+**Status:** `APPROVED — FROZEN FOR CHANGE 07 EXECUTION (2026-11-20, Nikko Gonzales)`
 **Supersedes (upon approval only):** [`CAPE_Change_07_Task_Bank_v0.1.md`](CAPE_Change_07_Task_Bank_v0.1.md) *(retained unchanged as prior 3-pair baseline)*
 **Governing protocol:** [`CAPE_Change_07_Efficiency_Protocol_v0.1.md`](CAPE_Change_07_Efficiency_Protocol_v0.1.md) (`v0.1-r2`)
 **Execution log template:** [`Change_07_Execution_Log_TEMPLATE.csv`](Change_07_Execution_Log_TEMPLATE.csv)
@@ -137,6 +137,6 @@
 ## 3. Pre-Freeze Verification Checklist (Required Before Protocol §9 Closure)
 
 - [x] Verify exact Confluence source-backed key points for Pairs `P01`, `P04`, `P05`, `P06`, and `P07` against live DRPA pages (`8848212048` v3, `8853815357` v8, `9025257486` v3, `8219525716` v5, `9024078121` v4, `9024241974` v4 — completed 2026-11-20).
-- [ ] Resolve `KS-010` canonical identity (`DEP-08`) to unblock `P02` source-authority scoring.
-- [ ] Confirm counterbalanced condition-order table (e.g., odd pairs `NO_CAPE → CAPE`, even pairs `CAPE → NO_CAPE`) with Test Lead & Project Owner.
-- [ ] Approve final `v0.2` Task Bank together with Protocol `v0.1-r2` §9 freeze before recording any execution in [`Change_07_Execution_Log_TEMPLATE.csv`](Change_07_Execution_Log_TEMPLATE.csv).
+- [x] Confirm `KS-010` pilot duplicate scoring rule (`C07-D07`: `DRPA` pilot reference copy with `DEP-08` caveat preserved until formal Source Owner closure — approved 2026-11-20).
+- [x] Confirm counterbalanced condition-order table (odd pairs `NO_CAPE → CAPE`, even pairs `CAPE → NO_CAPE`, standalone clean sessions — `C07-D06` approved 2026-11-20).
+- [x] Approve final `v0.2` Task Bank together with Protocol `v0.1-r2` §9 freeze (approved by Nikko Gonzales on 2026-11-20; active log initialized at [`Change_07_Execution_Log_RUN1.csv`](Change_07_Execution_Log_RUN1.csv)).
