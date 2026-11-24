@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CAPE RPA Skill — Change 07 Efficiency Report</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 24px; color: #1e293b; background: #f8fafc; }
+  .container { max-width: 1080px; margin: 0 auto; background: #ffffff; padding: 28px; border-radius: 12px; box-shadow: 0 2px 12px rgba(15,23,42,0.08); }
+  h1 { margin: 0 0 6px 0; font-size: 22px; }
+  .subtitle { color: #475569; margin: 0 0 18px 0; font-size: 13px; }
+  .badge { display: inline-block; padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 18px; }
+  .badge-pass { background: #dcfce7; color: #166534; }
+  .badge-warn { background: #fef3c7; color: #92400e; }
+  .badge-neutral { background: #e2e8f0; color: #334155; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }
+  .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }
+  .card-label { font-size: 11px; text-transform: uppercase; color: #64748b; letter-spacing: 0.04em; }
+  .card-value { font-size: 22px; font-weight: 700; margin-top: 4px; color: #0f172a; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+  .panel { border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }
+  .panel h2 { font-size: 14px; margin: 0 0 10px 0; color: #0f172a; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { border-bottom: 1px solid #e2e8f0; padding: 10px 8px; text-align: left; vertical-align: middle; }
+  th { background: #f1f5f9; font-size: 12px; color: #334155; }
+  .num { text-align: right; white-space: nowrap; }
+  .bar-wrap { background: #e2e8f0; border-radius: 4px; margin: 3px 0; overflow: hidden; }
+  .bar { color: #ffffff; font-size: 11px; font-weight: 600; padding: 2px 6px; white-space: nowrap; }
+  .bar-base { background: #64748b; }
+  .bar-cape { background: #2563eb; }
+  .legend { font-size: 12px; color: #475569; margin-bottom: 8px; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; }
+  .empty { text-align: center; color: #64748b; padding: 24px; }
+  .notes { font-size: 12px; color: #475569; margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>CAPE RPA Development Skill — Change 07 Efficiency Report</h1>
+  <p class="subtitle">Source CSV: <code>Change_07_Execution_Log_RUN2_v013.csv</code> · Protocol v0.1-r2 · Generated 2026-11-24 17:27 UTC · Principle: <strong>Trust Before Breadth</strong></p>
+  <span class="badge badge-pass">TARGET ACHIEVED (≥30% & QUALITY PRESERVED)</span>
+
+  <div class="grid">
+    <div class="card"><div class="card-label">Valid Comparable Pairs</div><div class="card-value">10 / 10</div></div>
+    <div class="card"><div class="card-label">Total Time Reduction (M-C1)</div><div class="card-value">74.0%</div></div>
+    <div class="card"><div class="card-label">Median Time Reduction (M-C2)</div><div class="card-value">78.7%</div></div>
+    <div class="card"><div class="card-label">CAPE Critical Failures</div><div class="card-value">0</div></div>
+  </div>
+
+  <div class="split">
+    <div class="panel">
+      <h2>Answer-Quality Acceptance (§6.5 — Separated from Speed)</h2>
+      <p><strong>NO_CAPE Acceptance Rate:</strong> 100.0% (Critical Failures: 0)</p>
+      <p><strong>CAPE Acceptance Rate:</strong> 100.0% (Critical Failures: 0)</p>
+    </div>
+    <div class="panel">
+      <h2>Operational Performance (§6.5)</h2>
+      <p><strong>Total Active Time:</strong> NO_CAPE 1831s vs. CAPE 477s</p>
+      <p><strong>Median Active Time:</strong> NO_CAPE 185.5s vs. CAPE 39.5s</p>
+      <p><strong>Rework (NO_CAPE / CAPE):</strong> 0 / 1 · <strong>Activation Failures:</strong> 0 · <strong>Excluded Rows:</strong> 0</p>
+    </div>
+  </div>
+
+  <div class="legend"><span class="dot" style="background:#64748b"></span>NO_CAPE (Manual Baseline) &nbsp;&nbsp; <span class="dot" style="background:#2563eb"></span>CAPE (RPA Skill)</div>
+  <table>
+    <thead>
+      <tr><th>Pair</th><th>Domain &amp; Difficulty</th><th>Active Time Comparison (s)</th><th class="num">Delta</th><th class="num">Accepted (Base/CAPE)</th><th class="num">CAPE Activation</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>P01</strong></td><td>lifecycle<br><small>Medium</small></td><td><div class='bar-wrap'><div class='bar bar-base' style='width:57.5%'>161s</div></div><div class='bar-wrap'><div class='bar bar-cape' style='width:16.4%'>46s</div></div></td><td class='num'>71.4%</td><td class='num'>YES / YES</td><td class='num'>ACTIVATED</td></tr>
+<tr><td><strong>P02</strong></td><td>security_policy<br><small>Medium</small></td><td><div class='bar-wrap'><div class='bar bar-base' style='width:22.1%'>62s</div></div><div class='bar-wrap'><div class='bar bar-cape' style='width:15.7%'>44s</div></div></td><td class='num'>29.0%</td><td class='num'>YES / YES</td><td class='num'>ACTIVATED</td></tr>
+<tr><td><strong>P03</strong></td><td>knowledge_gap<br><small>Low-Medium</small></td><td><div class='bar-wrap'><div class='bar bar-base' style='width:45.7%'>128s</div></div><div class='bar-wrap'><div class='bar bar-cape' style='width:7.1%'>20s</div></div></td><td class='num'>84.4%</td><td class='num'>YES / YES</td><td class='num'>ACTIVATED</td></tr>
+<tr><td><strong>P04</strong></td><td>lifecycle<br><small>Medium</small></td><td><div class='bar-wrap'><div class='bar bar-base' style='width:48.2%'>135s</div></div><div class='bar-wrap'><div class='bar bar-cape' style='width:11.1%'>31s</div></div></td><td class='num'>77.0%</td><td class='num'>YES / YES</td><td class='num'>ACTIVATED</td></tr>
+<tr><td><strong>P05</strong></td><td>architecture_precedence<br><small>High</small></td><td><div class='bar-wrap'><div class='bar bar-base' style='width:57.1%'>160s</div></div><div class='bar-wrap'><div class='bar bar-cape' style='width:32.9%'>92s</div></div></td><td class='num'>42.5%</td><td class='num'>YES / YES</td><td class='num'>ACTIVATED</td></tr>
+<tr><td><strong>P06</strong></td><td>operations_incident<br><small>High</small></td><td><div class='bar-wrap'><div class='bar bar-base' style='width:85.7%'>240s</div></div><div class='bar-wrap'><div class='bar bar-cape' style='width:17.1%'>48s</div></div></td><td class='num'>80.0%</td><td class='num'>YES / YES</td><td class='num'>ACTIVATED</td></tr>
+<tr><td><strong>P07</strong></td><td>architecture_security_functional<br><small>Medium</small></td><td><div class='bar-wrap'><div class='bar bar-base' style='width:100.0%'>280s</div></div><div class='bar-wrap'><div class='bar bar-cape' style='width:34.6%'>97s</div></div></td><td class='num'>65.4%</td><td class='num'>YES / YES</td><td class='num'>ACTIVATED</td></tr>
+<tr><td><strong>P08</strong></td><td>platform_practices_gap<br><small>Medium</small></td><td><div class='bar-wrap'><div class='bar bar-base' style='width:82.1%'>230s</div></div><div class='bar-wrap'><div class='bar bar-cape' style='width:10.7%'>30s</div></div></td><td class='num'>87.0%</td><td class='num'>YES / YES</td><td class='num'>ACTIVATED</td></tr>
+<tr><td><strong>P09</strong></td><td>engineering_standards_gap<br><small>Low-Medium</small></td><td><div class='bar-wrap'><div class='bar bar-base' style='width:75.0%'>210s</div></div><div class='bar-wrap'><div class='bar bar-cape' style='width:12.1%'>34s</div></div></td><td class='num'>83.8%</td><td class='num'>YES / YES</td><td class='num'>ACTIVATED</td></tr>
+<tr><td><strong>P10</strong></td><td>governance_taxonomy_gap<br><small>Medium</small></td><td><div class='bar-wrap'><div class='bar bar-base' style='width:80.4%'>225s</div></div><div class='bar-wrap'><div class='bar bar-cape' style='width:12.5%'>35s</div></div></td><td class='num'>84.4%</td><td class='num'>YES / YES</td><td class='num'>ACTIVATED</td></tr>
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <strong>Protocol Guardrails &amp; Notes:</strong>
+    <ul><li>None.</li></ul>
+  </div>
+</div>
+</body>
+</html>
