@@ -2,7 +2,7 @@
 
 **Document ID:** `CAPE-RPA-DEL-FIELDTRIAL-001` | **Version:** `v0.1` | **Date:** `24 November 2026`
 **Skill Being Tested:** `RPA Development Skill — Candidate v0.1.3` *(shared via private `Unlisted` team link)*
-**Where Results Are Logged:** [`Team_Field_Trial_Evidence_Log.csv`](Team_Field_Trial_Evidence_Log.csv) *(in this same folder)*
+**Where Results Are Logged:** [`Team_Field_Trial_Evidence_Log.xlsx`](Team_Field_Trial_Evidence_Log.xlsx) *(formatted Excel with dropdowns & live dashboard)* or [`Team_Field_Trial_Evidence_Log.csv`](Team_Field_Trial_Evidence_Log.csv) *(in this same folder)*
 
 ---
 

@@ -4,9 +4,10 @@ Everything needed to run the **15-minute RPA Team Field Trial** lives in this si
 
 | File | What It Is | Who Uses It |
 | :--- | :--- | :--- |
-| [`CAPE_Team_Field_Trial_Guide_v0.1.docx`](CAPE_Team_Field_Trial_Guide_v0.1.docx) | **Word Guide (Ready to Share)** — Easy step-by-step instructions, multi-turn test scenarios, and a 2-minute feedback checklist. | Send this file to teammates via Teams or email. |
+| [`CAPE_Team_Field_Trial_Guide_v0.1.docx`](CAPE_Team_Field_Trial_Guide_v0.1.docx) | **Word Guide (Ready to Share)** — Easy step-by-step instructions, multi-turn test scenarios, and a 2-minute feedback card. | Send this file to teammates via Teams or email. |
+| [`Team_Field_Trial_Evidence_Log.xlsx`](Team_Field_Trial_Evidence_Log.xlsx) | **Formatted Excel Workbook (Recommended)** — Styled Navy/Teal log with dropdown lists, frozen headers, sample row, and a live **`Summary_M_B4`** KPI dashboard. | Coordinator & teammates logging or reviewing results in Excel. |
+| [`Team_Field_Trial_Evidence_Log.csv`](Team_Field_Trial_Evidence_Log.csv) | **Plain CSV Mirror** — Raw text version for Git diffs and automated scripts (plain CSV does not support colors or formulas). | Scripts / Git version tracking. |
 | [`CAPE_Team_Field_Trial_Guide_v0.1.md`](CAPE_Team_Field_Trial_Guide_v0.1.md) | **Markdown Source** — Exact GitHub-readable version of the Word guide. | Reviewers / GitHub browsing. |
-| [`Team_Field_Trial_Evidence_Log.csv`](Team_Field_Trial_Evidence_Log.csv) | **Evidence & Feedback Log (CSV)** — Opens directly in Excel. Records each teammate's session, usefulness rating (`1–5`), manual follow-up (`YES/NO`), and notes. | Coordinator (Juan José) or teammates logging results directly. |
 
 ---
 
