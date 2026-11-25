@@ -28,8 +28,10 @@ Try **two** short conversations. In each conversation, send **at least one follo
 - **Conversation 1 — Your Real Work (`FT-00`):** Ask a genuine question you ran into this week on an active Inchcape RPA project (architecture, intake, security/MFA, CAB, incidents, or coding), then ask a natural follow-up.
 - **Conversation 2 — Pick 1 Scenario Below (`FT-01`–`FT-05`):** Choose the scenario closest to your role. Send **Turn 1**, read CAPE's answer, and then challenge it with **Turn 2**.
 
-### Step 3 — Send 2-Minute Feedback (2 min)
-Reply to Juan José on Teams (or add one row directly to [`Team_Field_Trial_Evidence_Log.csv`](Team_Field_Trial_Evidence_Log.csv) in this folder) with the 6 quick items in **Section 3** below.
+### Step 3 — Log Your 2-Minute Feedback in the Shared Excel (2 min)
+Open the shared [`Team_Field_Trial_Evidence_Log.xlsx`](Team_Field_Trial_Evidence_Log.xlsx) (in this folder / Teams) and fill **1 row per conversation** starting on **Row 6**:
+- Fill **only the Teal columns (`A–J`)** — most use quick dropdowns! *(Leave Navy columns `K–R` blank for Juan José; see the `How_To_Fill` tab if unsure).*
+- Prefer chat? Just copy the 6 quick items in **Section 3** below and send them to Juan José on Teams.
 
 ### Step 4 — Done!
 We will combine all team feedback to measure real-world usefulness, catch any blind spots, and finalize the promotion package for `v1.0`.
